@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Well Informed</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_well_index">Well Index</string>
+    <string name="menu_owner_index">Owner Index</string>
+    <string name="menu_driller_index">Driller Index</string>
+    <string name="menu_navigation">Navigation</string>
+    <string name="menu_well_report">Well Report</string>
+</resources>
