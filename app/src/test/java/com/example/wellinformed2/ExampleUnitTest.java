@@ -1,4 +1,4 @@
-package com.example.wellinformed;
+package com.example.wellinformed2;
 
 import org.junit.Test;
 

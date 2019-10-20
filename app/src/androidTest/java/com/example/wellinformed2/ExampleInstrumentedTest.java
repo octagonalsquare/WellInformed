@@ -1,4 +1,4 @@
-package com.example.wellinformed;
+package com.example.wellinformed2;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.example.wellinformed", appContext.getPackageName());
+        assertEquals("com.example.wellinformed2", appContext.getPackageName());
     }
 }
