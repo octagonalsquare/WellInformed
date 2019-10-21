@@ -47,6 +47,7 @@ public class navigation extends AppCompatActivity {
     private GraphicsOverlay mGraphicsOverlay;
     private Point mStart;
     private Point mEnd;
+    private Point mMiddle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
