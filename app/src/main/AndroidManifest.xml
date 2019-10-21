@@ -12,10 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".navigation"/>
-        <activity android:name=".ownerIndex" />
-        <activity android:name=".drillerIndex" />
-        <activity android:name=".wellIndex"/>
+        <activity android:name=".navigation"
+                  android:label="Navigation" />
+        <activity android:name=".ownerIndex"
+                  android:label="Owner Index" />
+        <activity android:name=".drillerIndex"
+                  android:label="Driller Index" />
+        <activity android:name=".wellIndex"
+                  android:label="Well Index" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
