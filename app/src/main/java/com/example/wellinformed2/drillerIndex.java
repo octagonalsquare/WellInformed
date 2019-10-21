@@ -30,18 +30,18 @@ public class drillerIndex extends AppCompatActivity {
         table = new TableLayout(this);
         table.setStretchAllColumns(true);
 
-        List<Well> wellList = new ArrayList<>();
+        List<Driller> wellList = new ArrayList<>();
 
-        wellList.add(new Well("1", "Well 1", "Active", "..."));
-        wellList.add(new Well("2", "Well 2", "Active", "..."));
-        wellList.add(new Well("3", "Well 3", "Active", "..."));
-        wellList.add(new Well("4", "Well 4", "Active", "..."));
-        wellList.add(new Well("5", "Well 5", "Active", "..."));
-        wellList.add(new Well("6", "Well 6", "Active", "..."));
-        wellList.add(new Well("7", "Well 7", "Active", "..."));
-        wellList.add(new Well("8", "Well 8", "Active", "..."));
-        wellList.add(new Well("9", "Well 9", "Active", "..."));
-        wellList.add(new Well("10", "Well 10", "Active", "..."));
+        wellList.add(new Driller("Craig", "CJonesDigging", "Active", "123 Jones St"));
+        wellList.add(new Driller("John", "CJonesDigging", "Active", "123 Jones St"));
+        wellList.add(new Driller("Mahershalalhashbaz", "Israel", "Active", "123 Jones St"));
+        wellList.add(new Driller("Josh", "Well Dig It", "Active", "123 Jones St"));
+        wellList.add(new Driller("Caleb", "Well Informed", "Active", "123 Jones St"));
+        wellList.add(new Driller("Yash", "Well Informed", "Active", "123 Jones St"));
+        wellList.add(new Driller("Jesus", "Well Informed", "Active", "123 Jones St"));
+        wellList.add(new Driller("Will", "Well Informed", "Active", "123 Jones St"));
+        wellList.add(new Driller("Bill", "Well Dig It", "Active", "123 Jones St"));
+        wellList.add(new Driller("The Dark Lord", "Well Dig It", "Active", "123 Jones St"));
 
 
         for (int i = 0; i < wellList.size(); i++) {
@@ -49,22 +49,22 @@ public class drillerIndex extends AppCompatActivity {
             TableRow.LayoutParams lp = new TableRow.LayoutParams(0, TableRow.LayoutParams.FILL_PARENT);
             row.setLayoutParams(lp);
 
-            TextView id = new TextView(this);
-            id.setText(wellList.get(i).ID);
-
             TextView name = new TextView(this);
             name.setText(wellList.get(i).Name);
 
-            TextView status = new TextView(this);
-            status.setText(wellList.get(i).Status);
+            TextView companyName = new TextView(this);
+            companyName.setText(wellList.get(i).CompanyName);
 
             TextView more = new TextView(this);
-            more.setText(wellList.get(i).More);
+            more.setText("...");
 
-            row.addView(id);
+            /*TextView more = new TextView(this);
+            more.setText(wellList.get(i).More);*/
+
             row.addView(name);
-            row.addView(status);
+            row.addView(companyName);
             row.addView(more);
+            //row.addView(more);
             table.addView(row, i);
         }
         scrollView.addView(table);
@@ -76,8 +76,8 @@ public class drillerIndex extends AppCompatActivity {
         public String CompanyName;
         public String ID;
         public String Address;
-        public int LicenseNumber;
-        public Date LicenseExpirationDate;
+        public int LicenseNumber = 0;
+        public Date LicenseExpirationDate = new Date();
 
         Driller(String name, String companyName, String id, String address, int licenseNumber,
                 Date licenseExpirationDate)
