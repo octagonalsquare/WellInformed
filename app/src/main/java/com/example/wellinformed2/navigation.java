@@ -3,13 +3,13 @@ package com.example.wellinformed2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.Toast;
 
 import com.esri.arcgisruntime.concurrent.ListenableFuture;
+import com.esri.arcgisruntime.geometry.Point;
 import com.esri.arcgisruntime.geometry.Polyline;
 import com.esri.arcgisruntime.layers.ArcGISMapImageLayer;
 import com.esri.arcgisruntime.layers.FeatureLayer;
@@ -234,5 +234,4 @@ public class navigation extends AppCompatActivity {
         }
         super.onDestroy();
     }
-
 }
