@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#efd9ce"
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="284dp"
-        android:layout_height="306dp"
+        android:layout_width="270dp"
+        android:layout_height="330dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,39 +36,55 @@
             android:id="@+id/txvWellIndex"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#00ACC1"
+            android:background="@drawable/rounded_corner"
             android:gravity="center_vertical"
             android:text="@string/well_index_textview"
+            android:textAlignment="center"
             android:textColor="#F9F9F9"
             android:textSize="25dp" />
 
-        <TextView
-            android:id="@+id/txvWellOwner"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#039BE5"
-            android:gravity="center_vertical"
-            android:text="@string/well_owners_textview"
-            android:textColor="#F9F9F9"
-            android:textSize="25dp" />
+            android:layout_height="10dp" />
 
         <TextView
             android:id="@+id/txvDrillerIndex"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#1E88E5"
+            android:background="@drawable/rounded_corner"
             android:gravity="center_vertical"
             android:text="@string/driller_index_textview"
+            android:textAlignment="center"
             android:textColor="#F9F9F9"
             android:textSize="25dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <TextView
+            android:id="@+id/txvWellOwner"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_corner"
+            android:gravity="center_vertical"
+            android:text="@string/well_owners_textview"
+            android:textAlignment="center"
+            android:textColor="#F9F9F9"
+            android:textSize="25dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <TextView
             android:id="@+id/txvNavigation"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#3949AB"
+            android:background="@drawable/rounded_corner"
             android:gravity="center_vertical"
             android:text="@string/navigation_textview"
+            android:textAlignment="center"
             android:textColor="#F9F9F9"
             android:textSize="25dp" />
 
