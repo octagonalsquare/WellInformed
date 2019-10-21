@@ -9,6 +9,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class drillerIndex extends AppCompatActivity {
@@ -67,6 +68,41 @@ public class drillerIndex extends AppCompatActivity {
             table.addView(row, i);
         }
         scrollView.addView(table);
+    }
+
+    class Driller
+    {
+        public String Name;
+        public String CompanyName;
+        public String ID;
+        public String Address;
+        public int LicenseNumber;
+        public Date LicenseExpirationDate;
+
+        Driller(String name, String companyName, String id, String address, int licenseNumber,
+                Date licenseExpirationDate)
+        {
+            Name = name;
+            CompanyName = companyName;
+            ID = id;
+            Address = address;
+            LicenseNumber = licenseNumber;
+            LicenseExpirationDate = licenseExpirationDate;
+        }
+
+        Driller(String name, String companyName, String id, String address)
+        {
+            Name = name;
+            CompanyName = companyName;
+            ID = id;
+            Address = address;
+        }
+
+        public void RenewLicense(int licenseNumber, Date licenseExpirationDate)
+        {
+            LicenseNumber = licenseNumber;
+            LicenseExpirationDate = licenseExpirationDate;
+        }
     }
 }
 
