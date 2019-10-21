@@ -6,17 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".navigation">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="225dp"
-        android:layout_marginEnd="200dp"
-        android:layout_marginBottom="487dp"
-        android:text="Navigation View"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <com.esri.arcgisruntime.mapping.view.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </com.esri.arcgisruntime.mapping.view.MapView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
