@@ -9,7 +9,7 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:stretchColumns="1,2,3,4"
+        android:stretchColumns="1,2,3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,28 +55,12 @@
                 android:background="#2196F3"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center_vertical"
-                android:text="State"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="#FBFBFF"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_column="4"
-                android:alpha="1"
-                android:background="#2196F3"
-                android:fontFamily="sans-serif-smallcaps"
-                android:gravity="center_vertical"
                 android:text="More"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="#FBFBFF"
                 android:textSize="20sp" />
         </TableRow>
-
-
 
         <ScrollView
             android:id="@+id/driller_scroll_view"
