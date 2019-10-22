@@ -41,7 +41,7 @@
                 android:background="#2196F3"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center_vertical"
-                android:text="City"
+                android:text="Company"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="#FBFBFF"
@@ -65,7 +65,8 @@
         <ScrollView
             android:id="@+id/driller_scroll_view"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/lightBackground">
 
 
         </ScrollView>
