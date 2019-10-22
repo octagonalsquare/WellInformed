@@ -22,7 +22,7 @@ public class drillerIndex extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driller_index);
 
-        scrollView = findViewById(R.id.well_scroll_view);
+        scrollView = findViewById(R.id.driller_scroll_view);
         displayWellTable();
     }
 

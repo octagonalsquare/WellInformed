@@ -79,7 +79,7 @@
 
 
         <ScrollView
-            android:id="@+id/well_scroll_view"
+            android:id="@+id/driller_scroll_view"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
