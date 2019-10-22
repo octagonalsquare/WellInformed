@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".wellIndex">
+    tools:context=".wellIndex"
+    android:background="@color/lightBackground">
 
     <TableLayout
         android:layout_width="match_parent"
@@ -81,7 +82,8 @@
         <ScrollView
             android:id="@+id/well_scroll_view"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/lightBackground">
 
 
         </ScrollView>

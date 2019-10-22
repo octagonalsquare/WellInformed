@@ -66,6 +66,7 @@ public class drillerIndex extends AppCompatActivity {
         for (int i = 0; i < drillerList.size(); i++) {
             TableRow row = new TableRow(this);
             TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.FILL_PARENT);
+
             row.setLayoutParams(lp);
 
             TextView name = new TextView(this);
@@ -80,6 +81,10 @@ public class drillerIndex extends AppCompatActivity {
             row.addView(name);
             row.addView(companyName);
             row.addView(more);
+            if(i%2 ==0)
+            {
+                row.setBackgroundColor(getResources().getColor(R.color.evenRowBackground));
+            }
             table.addView(row, i);
         }
         scrollView.addView(table);
