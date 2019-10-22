@@ -23,48 +23,63 @@ public class drillerIndex extends AppCompatActivity {
         setContentView(R.layout.activity_driller_index);
 
         scrollView = findViewById(R.id.driller_scroll_view);
-        displayWellTable();
+        displayDrillerTable();
     }
 
-    public void displayWellTable() {
+    public void displayDrillerTable() {
         table = new TableLayout(this);
         table.setStretchAllColumns(true);
 
-        List<Driller> wellList = new ArrayList<>();
+        List<Driller> drillerList = new ArrayList<>();
 
-        wellList.add(new Driller("Craig", "CJonesDigging", "Active", "123 Jones St"));
-        wellList.add(new Driller("John", "CJonesDigging", "Active", "123 Jones St"));
-        wellList.add(new Driller("Mahershalalhashbaz", "Israel", "Active", "123 Jones St"));
-        wellList.add(new Driller("Josh", "Well Dig It", "Active", "123 Jones St"));
-        wellList.add(new Driller("Caleb", "Well Informed", "Active", "123 Jones St"));
-        wellList.add(new Driller("Yash", "Well Informed", "Active", "123 Jones St"));
-        wellList.add(new Driller("Jesus", "Well Informed", "Active", "123 Jones St"));
-        wellList.add(new Driller("Will", "Well Informed", "Active", "123 Jones St"));
-        wellList.add(new Driller("Bill", "Well Dig It", "Active", "123 Jones St"));
-        wellList.add(new Driller("The Dark Lord", "Well Dig It", "Active", "123 Jones St"));
+        drillerList.add(new Driller("Craig",   "CJonesDigging",    "Active",
+                "123 Jones St"));
+
+        drillerList.add(new Driller("John",    "CJonesDigging",    "Active",
+                "123 Jones St"));
+
+        drillerList.add(new Driller("Mahershalalhashbaz",  "Israel", "Active",
+                "123 Jones St"));
+
+        drillerList.add(new Driller("Josh",    "Well Dig It",      "Active",
+                "123 Jones St"));
+
+        drillerList.add(new Driller("Caleb",   "Well Informed",    "Active",
+                "123 Jones St"));
+
+        drillerList.add(new Driller("Yash",    "Well Informed",    "Active",
+                "123 Jones St"));
+
+        drillerList.add(new Driller("Jesus",   "Well Informed",    "Active",
+                "123 Jones St"));
+
+        drillerList.add(new Driller("Will",    "Well Informed",    "Active",
+                "123 Jones St"));
+
+        drillerList.add(new Driller("Bill",    "Well Dig It",      "Active",
+                "123 Jones St"));
+
+        drillerList.add(new Driller("The Dark Lord", "Well Dig It", "Active",
+                "123 Jones St"));
 
 
-        for (int i = 0; i < wellList.size(); i++) {
+        for (int i = 0; i < drillerList.size(); i++) {
             TableRow row = new TableRow(this);
-            TableRow.LayoutParams lp = new TableRow.LayoutParams(0, TableRow.LayoutParams.FILL_PARENT);
+            TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.FILL_PARENT);
             row.setLayoutParams(lp);
 
             TextView name = new TextView(this);
-            name.setText(wellList.get(i).Name);
+            name.setText(drillerList.get(i).Name);
 
             TextView companyName = new TextView(this);
-            companyName.setText(wellList.get(i).CompanyName);
+            companyName.setText(drillerList.get(i).CompanyName);
 
             TextView more = new TextView(this);
             more.setText("...");
 
-            /*TextView more = new TextView(this);
-            more.setText(wellList.get(i).More);*/
-
             row.addView(name);
             row.addView(companyName);
             row.addView(more);
-            //row.addView(more);
             table.addView(row, i);
         }
         scrollView.addView(table);
