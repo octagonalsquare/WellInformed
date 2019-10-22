@@ -65,6 +65,10 @@ public class wellIndex extends AppCompatActivity {
             row.addView(name);
             row.addView(status);
             row.addView(more);
+            if(i%2 ==0)
+            {
+                row.setBackgroundColor(getResources().getColor(R.color.evenRowBackground));
+            }
             table.addView(row, i);
         }
         scrollView.addView(table);
