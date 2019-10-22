@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         if(view==txvDrillerIndex){
-            startActivity(new Intent(this,wellInspection.class));
+            startActivity(new Intent(this,drillerIndex.class));
         }
         if(view==txvNavigation){
             startActivity(new Intent(this,navigation.class));
