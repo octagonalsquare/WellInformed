@@ -5,4 +5,8 @@
     <string name="well_owners_textview">Well Owners</string>
     <string name="driller_index_textview">Drillers</string>
     <string name="navigation_textview">Navigation</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
 </resources>

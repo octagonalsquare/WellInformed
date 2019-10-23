@@ -12,6 +12,7 @@
         android:layout_height="330dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,7 +27,7 @@
             android:gravity="center_vertical"
             android:text="@string/menu_textview"
             android:textAlignment="center"
-            android:textSize="35dp" />
+            android:textSize="35sp" />
 
         <View
             android:layout_width="match_parent"
@@ -41,7 +42,22 @@
             android:text="@string/well_index_textview"
             android:textAlignment="center"
             android:textColor="#F9F9F9"
-            android:textSize="25dp" />
+            android:textSize="25sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+        <TextView
+            android:id="@+id/txvWellOwner"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_corner"
+            android:gravity="center_vertical"
+            android:text="@string/well_owners_textview"
+            android:textAlignment="center"
+            android:textColor="#F9F9F9"
+            android:textSize="25sp" />
 
         <View
             android:layout_width="match_parent"
@@ -56,22 +72,7 @@
             android:text="@string/driller_index_textview"
             android:textAlignment="center"
             android:textColor="#F9F9F9"
-            android:textSize="25dp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
-
-        <TextView
-            android:id="@+id/txvWellOwner"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/rounded_corner"
-            android:gravity="center_vertical"
-            android:text="@string/well_owners_textview"
-            android:textAlignment="center"
-            android:textColor="#F9F9F9"
-            android:textSize="25dp" />
+            android:textSize="25sp" />
 
         <View
             android:layout_width="match_parent"
@@ -86,7 +87,7 @@
             android:text="@string/navigation_textview"
             android:textAlignment="center"
             android:textColor="#F9F9F9"
-            android:textSize="25dp" />
+            android:textSize="25sp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
