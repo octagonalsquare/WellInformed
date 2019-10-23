@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -32,6 +35,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txvWellOwner.setOnClickListener(this);
         txvDrillerIndex.setOnClickListener(this);
         txvNavigation.setOnClickListener(this);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.navigation_menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_wellIndex:
+                startActivity(new Intent(this, wellIndex.class));
+                return true;
+            case R.id.nav_wellOwner:
+                startActivity(new Intent(this, ownerIndex.class));
+                return true;
+            case R.id.nav_wellDriller:
+                startActivity(new Intent(this,drillerIndex.class));
+                return true;
+            case R.id.nav_navigation:
+                startActivity(new Intent(this,navigation.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 

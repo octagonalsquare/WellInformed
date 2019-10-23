@@ -2,7 +2,11 @@ package com.example.wellinformed2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -24,6 +28,31 @@ public class wellIndex extends AppCompatActivity {
 
         scrollView = findViewById(R.id.well_scroll_view);
         displayWellTable();
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.navigation_menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_wellIndex:
+                startActivity(new Intent(this, wellIndex.class));
+                return true;
+            case R.id.nav_wellOwner:
+                startActivity(new Intent(this, ownerIndex.class));
+                return true;
+            case R.id.nav_wellDriller:
+                startActivity(new Intent(this,drillerIndex.class));
+                return true;
+            case R.id.nav_navigation:
+                startActivity(new Intent(this,navigation.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public void displayWellTable() {
