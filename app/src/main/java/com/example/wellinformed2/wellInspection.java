@@ -41,7 +41,7 @@ public class wellInspection extends AppCompatActivity {
         }
     }
     
-    class WellInspection
+    /*class WellInspection
     {
         public  String WellID;
         public  String WellName;
@@ -56,7 +56,6 @@ public class wellInspection extends AppCompatActivity {
         public  String AnnularCementDepth;
         public  String WaterLevel;
         public  String TotalDepth;
-        public  String WellPermitNumber;
         public  String AnnularCementVerified;
         public  String FlowTestMethodTime;
         public  String SanitaryWellSeal;
@@ -70,12 +69,11 @@ public class wellInspection extends AppCompatActivity {
         WellInspection(String wellID, String wellName, String wellAddress, String casingType, 
                        String flowTestGPM, String casingHeight, String sleeveHeight,
                        String padDimensions, String screenDepth, String sleeveType, 
-                       String annularCementDepth, String waterLevel, String totalDepth, 
-                       String wellPermitNumber, String annularCementVerified, 
-                       String flowTestMethodTime, String sanitaryWellSeal, String septicDistance, 
-                       String propertyLineDistance, String nearestWellDistance, 
-                       String aerobicSprayAreaDistance, String septicLateralLinesDistance, 
-                       String otherContaminationSourcesDistance)
+                       String annularCementDepth, String waterLevel, String totalDepth,
+                       String annularCementVerified, String flowTestMethodTime,
+                       String sanitaryWellSeal, String septicDistance, String propertyLineDistance,
+                       String nearestWellDistance, String aerobicSprayAreaDistance,
+                       String septicLateralLinesDistance, String otherContaminationSourcesDistance)
         {
             WellID = wellID;
             WellName = wellName;
@@ -90,7 +88,6 @@ public class wellInspection extends AppCompatActivity {
             AnnularCementDepth = annularCementDepth;
             WaterLevel = waterLevel;
             TotalDepth = totalDepth;
-            WellPermitNumber = wellPermitNumber;
             AnnularCementVerified = annularCementVerified;
             FlowTestMethodTime = flowTestMethodTime;
             SanitaryWellSeal = sanitaryWellSeal;
@@ -102,5 +99,5 @@ public class wellInspection extends AppCompatActivity {
             OtherContaminationSourcesDistance = otherContaminationSourcesDistance;
         }
         
-    }
+    }*/
 }

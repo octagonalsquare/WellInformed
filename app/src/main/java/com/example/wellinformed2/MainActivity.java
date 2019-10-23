@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, ownerIndex.class));
                 return true;
             case R.id.nav_wellDriller:
-                startActivity(new Intent(this,drillerIndex.class));
+                startActivity(new Intent(this, drillerIndex.class));
                 return true;
             case R.id.nav_navigation:
                 startActivity(new Intent(this,navigation.class));
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         if(view==txvDrillerIndex){
-            startActivity(new Intent(this,drillerIndex.class));
+            startActivity(new Intent(this, drillerIndex.class));
         }
         if(view==txvNavigation){
             startActivity(new Intent(this,navigation.class));

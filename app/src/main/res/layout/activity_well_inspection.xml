@@ -44,8 +44,8 @@
             </EditText>
 
             <View
-                android:layout_width="match_parent"
-                android:layout_height="20dp"></View>
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -64,6 +64,32 @@
                 android:id="@+id/EditTextWellID"
                 android:layout_height="wrap_content"
                 android:hint="ie: Well #1"
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:background="@drawable/white_rounded_corner">
+            </EditText>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Total Depth"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/EditTextTotalDepth"
+                android:layout_height="wrap_content"
+                android:hint="ie: 1000 ft."
                 android:layout_width="match_parent"
                 android:inputType="textPersonName"
                 android:background="@drawable/white_rounded_corner">

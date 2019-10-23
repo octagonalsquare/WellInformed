@@ -29,6 +29,8 @@
         <activity android:name=".wellIndex"
                   android:label="Well Index"/>
         <activity android:name=".MainActivity"/>
+        <activity android:name=".wellInspection"
+                  android:label="Well Inspection"/>
 
 
         <activity
