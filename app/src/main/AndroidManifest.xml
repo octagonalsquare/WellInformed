@@ -15,20 +15,21 @@
         <activity android:name=".navigation"
                   android:label="Navigation" />
         <activity android:name=".LoginActivity"
-            android:label="Login"/>
-        <activity android:name=".ownerIndex"
-                  android:label="Owner Index" />
-        <activity android:name=".drillerIndex"
-                  android:label="Driller Index" />
-        <activity android:name=".wellIndex"
-                  android:label="Well Index" />
-        <activity android:name=".MainActivity">
+                  android:label="Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ownerIndex"
+                  android:label="Owner Index"/>
+        <activity android:name=".drillerIndex"
+                  android:label="Driller Index"/>
+        <activity android:name=".wellIndex"
+                  android:label="Well Index"/>
+        <activity android:name=".MainActivity"/>
+
 
         <activity
             android:name="com.esri.arcgisruntime.security.DefaultOAuthIntentReceiver"
