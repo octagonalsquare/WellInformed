@@ -41,7 +41,7 @@ public class wellInspection extends AppCompatActivity {
         }
     }
     
-    /*class WellInspection
+    class WellInspection
     {
         public  String WellID;
         public  String WellName;
@@ -99,5 +99,5 @@ public class wellInspection extends AppCompatActivity {
             OtherContaminationSourcesDistance = otherContaminationSourcesDistance;
         }
         
-    }*/
+    }
 }

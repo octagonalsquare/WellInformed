@@ -4,7 +4,7 @@
     <color name="colorSecondary">#039BE5</color>
     <color name="colorPrimaryDark">#0B4F6C</color>
     <color name="colorAccent">#20BF55</color>
-    <color name="lightBackground">#efd9ce</color>
-    <color name="evenRowBackground">#EEE7E3</color>
+    <color name="lightBackground">#E3F0F7</color>
+    <color name="evenRowBackground">#CAE7F7</color>
     <color name="darkBackground">#000000</color>
 </resources>
