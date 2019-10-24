@@ -68,6 +68,31 @@
                 android:inputType="textPersonName"></EditText>
 
             <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Well Address"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/EditTextWellAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="ie: 123 Smith Drive Tyler, Texas"
+                android:inputType="textPersonName"></EditText>
+
+            <View
             android:layout_width="match_parent"
             android:layout_height="20dp"/>
 
@@ -117,29 +142,363 @@
                 android:hint="ie: 500 ft."
                 android:inputType="textPersonName"></EditText>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Casing Type"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/EditTextCasingType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="ie: round"
+                android:inputType="textPersonName"></EditText>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Casing Height"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/EditTextCasingHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="ie: Well #1"
+                android:inputType="textPersonName"></EditText>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Sleeve Type"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/EditTextSleeveType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="ie: Well #1"
+                android:inputType="textPersonName"></EditText>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Sleeve Height"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/EditTextSleeveHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="ie: Well #1"
+                android:inputType="textPersonName"></EditText>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Screen Depth"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/EditTextScreenDepth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="ie: Well #1"
+                android:inputType="textPersonName"></EditText>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Annular Cement Depth"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/EditTextAnnularCementDepth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="ie: Well #1"
+                android:inputType="textPersonName"></EditText>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Annular Cement Verified"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/RadioButtonAnnularCementVerified"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"></RadioButton>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Pad Dimensions"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/EditTextPadDimensions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="ie: Well #1"
+                android:inputType="textPersonName"></EditText>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Flow Test GPM"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/EditTextFlowTestGPM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="ie: Well #1"
+                android:inputType="textPersonName"></EditText>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Flow Test Method"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/EditTextFlowTestMethodTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="ie: Well #1"
+                android:inputType="textPersonName"></EditText>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Sanitary Well Seal"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/RadioButtonSanitaryWellSeal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"></RadioButton>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Various Distances"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/EditTextSepticDistance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="Septic System Distance"
+                android:inputType="textPersonName"></EditText>
+
+            <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
+
+            <EditText
+                android:id="@+id/EditTextPropertyLineDistance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="Property Line"
+                android:inputType="textPersonName"></EditText>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+
+            <EditText
+                android:id="@+id/EditTextNearestWellDistance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="Nearest Well"
+                android:inputType="textPersonName"></EditText>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+
+            <EditText
+                android:id="@+id/EditTextAerobicSprayAreaDistance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="Aerobic Spray Area"
+                android:inputType="textPersonName"></EditText>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+
+            <EditText
+                android:id="@+id/EditTextSepticLateralLinesDistance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="Septic Lateral Lines"
+                android:inputType="textPersonName"></EditText>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+
+            <EditText
+                android:id="@+id/EditTextOtherContaminationSourcesDistance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="Other Contamination Sources"
+                android:inputType="textPersonName"></EditText>
+
         </LinearLayout>
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-<!--
-    WellAddress;
-    CasingType;
-    FlowTestGPM;
-    CasingHeight;
-    SleeveHeight;
-    PadDimensions;
-    ScreenDepth;
-    SleeveType;
-    AnnularCementDepth;
-
-
-    AnnularCementVerified;
-    FlowTestMethodTime;
-    SanitaryWellSeal;
-    SepticDistance;
-    PropertyLineDistance;
-    NearestWellDistance;
-    AerobicSprayAreaDistance;
-    SepticLateralLinesDistance;
-    OtherContaminationSourcesDistance;
--->
