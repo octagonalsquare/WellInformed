@@ -309,11 +309,13 @@
                 android:textColor="@color/darkBackground"
                 android:textSize="20sp" />
 
-            <RadioButton
+            <EditText
                 android:id="@+id/WellInspectionAnnularCementVerified"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"></RadioButton>
+                android:background="@drawable/white_rounded_corner"
+                android:hint="ie: Well #1"
+                android:inputType="textPersonName"></EditText>
 
             <View
                 android:layout_width="match_parent"
