@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Well Informed</string>
-    <string name="menu_textview">Menu</string>
+    <string name="menu_textview">Dashboard</string>
     <string name="well_index_textview">Well Index</string>
     <string name="well_owners_textview">Well Owners</string>
     <string name="driller_index_textview">Drillers</string>
@@ -9,4 +9,6 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="sign_in">Sign In</string>
+    <string name="inspection_report">Create Inspection Report</string>
+    <string name="well_details">Well Details</string>
 </resources>

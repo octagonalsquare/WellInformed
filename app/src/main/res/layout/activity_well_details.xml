@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".wellDetails"
+    android:background="@color/lightBackground">
+
+    <ScrollView
+        android:id="@+id/inspection_scroll_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="1dp">
+
+            <TextView
+                android:id="@+id/txvDetailsWellID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="RC2019-7856"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/inspection_scroll_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.esri.arcgisruntime.mapping.view.MapView
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="243dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txvDetailsTitleWellName"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Well Name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txvDetailsName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:id="@+id/txvDetailsTitleLatitude"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Latitude"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txvDetailsLatitude"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:id="@+id/txvDetailsTitleLongitude"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Longitude"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txvDetailsLongitude"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:id="@+id/txvDetailsTitleAddress"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Address"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txvDetailsAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:id="@+id/txvDetailsTitleStatus"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Status"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txvDetailsStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:id="@+id/txvDetailsTitleWellType"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Well Type"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txvDetailsWellType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:id="@+id/txvDetailsTitleDateEntered"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Date Entered"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txvDetailsDateEntered"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:id="@+id/txvDetailsTitleOwner"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Owner"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txvDetailsOwner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:id="@+id/txvDetailsTitleLegacyID"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="Legacy ID"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txvDetailsLegacyID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_corner"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,12 +24,12 @@
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="wrap_content"
+            android:layout_width="86dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="40dp"
-            app:srcCompat="@mipmap/ic_launcher"
-            android:contentDescription="logo"/>
+            android:contentDescription="logo"
+            app:srcCompat="@mipmap/ic_launcher" />
 
         <TextView
             android:id="@+id/txvLoginHeader"
@@ -40,38 +40,45 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
             android:text="@string/login"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:textColor="@color/darkBackground"/>
 
         <EditText
             android:id="@+id/edtEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="289dp"
+            android:layout_height="38dp"
             android:layout_below="@id/txvLoginHeader"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="31dp"
+            android:background="@drawable/white_rounded_corner"
+            android:drawableLeft="@drawable/ic_mail_outline_black_24dp"
             android:ems="10"
             android:hint="@string/email"
             android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/edtPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="289dp"
+            android:layout_height="38dp"
             android:layout_below="@id/edtEmail"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="31dp"
+            android:background="@drawable/white_rounded_corner"
+            android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
             android:ems="10"
             android:hint="@string/password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"/>
 
         <Button
             android:id="@+id/btnSignIn"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/edtPassword"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:text="@string/sign_in" />
+            android:text="Sign In"
+            android:textColor="#F9F9F9"
+            android:textSize="15sp"
+            android:background="@drawable/rounded_corner"/>
 
     </RelativeLayout>
 

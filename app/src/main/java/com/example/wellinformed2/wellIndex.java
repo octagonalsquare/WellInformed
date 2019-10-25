@@ -50,6 +50,8 @@ public class wellIndex extends AppCompatActivity {
             case R.id.nav_navigation:
                 startActivity(new Intent(this,navigation.class));
                 return true;
+            case R.id.nav_well_details:
+                startActivity(new Intent(this,wellDetails.class));
             default:
                 return super.onOptionsItemSelected(item);
         }

@@ -62,19 +62,6 @@
                 android:textColor="#FBFBFF"
                 android:textSize="20sp" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_column="4"
-                android:alpha="1"
-                android:background="#2196F3"
-                android:fontFamily="sans-serif-smallcaps"
-                android:gravity="center_vertical"
-                android:text="More"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="#FBFBFF"
-                android:textSize="20sp" />
         </TableRow>
 
 
