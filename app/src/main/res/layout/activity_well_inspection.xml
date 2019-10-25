@@ -35,7 +35,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/EditTextWellName"
+                android:id="@+id/WellInspectionWellName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white_rounded_corner"
@@ -60,7 +60,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/EditTextWellID"
+                android:id="@+id/WellInspectionWellID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white_rounded_corner"
@@ -85,7 +85,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/EditTextWellAddress"
+                android:id="@+id/WellInspectionWellAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white_rounded_corner"
@@ -110,7 +110,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/EditTextTotalDepth"
+                android:id="@+id/WellInspectionTotalDepth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white_rounded_corner"
@@ -135,7 +135,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/EditTextWaterLevel"
+                android:id="@+id/WellInspectionWaterLevel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white_rounded_corner"
@@ -160,7 +160,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/EditTextCasingType"
+                android:id="@+id/WellInspectionCasingType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white_rounded_corner"
@@ -185,7 +185,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/EditTextCasingHeight"
+                android:id="@+id/WellInspectionCasingHeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white_rounded_corner"
@@ -210,7 +210,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/EditTextSleeveType"
+                android:id="@+id/WellInspectionSleeveType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white_rounded_corner"
@@ -235,7 +235,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/EditTextSleeveHeight"
+                android:id="@+id/WellInspectionSleeveHeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white_rounded_corner"
@@ -260,7 +260,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/EditTextScreenDepth"
+                android:id="@+id/WellInspectionScreenDepth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white_rounded_corner"
@@ -285,7 +285,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/EditTextAnnularCementDepth"
+                android:id="@+id/WellInspectionAnnularCementDepth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white_rounded_corner"
@@ -310,7 +310,7 @@
                 android:textSize="20sp" />
 
             <RadioButton
-                android:id="@+id/RadioButtonAnnularCementVerified"
+                android:id="@+id/WellInspectionAnnularCementVerified"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"></RadioButton>
@@ -333,7 +333,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/EditTextPadDimensions"
+                android:id="@+id/WellInspectionPadDimensions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white_rounded_corner"
@@ -358,7 +358,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/EditTextFlowTestGPM"
+                android:id="@+id/WellInspectionFlowTestGPM"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white_rounded_corner"
@@ -383,7 +383,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/EditTextFlowTestMethodTime"
+                android:id="@+id/WellInspectionFlowTestMethodTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white_rounded_corner"
@@ -408,7 +408,7 @@
                 android:textSize="20sp" />
 
             <RadioButton
-                android:id="@+id/RadioButtonSanitaryWellSeal"
+                android:id="@+id/WellInspectionSanitaryWellSeal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"></RadioButton>
@@ -431,7 +431,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/EditTextSepticDistance"
+                android:id="@+id/WellInspectionSepticDistance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white_rounded_corner"
@@ -443,7 +443,7 @@
             android:layout_height="10dp"/>
 
             <EditText
-                android:id="@+id/EditTextPropertyLineDistance"
+                android:id="@+id/WellInspectionPropertyLineDistance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white_rounded_corner"
@@ -455,7 +455,7 @@
                 android:layout_height="10dp"/>
 
             <EditText
-                android:id="@+id/EditTextNearestWellDistance"
+                android:id="@+id/WellInspectionNearestWellDistance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white_rounded_corner"
@@ -467,7 +467,7 @@
                 android:layout_height="10dp"/>
 
             <EditText
-                android:id="@+id/EditTextAerobicSprayAreaDistance"
+                android:id="@+id/WellInspectionAerobicSprayAreaDistance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white_rounded_corner"
@@ -479,7 +479,7 @@
                 android:layout_height="10dp"/>
 
             <EditText
-                android:id="@+id/EditTextSepticLateralLinesDistance"
+                android:id="@+id/WellInspectionSepticLateralLinesDistance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white_rounded_corner"
@@ -491,12 +491,31 @@
                 android:layout_height="10dp"/>
 
             <EditText
-                android:id="@+id/EditTextOtherContaminationSourcesDistance"
+                android:id="@+id/WellInspectionOtherContaminationSourcesDistance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white_rounded_corner"
                 android:hint="Other Contamination Sources"
                 android:inputType="textPersonName"></EditText>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:id="@+id/WellInspectionSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/rounded_corner"
+                android:gravity="center_vertical"
+                android:text="SUBMIT"
+                android:textAlignment="center"
+                android:textColor="#F9F9F9"
+                android:textSize="25sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
 
         </LinearLayout>
     </ScrollView>
