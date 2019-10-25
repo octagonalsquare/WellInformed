@@ -1,12 +1,19 @@
 package com.example.wellinformed2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -15,10 +22,11 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class wellIndex extends AppCompatActivity {
+public class wellIndex extends AppCompatActivity implements View.OnClickListener{
 
     TableLayout table;
     ScrollView scrollView;
+    Button btnMore;
 
 
     @Override
@@ -89,20 +97,35 @@ public class wellIndex extends AppCompatActivity {
             TextView status = new TextView(this);
             status.setText(wellList.get(i).Status);
 
-            TextView more = new TextView(this);
-            more.setText(wellList.get(i).More);
+            //TextView more = new TextView(this);
+            //more.setText(wellList.get(i).More);
+            btnMore = new Button(this);
+            //btnMore.setText("...");
+            btnMore.setBackground(getResources().getDrawable(R.drawable.more_button));
+            //LinearLayout.LayoutParams btnP= new LinearLayout(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+            //btnMore.setLayoutParams(btnP);
+            btnMore.setOnClickListener(this);
 
             row.addView(id);
             row.addView(name);
             row.addView(status);
-            row.addView(more);
-            if(i%2 ==0)
+            row.addView(btnMore);
+            if(i%2==0)
             {
                 row.setBackgroundColor(getResources().getColor(R.color.evenRowBackground));
             }
             table.addView(row, i);
         }
         scrollView.addView(table);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view==btnMore)
+        {
+            startActivity(new Intent(this,wellDetails.class));
+        }
+
     }
 }
 
