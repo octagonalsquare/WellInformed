@@ -19,14 +19,18 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.esri.arcgisruntime.symbology.TextSymbol;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class wellIndex extends AppCompatActivity implements View.OnClickListener{
+import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
+
+public class wellIndex extends AppCompatActivity implements View.OnClickListener {
 
     TableLayout table;
     ScrollView scrollView;
-    Button btnMore;
+    TextView more;
 
 
     @Override
@@ -85,7 +89,7 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
 
         for (int i = 0; i < wellList.size(); i++) {
             TableRow row = new TableRow(this);
-            TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.FILL_PARENT);
+            TableRow.LayoutParams lp = new TableRow.LayoutParams(FILL_PARENT, FILL_PARENT);
             row.setLayoutParams(lp);
 
             TextView id = new TextView(this);
@@ -97,19 +101,24 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
             TextView status = new TextView(this);
             status.setText(wellList.get(i).Status);
 
-            //TextView more = new TextView(this);
+            more = new TextView(this);
             //more.setText(wellList.get(i).More);
-            btnMore = new Button(this);
-            //btnMore.setText("...");
-            btnMore.setBackground(getResources().getDrawable(R.drawable.more_button));
-            //LinearLayout.LayoutParams btnP= new LinearLayout(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
-            //btnMore.setLayoutParams(btnP);
-            btnMore.setOnClickListener(this);
+            //more.getCompoundDrawables(getResources().getDrawable(R.drawable.));
+            more.setBackground(getResources().getDrawable(R.drawable.more_button));
+            //more.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            more.setGravity(Gravity.CENTER_VERTICAL);
+            lp.gravity = Gravity.CENTER_VERTICAL;
+            lp.width=2;
+            lp.height=70;
+            lp.setMargins(3,10,3,1);
+            more.setLayoutParams(lp);
+
+            more.setOnClickListener(this);
 
             row.addView(id);
             row.addView(name);
             row.addView(status);
-            row.addView(btnMore);
+            row.addView(more);
             if(i%2==0)
             {
                 row.setBackgroundColor(getResources().getColor(R.color.evenRowBackground));
@@ -117,15 +126,13 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
             table.addView(row, i);
         }
         scrollView.addView(table);
+
     }
+
 
     @Override
     public void onClick(View view) {
-        if(view==btnMore)
-        {
             startActivity(new Intent(this,wellDetails.class));
-        }
-
     }
 }
 
