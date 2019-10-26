@@ -2,6 +2,7 @@ package com.example.wellinformed2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +25,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         if(view==btnSignIn){
-            startActivity(new Intent(this,MainActivity.class));
+            //startActivity(new Intent(this,MainActivity.class));
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this);
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent, options.toBundle());
+            //overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         }
     }
 }
