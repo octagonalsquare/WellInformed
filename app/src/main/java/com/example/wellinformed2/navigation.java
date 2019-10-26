@@ -92,10 +92,10 @@ public class navigation extends AppCompatActivity {
 
     private void setupMap() {
         if (mMapView != null) {
-            Basemap.Type basemapType = Basemap.Type.TOPOGRAPHIC;
+            Basemap.Type basemapType = Basemap.Type.OPEN_STREET_MAP;
             double latitude = 32.3158;
             double longitude = -95.2544;
-            int levelOfDetail = 11;
+            int levelOfDetail = 15;
             ArcGISMap map = new ArcGISMap(basemapType, latitude, longitude, levelOfDetail);
             mMapView.setMap(map);
             // *** ADD ***
