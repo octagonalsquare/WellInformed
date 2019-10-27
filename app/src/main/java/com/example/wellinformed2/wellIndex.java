@@ -25,12 +25,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 public class wellIndex extends AppCompatActivity implements View.OnClickListener {
 
     TableLayout table;
     ScrollView scrollView;
-    TextView more;
+    View more;
 
 
     @Override
@@ -71,7 +73,10 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
 
     public void displayWellTable() {
         table = new TableLayout(this);
-        table.setStretchAllColumns(true);
+        table.setColumnStretchable(0, true);
+        table.setColumnStretchable(1, true);
+        table.setColumnStretchable(2, true);
+        table.setColumnStretchable(3, false);
 
         List<Well> wellList = new ArrayList<>();
 
@@ -89,7 +94,7 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
 
         for (int i = 0; i < wellList.size(); i++) {
             TableRow row = new TableRow(this);
-            TableRow.LayoutParams lp = new TableRow.LayoutParams(FILL_PARENT, FILL_PARENT);
+            TableRow.LayoutParams lp = new TableRow.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
             row.setLayoutParams(lp);
 
             TextView id = new TextView(this);
@@ -101,17 +106,13 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
             TextView status = new TextView(this);
             status.setText(wellList.get(i).Status);
 
-            more = new TextView(this);
+            more = new View(this);
             //more.setText(wellList.get(i).More);
             //more.getCompoundDrawables(getResources().getDrawable(R.drawable.));
             more.setBackground(getResources().getDrawable(R.drawable.more_button));
             //more.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            more.setGravity(Gravity.CENTER_VERTICAL);
-            lp.gravity = Gravity.CENTER_VERTICAL;
-            lp.width=2;
-            lp.height=70;
-            lp.setMargins(3,10,3,1);
-            more.setLayoutParams(lp);
+
+            more.setMinimumWidth(50);
 
             more.setOnClickListener(this);
 
