@@ -15,7 +15,7 @@
         <activity android:name=".navigation"
                   android:label="Navigation" />
         <activity android:name=".wellDetails"
-                  android:label="Well Details"></activity>
+                  android:label="Well Details"/>
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +31,7 @@
                   android:label="Well Index"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".wellInspection"
-                  android:label="Well Inspection"></activity>
+                  android:label="Well Inspection"/>
 
 
         <activity
