@@ -21,7 +21,7 @@
             android:layout_height="fill_parent">
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="11dp"
                 android:layout_height="50dp"
                 android:layout_column="1"
                 android:alpha="1"
@@ -35,7 +35,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="14dp"
                 android:layout_height="50dp"
                 android:layout_column="2"
                 android:alpha="1"

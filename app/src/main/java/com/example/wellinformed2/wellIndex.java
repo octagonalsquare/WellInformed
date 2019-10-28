@@ -25,14 +25,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
-import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 public class wellIndex extends AppCompatActivity implements View.OnClickListener {
 
     TableLayout table;
     ScrollView scrollView;
-    View more;
+    TextView more;
 
 
     @Override
@@ -73,10 +71,7 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
 
     public void displayWellTable() {
         table = new TableLayout(this);
-        table.setColumnStretchable(0, true);
-        table.setColumnStretchable(1, true);
-        table.setColumnStretchable(2, true);
-        table.setColumnStretchable(3, false);
+        table.setStretchAllColumns(true);
 
         List<Well> wellList = new ArrayList<>();
 
@@ -94,25 +89,33 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
 
         for (int i = 0; i < wellList.size(); i++) {
             TableRow row = new TableRow(this);
-            TableRow.LayoutParams lp = new TableRow.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
+            TableRow.LayoutParams lp = new TableRow.LayoutParams(FILL_PARENT, FILL_PARENT);
             row.setLayoutParams(lp);
 
             TextView id = new TextView(this);
             id.setText(wellList.get(i).ID);
+            id.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
             TextView name = new TextView(this);
             name.setText(wellList.get(i).Name);
+            name.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
             TextView status = new TextView(this);
             status.setText(wellList.get(i).Status);
+            status.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
-            more = new View(this);
+
+            more = new TextView(this);
             //more.setText(wellList.get(i).More);
             //more.getCompoundDrawables(getResources().getDrawable(R.drawable.));
-            more.setBackground(getResources().getDrawable(R.drawable.more_button));
+            more.setBackground(getResources().getDrawable(R.drawable.ic_more_horiz_black_24dp));
             //more.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-
-            more.setMinimumWidth(50);
+            //more.setGravity(Gravity.CENTER_VERTICAL);
+            lp.gravity = Gravity.CENTER;
+            //lp.width=2;
+            //lp.height=70;
+            //lp.setMargins(3,10,3,1);
+            more.setLayoutParams(lp);
 
             more.setOnClickListener(this);
 
