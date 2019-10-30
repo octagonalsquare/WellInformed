@@ -92,7 +92,7 @@ public class navigation extends AppCompatActivity {
 
     private void setupMap() {
         if (mMapView != null) {
-            Basemap.Type basemapType = Basemap.Type.OPEN_STREET_MAP;
+            Basemap.Type basemapType = Basemap.Type.NAVIGATION_VECTOR;
             double latitude = 32.3158;
             double longitude = -95.2544;
             int levelOfDetail = 15;
@@ -209,6 +209,7 @@ public class navigation extends AppCompatActivity {
                         stops.add(new Stop(mStart));
                         stops.add(new Stop(mEnd));
                         routeParameters.setStops(stops);
+                        routeParameters.setReturnDirections(true);
                         // Code from the next step goes here
                         final ListenableFuture<RouteResult> routeResultFuture = solveRouteTask.solveRouteAsync(routeParameters);
                         routeResultFuture.addDoneListener(() -> {
@@ -216,11 +217,10 @@ public class navigation extends AppCompatActivity {
                                 RouteResult routeResult = routeResultFuture.get();
                                 Route firstRoute = routeResult.getRoutes().get(0);
                                 //get additional route information
-                                long lengthInKm = Math.round(firstRoute.getTotalLength() / 1000);
+                                long lengthInMiles = Math.round(firstRoute.getTotalLength() / 1609.344);
                                 long timeInMinutes = Math.round(firstRoute.getTravelTime());
-
                                 Toast.makeText(getApplicationContext(),
-                                        "Total length (km): " + lengthInKm + " Travel time (min): " + timeInMinutes, Toast.LENGTH_LONG)
+                                        "Total length (Miles): " + lengthInMiles + " Travel time (min): " + timeInMinutes, Toast.LENGTH_LONG)
                                         .show();
                                 // Code from the next step goes here
                                 Polyline routePolyline = firstRoute.getRouteGeometry();
