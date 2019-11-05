@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import java.sql.Connection;
 
 import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobile.client.AWSStartupHandler;
@@ -21,9 +22,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Connection sqlConnection;
         try
         {
-            SQLConnection sqlConnection = new SQLConnection();
+            sqlConnection = new SQLConnection().connect();
+
         }
         catch (Exception e)
         {

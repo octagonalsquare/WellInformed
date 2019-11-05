@@ -5,10 +5,14 @@ import android.util.Log;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLWarning;
+import java.sql.Statement;
 
 
-public class SQLConnection {
+public class SQLConnection
+{
     private static final String LOG = "DEBUG";
     private static String ip = "wellinformeddb.cjvv450ucvsa.us-east-2.rds.amazonaws.com";
     private static String port = "1433";
@@ -16,6 +20,7 @@ public class SQLConnection {
     private static String db = "wellinformeddb";
     private static String un = "admin";
     private static String password = "W3ll1nformed";
+
     public static Connection connect() {
         Connection conn = null;
         String ConnURL = null;
@@ -32,7 +37,8 @@ public class SQLConnection {
         } catch (ClassNotFoundException e) {
             Log.d(LOG, e.getMessage());
         }
-        
+
         return conn;
     }
+
 }
