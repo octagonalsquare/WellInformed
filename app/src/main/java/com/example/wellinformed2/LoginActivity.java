@@ -21,12 +21,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        AWSMobileClient.getInstance().initialize(this, new AWSStartupHandler() {
-            @Override
-            public void onComplete(AWSStartupResult awsStartupResult) {
-                Log.d("YourMainActivity", "AWSMobileClient is instantiated and you are connected to AWS!");
-            }
-        }).execute();
+        try
+        {
+            SQLConnection sqlConnection = new SQLConnection();
+        }
+        catch (Exception e)
+        {
+            System.out.println("BANANA");
+        }
 
         setContentView(R.layout.activity_login);
 
