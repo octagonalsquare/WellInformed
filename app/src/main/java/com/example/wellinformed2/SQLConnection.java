@@ -5,10 +5,8 @@ import android.util.Log;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLWarning;
-import java.sql.Statement;
+
 
 
 public class SQLConnection
@@ -20,10 +18,10 @@ public class SQLConnection
     private static String db = "wellinformeddb";
     private static String un = "admin";
     private static String password = "W3ll1nformed";
+    private static Connection conn = null;
+    private static String ConnURL = null;
 
     public static Connection connect() {
-        Connection conn = null;
-        String ConnURL = null;
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         try {
@@ -33,9 +31,12 @@ public class SQLConnection
                     + password + ";";
             conn = DriverManager.getConnection(ConnURL);
         } catch (SQLException e) {
-            Log.d(LOG, e.getMessage());
+            System.err.println("GOT AN EXCEPTION");
+            System.err.println(e.getMessage());
         } catch (ClassNotFoundException e) {
-            Log.d(LOG, e.getMessage());
+
+            System.err.println("GOT AN EXCEPTION");
+            System.err.println(e.getMessage());
         }
 
         return conn;
