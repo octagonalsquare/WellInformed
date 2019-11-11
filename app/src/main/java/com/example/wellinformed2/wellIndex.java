@@ -1,11 +1,13 @@
 package com.example.wellinformed2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,7 +22,15 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.esri.arcgisruntime.symbology.TextSymbol;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.core.Tag;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,11 +41,14 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
     TableLayout table;
     ScrollView scrollView;
     TextView more;
-
+    FirebaseDatabase database;
+    DatabaseReference myRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference();
         setContentView(R.layout.activity_well_index);
 
         scrollView = findViewById(R.id.well_scroll_view);
@@ -75,26 +88,51 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
 
         List<Well> wellList = new ArrayList<>();
 
-        wellList.add(new Well("1", "Well 1", "Active", "..."));
-        wellList.add(new Well("2", "Well 2", "Active", "..."));
-        wellList.add(new Well("3", "Well 3", "Active", "..."));
-        wellList.add(new Well("4", "Well 4", "Active", "..."));
-        wellList.add(new Well("5", "Well 5", "Active", "..."));
-        wellList.add(new Well("6", "Well 6", "Active", "..."));
-        wellList.add(new Well("7", "Well 7", "Active", "..."));
-        wellList.add(new Well("8", "Well 8", "Active", "..."));
-        wellList.add(new Well("9", "Well 9", "Active", "..."));
-        wellList.add(new Well("10", "Well 10", "Active", "..."));
+        /*myRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+                Well newWell = dataSnapshot.getValue(Well.class);
+                System.out.println("Name: " + newWell.Name);
+                System.out.println("ID: " + newWell.ID);
+                wellList.add(newWell);
+            }
 
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {}
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {}
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });*/
+
+        wellList.add(new Well("Well 2", "Active", "..."));
+        wellList.add(new Well("Well 3", "Active", "..."));
+        wellList.add(new Well("Well 4", "Active", "..."));
+        wellList.add(new Well("Well 5", "Active", "..."));
+        wellList.add(new Well("Well 6", "Active", "..."));
+        wellList.add(new Well("Well 7", "Active", "..."));
+        wellList.add(new Well("Well 8", "Active", "..."));
+        wellList.add(new Well("Well 9", "Active", "..."));
+        wellList.add(new Well("Well 10", "Active", "..."));
+
+        for (int i = 0; i < wellList.size(); i++)
+        {
+            myRef.child("Well").child(Integer.toString(i)).setValue(wellList.get(i));
+        }
 
         for (int i = 0; i < wellList.size(); i++) {
             TableRow row = new TableRow(this);
             TableRow.LayoutParams lp = new TableRow.LayoutParams(FILL_PARENT, FILL_PARENT);
             row.setLayoutParams(lp);
 
-            TextView id = new TextView(this);
+            /*TextView id = new TextView(this);
             id.setText(wellList.get(i).ID);
-            id.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            id.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);*/
 
             TextView name = new TextView(this);
             name.setText(wellList.get(i).Name);
@@ -119,7 +157,6 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
 
             more.setOnClickListener(this);
 
-            row.addView(id);
             row.addView(name);
             row.addView(status);
             row.addView(more);
@@ -140,16 +177,14 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
     }
 }
 
-class Well
+class Well implements Serializable
 {
-    public String ID;
     public String Name;
     public String Status;
     public String More;
 
-    Well(String id, String name, String status, String more)
+    Well(String name, String status, String more)
     {
-        ID = id;
         Name = name;
         Status = status;
         More = more;
