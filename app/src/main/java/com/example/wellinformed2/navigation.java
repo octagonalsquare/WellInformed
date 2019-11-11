@@ -20,6 +20,7 @@ import com.esri.arcgisruntime.layers.FeatureLayer;
 import com.esri.arcgisruntime.loadable.LoadStatus;
 import com.esri.arcgisruntime.mapping.ArcGISMap;
 import com.esri.arcgisruntime.mapping.Basemap;
+import com.esri.arcgisruntime.mapping.view.Callout;
 import com.esri.arcgisruntime.mapping.view.DefaultMapViewOnTouchListener;
 import com.esri.arcgisruntime.mapping.view.Graphic;
 import com.esri.arcgisruntime.mapping.view.GraphicsOverlay;
@@ -51,7 +52,10 @@ public class navigation extends AppCompatActivity {
     private GraphicsOverlay mGraphicsOverlay;
     private Point mStart;
     private Point mEnd;
-    private Point mMiddle;
+    //private Point mMiddle;
+    private Callout mCallout;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +64,8 @@ public class navigation extends AppCompatActivity {
 
         // *** ADD ***
         mMapView = findViewById(R.id.mapView);
-        setupOAuthManager();
+        mCallout = mMapView.getCallout();
+        //setupOAuthManager();
         setupMap();
         createGraphicsOverlay();
     }
@@ -101,15 +106,23 @@ public class navigation extends AppCompatActivity {
             // *** ADD ***
             addLayer(map);
             //add traffic analysis
-            ArcGISMapImageLayer traffic = new ArcGISMapImageLayer(getResources().getString(R.string.traffic_service));
-            map.getOperationalLayers().add(traffic);
+            //ArcGISMapImageLayer traffic = new ArcGISMapImageLayer(getResources().getString(R.string.traffic_service));
+            //map.getOperationalLayers().add(traffic);
             mMapView.setOnTouchListener(new DefaultMapViewOnTouchListener(this, mMapView) {
                 @Override public boolean onSingleTapConfirmed(MotionEvent e) {
+
+                    if(mCallout.isShowing()){
+                        mCallout.dismiss();
+                    }
+
                     android.graphics.Point screenPoint = new android.graphics.Point(
                             Math.round(e.getX()),
                             Math.round(e.getY()));
                     Point mapPoint = mMapView.screenToLocation(screenPoint);
-                    mapClicked(mapPoint);
+                    //mapClicked(mapPoint);
+
+
+
                     return super.onSingleTapConfirmed(e);
                 }
             });
@@ -227,6 +240,9 @@ public class navigation extends AppCompatActivity {
                                 SimpleLineSymbol routeSymbol = new SimpleLineSymbol(SimpleLineSymbol.Style.SOLID, Color.BLUE, 4.0f);
                                 Graphic routeGraphic = new Graphic(routePolyline, routeSymbol);
                                 mGraphicsOverlay.getGraphics().add(routeGraphic);
+
+                                //show callout
+                                //mCallout.setLocation(mapClicked());
                             } catch (InterruptedException | ExecutionException e) {
                                 showError("Solve RouteTask failed " + e.getMessage());
                             }
