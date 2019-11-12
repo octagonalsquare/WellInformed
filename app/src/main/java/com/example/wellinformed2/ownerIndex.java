@@ -70,13 +70,13 @@ public class ownerIndex extends AppCompatActivity {
         table = new TableLayout(this);
         table.setStretchAllColumns(true);
 
-        /*myRef.addChildEventListener(new ChildEventListener() {
+        List<ownerIndex.Owner> ownerList = new ArrayList<>();
+
+        myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                Well newWell = dataSnapshot.getValue(Well.class);
-                System.out.println("Name: " + newWell.Name);
-                System.out.println("ID: " + prevChildKey);
-                wellList.add(newWell);
+                Owner newOwner = dataSnapshot.getValue(Owner.class);
+                ownerList.add(newOwner);
             }
 
             @Override
@@ -93,12 +93,9 @@ public class ownerIndex extends AppCompatActivity {
             {
                 System.out.println("Database Error:" + databaseError.getMessage());
             }
-        });*/
+        });
 
-
-        List<ownerIndex.Owner> ownerList = new ArrayList<>();
-
-        ownerList.add(new ownerIndex.Owner("CJonesDigging","Palestine", "Texas"));
+        /*ownerList.add(new ownerIndex.Owner("CJonesDigging","Palestine", "Texas"));
 
         ownerList.add(new ownerIndex.Owner( "Well Dig It", "Howe", "Texas"));
 
@@ -107,7 +104,7 @@ public class ownerIndex extends AppCompatActivity {
         for (int i = 0; i <ownerList.size(); i++)
         {
             myRef.child("Owner").child(Integer.toString(i)).setValue(ownerList.get(i));
-        }
+        }*/
 
         for (int i = 0; i < ownerList.size(); i++) {
             TableRow row = new TableRow(this);

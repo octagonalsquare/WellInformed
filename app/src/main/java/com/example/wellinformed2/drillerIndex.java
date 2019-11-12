@@ -12,6 +12,9 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -69,13 +72,11 @@ public class drillerIndex extends AppCompatActivity {
 
         List<Driller> drillerList = new ArrayList<>();
 
-        /*myRef.addChildEventListener(new ChildEventListener() {
+        myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                Well newWell = dataSnapshot.getValue(Well.class);
-                System.out.println("Name: " + newWell.Name);
-                System.out.println("ID: " + prevChildKey);
-                wellList.add(newWell);
+                Driller newDriller = dataSnapshot.getValue(Driller.class);
+                drillerList.add(newDriller);
             }
 
             @Override
@@ -92,9 +93,9 @@ public class drillerIndex extends AppCompatActivity {
             {
                 System.out.println("Database Error:" + databaseError.getMessage());
             }
-        });*/
+        });
 
-        drillerList.add(new Driller("Craig", "CJonesDigging","123 Jones St"));
+        /*drillerList.add(new Driller("Craig", "CJonesDigging","123 Jones St"));
 
         drillerList.add(new Driller("John", "CJonesDigging","123 Jones St"));
 
@@ -113,7 +114,7 @@ public class drillerIndex extends AppCompatActivity {
         for (int i = 0; i < drillerList.size(); i++)
         {
             myRef.child("Driller").child(Integer.toString(i)).setValue(drillerList.get(i));
-        }
+        }*/
 
 
         for (int i = 0; i < drillerList.size(); i++) {

@@ -88,12 +88,10 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
 
         List<Well> wellList = new ArrayList<>();
 
-        /*myRef.addChildEventListener(new ChildEventListener() {
+        myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
                 Well newWell = dataSnapshot.getValue(Well.class);
-                System.out.println("Name: " + newWell.Name);
-                System.out.println("ID: " + prevChildKey);
                 wellList.add(newWell);
             }
 
@@ -111,9 +109,9 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
             {
                 System.out.println("Database Error:" + databaseError.getMessage());
             }
-        });*/
+        });
 
-        wellList.add(new Well("Well 2", "Active", "..."));
+        /*wellList.add(new Well("Well 2", "Active", "..."));
         wellList.add(new Well("Well 3", "Active", "..."));
         wellList.add(new Well("Well 4", "Active", "..."));
         wellList.add(new Well("Well 5", "Active", "..."));
@@ -127,7 +125,7 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
         {
             Well well = new Well("Well " + i, "Active", "...");
             myRef.child("Well").child(Integer.toString(i)).setValue(well);
-        }
+        }*/
 
         for (int i = 0; i < wellList.size(); i++) {
             TableRow row = new TableRow(this);
