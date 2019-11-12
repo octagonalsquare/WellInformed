@@ -20,7 +20,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ownerIndex extends AppCompatActivity {
 
@@ -72,7 +74,7 @@ public class ownerIndex extends AppCompatActivity {
 
         List<ownerIndex.Owner> ownerList = new ArrayList<>();
 
-        myRef.addChildEventListener(new ChildEventListener() {
+        /*myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
                 Owner newOwner = dataSnapshot.getValue(Owner.class);
@@ -93,9 +95,9 @@ public class ownerIndex extends AppCompatActivity {
             {
                 System.out.println("Database Error:" + databaseError.getMessage());
             }
-        });
+        });*/
 
-        /*ownerList.add(new ownerIndex.Owner("CJonesDigging","Palestine", "Texas"));
+        ownerList.add(new ownerIndex.Owner("CJonesDigging","Palestine", "Texas"));
 
         ownerList.add(new ownerIndex.Owner( "Well Dig It", "Howe", "Texas"));
 
@@ -103,8 +105,8 @@ public class ownerIndex extends AppCompatActivity {
 
         for (int i = 0; i <ownerList.size(); i++)
         {
-            myRef.child("Owner").child(Integer.toString(i)).setValue(ownerList.get(i));
-        }*/
+            myRef.child("Owner").child(Integer.toString(i)).setValue(ownerList.get(i).ToMap());
+        }
 
         for (int i = 0; i < ownerList.size(); i++) {
             TableRow row = new TableRow(this);
@@ -144,6 +146,22 @@ public class ownerIndex extends AppCompatActivity {
             Name = name;
             City = city;
             State = state;
+        }
+
+        Owner(Map<String, Object> map)
+        {
+            Name = (String)map.get("Name");
+            City = (String)map.get("City");
+            State = (String)map.get("State");
+        }
+
+        public Map<String, Object> ToMap()
+        {
+            Map<String, Object> map = new HashMap<>();
+            map.put("Name", Name);
+            map.put("City", City);
+            map.put("State", State);
+            return map;
         }
     }
 }

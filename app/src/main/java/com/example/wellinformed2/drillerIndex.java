@@ -20,7 +20,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class drillerIndex extends AppCompatActivity {
 
@@ -72,7 +74,7 @@ public class drillerIndex extends AppCompatActivity {
 
         List<Driller> drillerList = new ArrayList<>();
 
-        myRef.addChildEventListener(new ChildEventListener() {
+        /*myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
                 Driller newDriller = dataSnapshot.getValue(Driller.class);
@@ -93,9 +95,9 @@ public class drillerIndex extends AppCompatActivity {
             {
                 System.out.println("Database Error:" + databaseError.getMessage());
             }
-        });
+        });*/
 
-        /*drillerList.add(new Driller("Craig", "CJonesDigging","123 Jones St"));
+        drillerList.add(new Driller("Craig", "CJonesDigging","123 Jones St"));
 
         drillerList.add(new Driller("John", "CJonesDigging","123 Jones St"));
 
@@ -113,8 +115,8 @@ public class drillerIndex extends AppCompatActivity {
 
         for (int i = 0; i < drillerList.size(); i++)
         {
-            myRef.child("Driller").child(Integer.toString(i)).setValue(drillerList.get(i));
-        }*/
+            myRef.child("Driller").child(Integer.toString(i)).setValue(drillerList.get(i).ToMap());
+        }
 
 
         for (int i = 0; i < drillerList.size(); i++) {
@@ -169,10 +171,29 @@ public class drillerIndex extends AppCompatActivity {
             Address = address;
         }
 
+        Driller(Map<String, Object> map)
+        {
+            Name = (String)map.get("Name");
+            CompanyName = (String)map.get("CompanyName");
+            Address = (String)map.get("Address");
+            LicenseNumber = (int)map.get("LicenseNumber");
+            LicenseExpirationDate = (Date) map.get("LicenseExpirationDate");
+        }
         public void RenewLicense(int licenseNumber, Date licenseExpirationDate)
         {
             LicenseNumber = licenseNumber;
             LicenseExpirationDate = licenseExpirationDate;
+        }
+
+        public Map<String, Object> ToMap()
+        {
+            Map<String, Object> map = new HashMap<>();
+            map.put("Name", Name);
+            map.put("CompanyName", CompanyName);
+            map.put("Address", Address);
+            map.put("LicenseNumber", LicenseNumber);
+            map.put("LicenseExpirationDate", LicenseExpirationDate);
+            return map;
         }
     }
 }

@@ -32,7 +32,9 @@ import com.google.firebase.database.core.Tag;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
 
@@ -88,7 +90,7 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
 
         List<Well> wellList = new ArrayList<>();
 
-        myRef.addChildEventListener(new ChildEventListener() {
+        /*myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
                 Well newWell = dataSnapshot.getValue(Well.class);
@@ -109,23 +111,40 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
             {
                 System.out.println("Database Error:" + databaseError.getMessage());
             }
-        });
+        });*/
 
-        /*wellList.add(new Well("Well 2", "Active", "..."));
-        wellList.add(new Well("Well 3", "Active", "..."));
-        wellList.add(new Well("Well 4", "Active", "..."));
-        wellList.add(new Well("Well 5", "Active", "..."));
-        wellList.add(new Well("Well 6", "Active", "..."));
-        wellList.add(new Well("Well 7", "Active", "..."));
-        wellList.add(new Well("Well 8", "Active", "..."));
-        wellList.add(new Well("Well 9", "Active", "..."));
-        wellList.add(new Well("Well 10", "Active", "..."));
+        wellList.add(new Well("Well 2", "Active", "123 First St. Tyler, Texas",
+                new Integer(12258), new Integer(548268), "Water",
+                "Well Dig It", "11/12/2019"));
+        wellList.add(new Well("Well 3", "Active", "123 First St. Tyler, Texas",
+                new Integer(12258), new Integer(548268), "Water",
+                "Well Dig It", "11/12/2019"));
+        wellList.add(new Well("Well 4", "Active", "123 First St. Tyler, Texas",
+                new Integer(12258), new Integer(548268), "Water",
+                "Well Dig It", "11/12/2019"));
+        wellList.add(new Well("Well 5", "Active", "123 First St. Tyler, Texas",
+                new Integer(12258), new Integer(548268), "Water",
+                "Well Dig It", "11/12/2019"));
+        wellList.add(new Well("Well 6", "Active", "123 First St. Tyler, Texas",
+                new Integer(12258), new Integer(548268), "Water",
+                "Well Dig It", "11/12/2019"));
+        wellList.add(new Well("Well 7", "Active", "123 First St. Tyler, Texas",
+                new Integer(12258), new Integer(548268), "Water",
+                "Well Dig It", "11/12/2019"));
+        wellList.add(new Well("Well 8", "Active", "123 First St. Tyler, Texas",
+                new Integer(12258), new Integer(548268), "Water",
+                "Well Dig It", "11/12/2019"));
+        wellList.add(new Well("Well 9", "Active", "123 First St. Tyler, Texas",
+                new Integer(12258), new Integer(548268), "Water",
+                "Well Dig It", "11/12/2019"));
+        wellList.add(new Well("Well 10", "Active", "123 First St. Tyler, Texas",
+                new Integer(12258), new Integer(548268), "Water",
+                "Well Dig It", "11/12/2019"));
 
-        for (int i = 11; i < 21; i++)
+        for (int i = 1; i < 21; i++)
         {
-            Well well = new Well("Well " + i, "Active", "...");
-            myRef.child("Well").child(Integer.toString(i)).setValue(well);
-        }*/
+            myRef.child("Well").child(Integer.toString(i)).setValue(wellList.get(i).ToMap());
+        }
 
         for (int i = 0; i < wellList.size(); i++) {
             TableRow row = new TableRow(this);
@@ -182,20 +201,49 @@ class Well implements Serializable
 {
     public String Name;
     public String Status;
-    public String More;
+    public String Address;
+    public Integer Latitude;
+    public Integer Longitude;
+    public String Type;
+    public String Owner;
+    public String Date;
 
-    Well(String name, String status, String more)
+    Well(String name, String status, String address, Integer latitude, Integer longitude,
+         String type, String owner, String date)
     {
         Name = name;
         Status = status;
-        More = more;
-        //CreateButton();
+        Address = address;
+        Latitude = latitude;
+        Longitude = longitude;
+        Type = type;
+        Owner = owner;
+        Date = date;
     }
 
+    Well(Map<String, Object> map)
+    {
+        Name = (String)map.get("Name");
+        Status = (String)map.get("Statu");
+        Address = (String)map.get("Address");
+        Latitude = (Integer)map.get("Latitude");
+        Longitude = (Integer)map.get("Longitude");
+        Type = (String)map.get("Type");
+        Owner = (String)map.get("Owner");
+        Date = (String)map.get("Date");
+    }
 
-
-    /*private void CreateButton()
-      {
-          Button moreButton = new Button();
-      }*/
+    public Map<String, Object> ToMap()
+    {
+        Map<String, Object> map = new HashMap<>();
+        map.put("Name", Name);
+        map.put("Status", Status);
+        map.put("Address", Address);
+        map.put("Latitude", Latitude);
+        map.put("Longitude", Longitude);
+        map.put("Type", Type);
+        map.put("Owner", Owner);
+        map.put("Date", Date);
+        return map;
+    }
 }
