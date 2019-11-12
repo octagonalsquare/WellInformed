@@ -80,7 +80,7 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
         childUpdates.put("/Well/" + key, wellValues);
 
         submitOwner(key, newWell.Name);
-        submitDriller(key);
+        submitDriller(key, newWell.Name);
 
         mDatabaseRef.updateChildren(childUpdates);
     }
@@ -105,7 +105,7 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
-    public void submitDriller(String wellKey)
+    public void submitDriller(String wellKey, String wellName)
     {
         final String drillerName = "Bob";
         final String drillerCompany = "Well Dig It";
@@ -118,7 +118,7 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
 
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("/Driller/" + key, wellValues);
-        childUpdates.put("/Driller-Well/" + key + "/" + "Wells", wellKey);
+        childUpdates.put("/Driller-Well/" + key + "/" + wellKey, wellName);
 
         mDatabaseRef.updateChildren(childUpdates);
 
