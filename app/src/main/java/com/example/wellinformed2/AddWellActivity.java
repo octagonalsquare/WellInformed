@@ -100,6 +100,9 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("/Owner/" + key, ownerValues);
         childUpdates.put("/Owner-Well/" + key + "/" + wellKey, wellName);
+
+        mDatabaseRef.updateChildren(childUpdates);
+
     }
 
     public void submitDriller(String wellKey)
@@ -116,5 +119,8 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("/Driller/" + key, wellValues);
         childUpdates.put("/Driller-Well/" + key + "/" + "Wells", wellKey);
+
+        mDatabaseRef.updateChildren(childUpdates);
+
     }
 }
