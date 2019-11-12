@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "1916357392",
+    "firebase_url": "https://well-informed.firebaseio.com",
+    "project_id": "well-informed",
+    "storage_bucket": "well-informed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1916357392:android:ed3dd6b68e98520765b395",
+        "android_client_info": {
+          "package_name": "com.example.wellinformed2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1916357392-qvg0all4bk0kvqh3prhk9dgou0hih9ag.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wellinformed2",
+            "certificate_hash": "80b22ceb0dda8b69ecbeb76c45fc02cbac4af844"
+          }
+        },
+        {
+          "client_id": "1916357392-kgpl5u9d1odpk0m417e41vuuv97t84tf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wellinformed2",
+            "certificate_hash": "14206ce45bdf32151ab0ab03ab68eda1a90c7085"
+          }
+        },
+        {
+          "client_id": "1916357392-un4sr0dgsmnv92rdlc4m6d0lgj2lvt35.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSsBGIJr9v4mzqFD8x1oIry8Wwn1Zur60"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1916357392-un4sr0dgsmnv92rdlc4m6d0lgj2lvt35.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
