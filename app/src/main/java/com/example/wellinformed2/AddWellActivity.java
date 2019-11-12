@@ -79,13 +79,13 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("/Well/" + key, wellValues);
 
-        submitOwner(key);
+        submitOwner(key, newWell.Name);
         submitDriller(key);
 
         mDatabaseRef.updateChildren(childUpdates);
     }
 
-    public void submitOwner(String wellKey)
+    public void submitOwner(String wellKey, String wellName)
     {
         final String ownerName = edtOwnerName.getText().toString().trim();
         final String ownerCity = edtOwnerCity.getText().toString().trim();
@@ -99,7 +99,7 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
 
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("/Owner/" + key, ownerValues);
-        childUpdates.put("/Owner-Well/" + key + "/" + "Wells", wellKey);
+        childUpdates.put("/Owner-Well/" + key + "/" + wellKey, wellName);
     }
 
     public void submitDriller(String wellKey)
