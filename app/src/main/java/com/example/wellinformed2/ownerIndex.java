@@ -12,6 +12,12 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,11 +26,16 @@ public class ownerIndex extends AppCompatActivity {
 
     TableLayout table;
     ScrollView scrollView;
+    FirebaseDatabase database;
+    DatabaseReference myRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_index);
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference();
+        setContentView(R.layout.activity_well_index);
 
         scrollView = findViewById(R.id.owner_scroll_view);
         displayOwnerTable();
@@ -59,16 +70,44 @@ public class ownerIndex extends AppCompatActivity {
         table = new TableLayout(this);
         table.setStretchAllColumns(true);
 
+        /*myRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+                Well newWell = dataSnapshot.getValue(Well.class);
+                System.out.println("Name: " + newWell.Name);
+                System.out.println("ID: " + prevChildKey);
+                wellList.add(newWell);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {}
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {}
+
+            @Override
+            public void onCancelled(DatabaseError databaseError)
+            {
+                System.out.println("Database Error:" + databaseError.getMessage());
+            }
+        });*/
+
+
         List<ownerIndex.Owner> ownerList = new ArrayList<>();
 
         ownerList.add(new ownerIndex.Owner("CJonesDigging","Palestine", "Texas"));
-
-        ownerList.add(new ownerIndex.Owner("Israel", "Jerusalem", "NA"));
 
         ownerList.add(new ownerIndex.Owner( "Well Dig It", "Howe", "Texas"));
 
         ownerList.add(new ownerIndex.Owner( "Well Informed", "Tyler", "Texas"));
 
+        for (int i = 0; i <ownerList.size(); i++)
+        {
+            myRef.child("Owner").child(Integer.toString(i)).setValue(ownerList.get(i));
+        }
 
         for (int i = 0; i < ownerList.size(); i++) {
             TableRow row = new TableRow(this);

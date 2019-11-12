@@ -12,6 +12,9 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,11 +23,16 @@ public class drillerIndex extends AppCompatActivity {
 
     TableLayout table;
     ScrollView scrollView;
+    FirebaseDatabase database;
+    DatabaseReference myRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driller_index);
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference();
+        setContentView(R.layout.activity_well_index);
 
         scrollView = findViewById(R.id.driller_scroll_view);
         displayDrillerTable();
@@ -61,35 +69,51 @@ public class drillerIndex extends AppCompatActivity {
 
         List<Driller> drillerList = new ArrayList<>();
 
-        drillerList.add(new Driller("Craig",   "CJonesDigging",    "Active",
-                "123 Jones St"));
+        /*myRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+                Well newWell = dataSnapshot.getValue(Well.class);
+                System.out.println("Name: " + newWell.Name);
+                System.out.println("ID: " + prevChildKey);
+                wellList.add(newWell);
+            }
 
-        drillerList.add(new Driller("John",    "CJonesDigging",    "Active",
-                "123 Jones St"));
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {}
 
-        drillerList.add(new Driller("Mahershalalhashbaz",  "Israel", "Active",
-                "123 Jones St"));
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
 
-        drillerList.add(new Driller("Josh",    "Well Dig It",      "Active",
-                "123 Jones St"));
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {}
 
-        drillerList.add(new Driller("Caleb",   "Well Informed",    "Active",
-                "123 Jones St"));
+            @Override
+            public void onCancelled(DatabaseError databaseError)
+            {
+                System.out.println("Database Error:" + databaseError.getMessage());
+            }
+        });*/
 
-        drillerList.add(new Driller("Yash",    "Well Informed",    "Active",
-                "123 Jones St"));
+        drillerList.add(new Driller("Craig", "CJonesDigging","123 Jones St"));
 
-        drillerList.add(new Driller("Jesus",   "Well Informed",    "Active",
-                "123 Jones St"));
+        drillerList.add(new Driller("John", "CJonesDigging","123 Jones St"));
 
-        drillerList.add(new Driller("Will",    "Well Informed",    "Active",
-                "123 Jones St"));
+        drillerList.add(new Driller("Josh","Well Dig It",  "123 Jones St"));
 
-        drillerList.add(new Driller("Bill",    "Well Dig It",      "Active",
-                "123 Jones St"));
+        drillerList.add(new Driller("Caleb", "Well Informed","123 Jones St"));
 
-        drillerList.add(new Driller("The Dark Lord", "Well Dig It", "Active",
-                "123 Jones St"));
+        drillerList.add(new Driller("Yash", "Well Informed","123 Jones St"));
+
+        drillerList.add(new Driller("Jesus","Well Informed","123 Jones St"));
+
+        drillerList.add(new Driller("Will", "Well Informed","123 Jones St"));
+
+        drillerList.add(new Driller("Bill","Well Dig It",  "123 Jones St"));
+
+        for (int i = 0; i < drillerList.size(); i++)
+        {
+            myRef.child("Driller").child(Integer.toString(i)).setValue(drillerList.get(i));
+        }
 
 
         for (int i = 0; i < drillerList.size(); i++) {
@@ -123,27 +147,24 @@ public class drillerIndex extends AppCompatActivity {
     {
         public String Name;
         public String CompanyName;
-        public String ID;
         public String Address;
         public int LicenseNumber = 0;
         public Date LicenseExpirationDate = new Date();
 
-        Driller(String name, String companyName, String id, String address, int licenseNumber,
+        Driller(String name, String companyName, String address, int licenseNumber,
                 Date licenseExpirationDate)
         {
             Name = name;
             CompanyName = companyName;
-            ID = id;
             Address = address;
             LicenseNumber = licenseNumber;
             LicenseExpirationDate = licenseExpirationDate;
         }
 
-        Driller(String name, String companyName, String id, String address)
+        Driller(String name, String companyName, String address)
         {
             Name = name;
             CompanyName = companyName;
-            ID = id;
             Address = address;
         }
 
