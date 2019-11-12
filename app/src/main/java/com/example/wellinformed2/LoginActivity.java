@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         //initializing firebase object
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
-        //mAuth.signOut();
+        mAuth.signOut();
 
         //if current user does not return null
         if(mAuth.getCurrentUser()!=null)
