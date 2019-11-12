@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddWellActivity"
-    android:background="@color/lightBackground">
+    android:background="@color/lightBackground"
+    tools:context=".AddWellActivity">
 
     <ScrollView
         android:id="@+id/well_details_scroll_view"
@@ -20,7 +20,7 @@
 
         <LinearLayout
             android:id="@+id/add_well_linear_layout"
-            android:layout_width="319dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -29,7 +29,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/txvAddCourseHeader"
+                android:id="@+id/txvAddWellHeader"
                 android:layout_width="match_parent"
                 android:layout_height="101dp"
                 android:gravity="center"
@@ -111,18 +111,6 @@
                 android:layout_height="28dp" />
 
             <EditText
-                android:id="@+id/edtOwnerName"
-                android:layout_width="match_parent"
-                android:layout_height="43dp"
-                android:background="@drawable/white_rounded_corner"
-                android:hint="Owner Name" />
-
-            <View
-                android:id="@+id/view8"
-                android:layout_width="match_parent"
-                android:layout_height="28dp" />
-
-            <EditText
                 android:id="@+id/edtDateEntered"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
@@ -130,9 +118,78 @@
                 android:hint="Date Entered" />
 
             <View
+                android:id="@+id/view8"
+                android:layout_width="match_parent"
+                android:layout_height="28dp" />
+
+            <TextView
+                android:id="@+id/txvOwnerDetails"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center"
+                android:text="Owner Details"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:typeface="normal" />
+
+            <EditText
+                android:id="@+id/edtOwnerName"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="Owner Name" />
+
+            <View
                 android:id="@+id/view9"
                 android:layout_width="match_parent"
                 android:layout_height="28dp" />
+
+            <EditText
+                android:id="@+id/edtOwnerCity"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="Owner City" />
+
+            <View
+                android:id="@+id/view10"
+                android:layout_width="match_parent"
+                android:layout_height="28dp" />
+
+            <EditText
+                android:id="@+id/edtOwnerState"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="Owner State" />
+
+            <View
+                android:id="@+id/view11"
+                android:layout_width="match_parent"
+                android:layout_height="28dp" />
+
+            <TextView
+                android:id="@+id/txvDrillerDetails"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center"
+                android:text="Driller Details"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:typeface="normal" />
+
+            <EditText
+                android:id="@+id/edtDrillerName"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="Driller Name" />
+
+            <View
+                android:id="@+id/view12"
+                android:layout_width="match_parent"
+                android:layout_height="28dp" />
+
 
             <Button
                 android:id="@+id/btnSumbitWell"

@@ -18,6 +18,7 @@ import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Exclude;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -118,34 +119,39 @@ public class ownerIndex extends AppCompatActivity {
         }
         scrollView.addView(table);
     }
+}
 
-    class Owner
+class Owner
+{
+    public String Name;
+    public String StreetAddress;
+    public String City;
+    public String State;
+
+    Owner(String name, String streetAddress, String city, String state)
     {
-        public String Name;
-        public String City;
-        public String State;
+        Name = name;
+        StreetAddress = streetAddress;
+        City = city;
+        State = state;
+    }
 
-        Owner(String name, String city, String state)
-        {
-            Name = name;
-            City = city;
-            State = state;
-        }
+    Owner(Map<String, Object> map)
+    {
+        Name = (String)map.get("Name");
+        StreetAddress = (String)map.get("Street Address");
+        City = (String)map.get("City");
+        State = (String)map.get("State");
+    }
 
-        Owner(Map<String, Object> map)
-        {
-            Name = (String)map.get("Name");
-            City = (String)map.get("City");
-            State = (String)map.get("State");
-        }
-
-        public Map<String, Object> ToMap()
-        {
-            Map<String, Object> map = new HashMap<>();
-            map.put("Name", Name);
-            map.put("City", City);
-            map.put("State", State);
-            return map;
-        }
+    @Exclude
+    public Map<String, Object> ToMap()
+    {
+        Map<String, Object> map = new HashMap<>();
+        map.put("Name", Name);
+        map.put("Street Address", StreetAddress);
+        map.put("City", City);
+        map.put("State", State);
+        return map;
     }
 }

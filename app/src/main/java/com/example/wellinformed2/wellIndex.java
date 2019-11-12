@@ -97,7 +97,7 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
 
         for (int i = 1; i < 21; i++)
         {
-            myRef.child("Well").child(Integer.toString(i)).setValue(wellList.get(i).toMap());
+            myRef.child("Well").child(Integer.toString(i)).setValue(wellList.get(i).ToMap());
         }
 
         for (int i = 0; i < wellList.size(); i++) {
@@ -175,7 +175,7 @@ class Well implements Serializable
     }
 
     @Exclude
-    public Map<String, Object> toMap()
+    public Map<String, Object> ToMap()
     {
         Map<String, Object> map = new HashMap<>();
         map.put("Name", Name);

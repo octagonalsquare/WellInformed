@@ -16,6 +16,7 @@ import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Exclude;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
@@ -97,26 +98,26 @@ public class drillerIndex extends AppCompatActivity {
             }
         });*/
 
-        drillerList.add(new Driller("Craig", "CJonesDigging","123 Jones St"));
+        drillerList.add(new Driller("Craig", "CJonesDigging"));
 
-        drillerList.add(new Driller("John", "CJonesDigging","123 Jones St"));
+        drillerList.add(new Driller("John", "CJonesDigging"));
 
-        drillerList.add(new Driller("Josh","Well Dig It",  "123 Jones St"));
+        drillerList.add(new Driller("Josh","Well Dig It"));
 
-        drillerList.add(new Driller("Caleb", "Well Informed","123 Jones St"));
+        drillerList.add(new Driller("Caleb", "Well Informed"));
 
-        drillerList.add(new Driller("Yash", "Well Informed","123 Jones St"));
+        drillerList.add(new Driller("Yash", "Well Informed"));
 
-        drillerList.add(new Driller("Jesus","Well Informed","123 Jones St"));
+        drillerList.add(new Driller("Jesus","Well Informed"));
 
-        drillerList.add(new Driller("Will", "Well Informed","123 Jones St"));
+        drillerList.add(new Driller("Will", "Well Informed"));
 
-        drillerList.add(new Driller("Bill","Well Dig It",  "123 Jones St"));
+        drillerList.add(new Driller("Bill","Well Dig It"));
 
-        for (int i = 0; i < drillerList.size(); i++)
+        /*for (int i = 0; i < drillerList.size(); i++)
         {
             myRef.child("Driller").child(Integer.toString(i)).setValue(drillerList.get(i).ToMap());
-        }
+        }*/
 
 
         for (int i = 0; i < drillerList.size(); i++) {
@@ -145,58 +146,52 @@ public class drillerIndex extends AppCompatActivity {
         }
         scrollView.addView(table);
     }
-
-    class Driller
-    {
-        public String Name;
-        public String CompanyName;
-        public String Address;
-        public int LicenseNumber = 0;
-        public Date LicenseExpirationDate = new Date();
-
-        Driller(String name, String companyName, String address, int licenseNumber,
-                Date licenseExpirationDate)
-        {
-            Name = name;
-            CompanyName = companyName;
-            Address = address;
-            LicenseNumber = licenseNumber;
-            LicenseExpirationDate = licenseExpirationDate;
-        }
-
-        Driller(String name, String companyName, String address)
-        {
-            Name = name;
-            CompanyName = companyName;
-            Address = address;
-        }
-
-        Driller(Map<String, Object> map)
-        {
-            Name = (String)map.get("Name");
-            CompanyName = (String)map.get("CompanyName");
-            Address = (String)map.get("Address");
-            LicenseNumber = (int)map.get("LicenseNumber");
-            LicenseExpirationDate = (Date) map.get("LicenseExpirationDate");
-        }
-        public void RenewLicense(int licenseNumber, Date licenseExpirationDate)
-        {
-            LicenseNumber = licenseNumber;
-            LicenseExpirationDate = licenseExpirationDate;
-        }
-
-        public Map<String, Object> ToMap()
-        {
-            Map<String, Object> map = new HashMap<>();
-            map.put("Name", Name);
-            map.put("CompanyName", CompanyName);
-            map.put("Address", Address);
-            map.put("LicenseNumber", LicenseNumber);
-            map.put("LicenseExpirationDate", LicenseExpirationDate);
-            return map;
-        }
-    }
 }
 
+class Driller
+{
+    public String Name;
+    public String CompanyName;
+    public int LicenseNumber = 0;
+    public String LicenseExpirationDate;
 
+    Driller(String name, String companyName, int licenseNumber,
+            String licenseExpirationDate)
+    {
+        Name = name;
+        CompanyName = companyName;
+        LicenseNumber = licenseNumber;
+        LicenseExpirationDate = licenseExpirationDate;
+    }
+
+    Driller(String name, String companyName)
+    {
+        Name = name;
+        CompanyName = companyName;
+    }
+
+    Driller(Map<String, Object> map)
+    {
+        Name = (String)map.get("Name");
+        CompanyName = (String)map.get("CompanyName");
+        LicenseNumber = (int)map.get("LicenseNumber");
+        LicenseExpirationDate = (String) map.get("LicenseExpirationDate");
+    }
+    public void RenewLicense(int licenseNumber, String licenseExpirationDate)
+    {
+        LicenseNumber = licenseNumber;
+        LicenseExpirationDate = licenseExpirationDate;
+    }
+
+    @Exclude
+    public Map<String, Object> ToMap()
+    {
+        Map<String, Object> map = new HashMap<>();
+        map.put("Name", Name);
+        map.put("CompanyName", CompanyName);
+        map.put("LicenseNumber", LicenseNumber);
+        map.put("LicenseExpirationDate", LicenseExpirationDate);
+        return map;
+    }
+}
 
