@@ -15,9 +15,15 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class wellInspection extends AppCompatActivity implements View.OnClickListener
 {
     TextView submitButton;
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference mDatabaseRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -292,6 +298,7 @@ public class wellInspection extends AppCompatActivity implements View.OnClickLis
                     FlowTestMethodTime, SanitaryWellSeal, SepticDistance, PropertyLineDistance,
                     NearestWellDistance, AerobicSprayAreaDistance, SepticLateralLinesDistance,
                     OtherContaminationSourcesDistance);
+            mDatabaseRef.child("InspectionReports").setValue(report);
         }
     }
     

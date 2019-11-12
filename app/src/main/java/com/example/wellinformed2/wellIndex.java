@@ -129,7 +129,6 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
             TableRow row = new TableRow(this);
             TableRow.LayoutParams lp = new TableRow.LayoutParams(FILL_PARENT, FILL_PARENT);
             row.setLayoutParams(lp);
-
             /*TextView id = new TextView(this);
             id.setText(wellList.get(i).ID);
             id.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);*/

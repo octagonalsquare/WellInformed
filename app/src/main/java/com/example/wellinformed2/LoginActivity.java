@@ -29,8 +29,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     //defining view objects
     private EditText edtEmail,edtPassword;
     private Button btnLogin;
-    private TextView txvRegister;
-    private SignInButton googleButton;
 
     //defining firebase authentication object
     private FirebaseAuth mAuth;
@@ -47,7 +45,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         //initializing firebase object
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
-        mAuth.signOut();
+        //mAuth.signOut();
 
         //if current user does not return null
         if(mAuth.getCurrentUser()!=null)
