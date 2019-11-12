@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddWellActivity"
+    android:background="@color/lightBackground">
+
+    <ScrollView
+        android:id="@+id/well_details_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4">
+
+        <LinearLayout
+            android:id="@+id/add_well_linear_layout"
+            android:layout_width="319dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/txvAddCourseHeader"
+                android:layout_width="match_parent"
+                android:layout_height="101dp"
+                android:gravity="center"
+                android:text="Add Well Details"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:typeface="normal" />
+
+            <EditText
+                android:id="@+id/edtWellName"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="Well Name" />
+
+            <View
+                android:id="@+id/view89"
+                android:layout_width="match_parent"
+                android:layout_height="28dp" />
+
+            <EditText
+                android:id="@+id/edtLatitude"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="Latitude" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="28dp" />
+
+            <EditText
+                android:id="@+id/edtLongitude"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="Longitude" />
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="match_parent"
+                android:layout_height="28dp" />
+
+            <EditText
+                android:id="@+id/edtAddress"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="Address" />
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="match_parent"
+                android:layout_height="28dp" />
+
+            <EditText
+                android:id="@+id/edtWellType"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="Well Type" />
+
+            <View
+                android:id="@+id/view6"
+                android:layout_width="match_parent"
+                android:layout_height="28dp" />
+
+            <EditText
+                android:id="@+id/edtStatus"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="Status" />
+
+            <View
+                android:id="@+id/view7"
+                android:layout_width="match_parent"
+                android:layout_height="28dp" />
+
+            <EditText
+                android:id="@+id/edtOwnerName"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="Owner Name" />
+
+            <View
+                android:id="@+id/view8"
+                android:layout_width="match_parent"
+                android:layout_height="28dp" />
+
+            <EditText
+                android:id="@+id/edtDateEntered"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/white_rounded_corner"
+                android:hint="Date Entered" />
+
+            <View
+                android:id="@+id/view9"
+                android:layout_width="match_parent"
+                android:layout_height="28dp" />
+
+            <Button
+                android:id="@+id/btnSumbitWell"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Add Well" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

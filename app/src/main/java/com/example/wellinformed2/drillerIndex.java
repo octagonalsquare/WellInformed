@@ -35,9 +35,9 @@ public class drillerIndex extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driller_index);
+
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
-        setContentView(R.layout.activity_well_index);
 
         scrollView = findViewById(R.id.driller_scroll_view);
         displayDrillerTable();

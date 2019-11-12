@@ -1,9 +1,11 @@
 package com.example.wellinformed2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,6 +19,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,15 +32,14 @@ public class ownerIndex extends AppCompatActivity {
     TableLayout table;
     ScrollView scrollView;
     FirebaseDatabase database;
-    DatabaseReference myRef;
+    DatabaseReference myOwnerRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_index);
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference();
-        setContentView(R.layout.activity_well_index);
+        myOwnerRef = database.getReference().child("Owner");
 
         scrollView = findViewById(R.id.owner_scroll_view);
         displayOwnerTable();
@@ -72,41 +74,23 @@ public class ownerIndex extends AppCompatActivity {
         table = new TableLayout(this);
         table.setStretchAllColumns(true);
 
-        List<ownerIndex.Owner> ownerList = new ArrayList<>();
+        List<Owner> ownerList = new ArrayList<>();
 
-        /*myRef.addChildEventListener(new ChildEventListener() {
+        myOwnerRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                Owner newOwner = dataSnapshot.getValue(Owner.class);
-                ownerList.add(newOwner);
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot postSnapshot:dataSnapshot.getChildren()){
+                    Owner owner = postSnapshot.getValue(Owner.class);
+                    ownerList.add(owner);
+                }
+
             }
 
             @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {}
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {}
-
-            @Override
-            public void onCancelled(DatabaseError databaseError)
-            {
-                System.out.println("Database Error:" + databaseError.getMessage());
             }
-        });*/
-
-        ownerList.add(new ownerIndex.Owner("CJonesDigging","Palestine", "Texas"));
-
-        ownerList.add(new ownerIndex.Owner( "Well Dig It", "Howe", "Texas"));
-
-        ownerList.add(new ownerIndex.Owner( "Well Informed", "Tyler", "Texas"));
-
-        for (int i = 0; i <ownerList.size(); i++)
-        {
-            myRef.child("Owner").child(Integer.toString(i)).setValue(ownerList.get(i).ToMap());
-        }
+        });
 
         for (int i = 0; i < ownerList.size(); i++) {
             TableRow row = new TableRow(this);

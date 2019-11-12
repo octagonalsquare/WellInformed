@@ -25,6 +25,7 @@ import com.esri.arcgisruntime.symbology.TextSymbol;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.Exclude;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
@@ -49,12 +50,13 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference();
         setContentView(R.layout.activity_well_index);
 
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference();
+
         scrollView = findViewById(R.id.well_scroll_view);
-        displayWellTable();
+        //displayWellTable();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -65,6 +67,9 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.add_well:
+                startActivity(new Intent(this,AddWellActivity.class));
+                return true;
             case R.id.nav_wellIndex:
                 startActivity(new Intent(this, wellIndex.class));
                 return true;
@@ -90,60 +95,9 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
 
         List<Well> wellList = new ArrayList<>();
 
-        /*myRef.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                Well newWell = dataSnapshot.getValue(Well.class);
-                wellList.add(newWell);
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {}
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {}
-
-            @Override
-            public void onCancelled(DatabaseError databaseError)
-            {
-                System.out.println("Database Error:" + databaseError.getMessage());
-            }
-        });*/
-
-        wellList.add(new Well("Well 2", "Active", "123 First St. Tyler, Texas",
-                new Integer(12258), new Integer(548268), "Water",
-                "Well Dig It", "11/12/2019"));
-        wellList.add(new Well("Well 3", "Active", "123 First St. Tyler, Texas",
-                new Integer(12258), new Integer(548268), "Water",
-                "Well Dig It", "11/12/2019"));
-        wellList.add(new Well("Well 4", "Active", "123 First St. Tyler, Texas",
-                new Integer(12258), new Integer(548268), "Water",
-                "Well Dig It", "11/12/2019"));
-        wellList.add(new Well("Well 5", "Active", "123 First St. Tyler, Texas",
-                new Integer(12258), new Integer(548268), "Water",
-                "Well Dig It", "11/12/2019"));
-        wellList.add(new Well("Well 6", "Active", "123 First St. Tyler, Texas",
-                new Integer(12258), new Integer(548268), "Water",
-                "Well Dig It", "11/12/2019"));
-        wellList.add(new Well("Well 7", "Active", "123 First St. Tyler, Texas",
-                new Integer(12258), new Integer(548268), "Water",
-                "Well Dig It", "11/12/2019"));
-        wellList.add(new Well("Well 8", "Active", "123 First St. Tyler, Texas",
-                new Integer(12258), new Integer(548268), "Water",
-                "Well Dig It", "11/12/2019"));
-        wellList.add(new Well("Well 9", "Active", "123 First St. Tyler, Texas",
-                new Integer(12258), new Integer(548268), "Water",
-                "Well Dig It", "11/12/2019"));
-        wellList.add(new Well("Well 10", "Active", "123 First St. Tyler, Texas",
-                new Integer(12258), new Integer(548268), "Water",
-                "Well Dig It", "11/12/2019"));
-
         for (int i = 1; i < 21; i++)
         {
-            myRef.child("Well").child(Integer.toString(i)).setValue(wellList.get(i).ToMap());
+            myRef.child("Well").child(Integer.toString(i)).setValue(wellList.get(i).toMap());
         }
 
         for (int i = 0; i < wellList.size(); i++) {
@@ -202,38 +156,26 @@ class Well implements Serializable
     public String Name;
     public String Status;
     public String Address;
-    public Integer Latitude;
-    public Integer Longitude;
+    public String Latitude;
+    public String Longitude;
     public String Type;
     public String Owner;
     public String Date;
 
-    Well(String name, String status, String address, Integer latitude, Integer longitude,
-         String type, String owner, String date)
+    Well(String name, String latitude, String longitude,String status, String address, String type, String owner, String date)
     {
         Name = name;
-        Status = status;
-        Address = address;
         Latitude = latitude;
         Longitude = longitude;
+        Status = status;
+        Address = address;
         Type = type;
         Owner = owner;
         Date = date;
     }
 
-    Well(Map<String, Object> map)
-    {
-        Name = (String)map.get("Name");
-        Status = (String)map.get("Statu");
-        Address = (String)map.get("Address");
-        Latitude = (Integer)map.get("Latitude");
-        Longitude = (Integer)map.get("Longitude");
-        Type = (String)map.get("Type");
-        Owner = (String)map.get("Owner");
-        Date = (String)map.get("Date");
-    }
-
-    public Map<String, Object> ToMap()
+    @Exclude
+    public Map<String, Object> toMap()
     {
         Map<String, Object> map = new HashMap<>();
         map.put("Name", Name);

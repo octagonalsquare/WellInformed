@@ -33,9 +33,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     //defining firebase authentication object
     private FirebaseAuth mAuth;
 
+    //defining firebase database & reference
     private FirebaseDatabase database;
     private DatabaseReference mDatabase;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         //initializing firebase object
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
-        mAuth.signOut();
 
         //if current user does not return null
         if(mAuth.getCurrentUser()!=null)
@@ -131,7 +130,5 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
     }
-
-
 
 }
