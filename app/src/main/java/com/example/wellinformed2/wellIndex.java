@@ -47,6 +47,7 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
     TextView more;
     FirebaseDatabase database;
     DatabaseReference myRef;
+    List<Well> wellIndexList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,15 +95,8 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
         table = new TableLayout(this);
         table.setStretchAllColumns(true);
 
-        List<Well> wellList = new ArrayList<>();
-
-        /*for (int i = 1; i < 21; i++)
-        {
-            myRef.child("Well").child(Integer.toString(i)).setValue(wellList.get(i).ToMap());
-        }*/
-
         mWellRef = mWellRef.child("Well");
-        final List<Well> wellIndexList = new ArrayList<>();
+        wellIndexList = new ArrayList<>();
         wellIndexList.clear();
 
         mWellRef.addValueEventListener(new ValueEventListener() {
@@ -110,6 +104,7 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot postSnapshot:dataSnapshot.getChildren()) {
                     Well well = postSnapshot.getValue(Well.class);
+                    well.AddID(postSnapshot.getKey());
                     wellIndexList.add(well);
                 }
 
@@ -131,9 +126,12 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
             TableRow row = new TableRow(this);
             TableRow.LayoutParams lp = new TableRow.LayoutParams(FILL_PARENT, FILL_PARENT);
             row.setLayoutParams(lp);
-            /*TextView id = new TextView(this);
-            id.setText(wellList.get(i).ID);
-            id.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);*/
+
+            TextView id = new TextView(this);
+            String ID = wellIndexList.get(i).ID;
+            ID = ID.substring(0, Math.min(ID.length(), 3));
+            id.setText(ID + "...");
+            id.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
             TextView name = new TextView(this);
             name.setText(wellIndexList.get(i).Name);
@@ -155,6 +153,7 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
             //lp.height=70;
             //lp.setMargins(3,10,3,1);
             more.setLayoutParams(lp);
+            more.setId(i);
 
             more.setOnClickListener(this);
 
@@ -174,8 +173,13 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
 
 
     @Override
-    public void onClick(View view) {
-            startActivity(new Intent(this,wellDetails.class));
+    public void onClick(View view)
+    {
+        Well selectedWell = wellIndexList.get(view.getId());
+        Intent i = new Intent(this, wellDetails.class);
+        i.putExtra("Selected", selectedWell);
+        i.putExtra("Selected ID", "ID: " + selectedWell.ID);
+        startActivity(i);
     }
 }
 
@@ -189,10 +193,11 @@ class Well implements Serializable
     public String Type;
     public String Owner;
     public String Date;
+    public String ID;
 
-    Well(){ };
+    Well(){ }
 
-    Well(String name, String latitude, String longitude,String status, String address, String type, String owner, String date)
+    Well(String name, String latitude, String longitude, String status, String address, String type, String owner, String date)
     {
         Name = name;
         Latitude = latitude;
@@ -216,6 +221,10 @@ class Well implements Serializable
         Date = (String)map.get("Date");
     }
 
+    public void AddID(String Id)
+    {
+        ID = Id;
+    }
 
     @Exclude
     public Map<String, Object> ToMap()

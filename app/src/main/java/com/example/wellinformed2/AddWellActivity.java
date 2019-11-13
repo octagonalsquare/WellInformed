@@ -1,14 +1,19 @@
 package com.example.wellinformed2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -73,7 +78,7 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
 
 
         String key = mDatabaseRef.child("Well").push().getKey();
-        Well newWell = new Well(wellName,latitude,longitude,address,wellType,wellStatus,ownerName,dateEntered);
+        Well newWell = new Well(wellName, latitude, longitude, wellStatus, address, wellType, ownerName, dateEntered);
         Map<String, Object> wellValues = newWell.ToMap();
 
         Map<String, Object> childUpdates = new HashMap<>();
@@ -98,8 +103,30 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
         Map<String, Object> ownerValues = newOwner.ToMap();
 
         Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("/Owner/" + key, ownerValues);
-        childUpdates.put("/Owner-Well/" + key + "/" + wellKey, wellName);
+
+        mDatabaseRef.child("Owner").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Boolean found = false;
+                for( DataSnapshot data : dataSnapshot.getChildren())
+                {
+                    if (data.getValue(Owner.class) == newOwner)
+                    {
+                        found = true;
+                    }
+                }
+                if (!found)
+                {
+                    childUpdates.put("/Owner/" + key, ownerValues);
+                    childUpdates.put("/Owner-Well/" + key + "/" + wellKey, wellName);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         mDatabaseRef.updateChildren(childUpdates);
 
@@ -107,18 +134,40 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
 
     public void submitDriller(String wellKey, String wellName)
     {
-        final String drillerName = "Bob";
-        final String drillerCompany = "Well Dig It";
+        final String drillerName = "Craig";
+        final String drillerCompany = "Well Informed";
         final int drillerLicenseNumber = 45678;
         final String drillerLicenseExpirationDate = "11/5/2020";
 
         String key = mDatabaseRef.child("Driller").push().getKey();
         Driller newDriller = new Driller(drillerName, drillerCompany, drillerLicenseNumber, drillerLicenseExpirationDate);
         Map<String, Object> wellValues = newDriller.ToMap();
-
         Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("/Driller/" + key, wellValues);
-        childUpdates.put("/Driller-Well/" + key + "/" + wellKey, wellName);
+
+        mDatabaseRef.child("Driller").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Boolean found = false;
+                for( DataSnapshot data : dataSnapshot.getChildren())
+                {
+                    if (data.getValue(Driller.class) == newDriller)
+                    {
+                        found = true;
+                    }
+                }
+
+                if (!found)
+                {
+                    childUpdates.put("/Driller/" + key, wellValues);
+                    childUpdates.put("/Driller-Well/" + key + "/" + wellKey, wellName);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         mDatabaseRef.updateChildren(childUpdates);
 

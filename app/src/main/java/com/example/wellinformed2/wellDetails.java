@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.esri.arcgisruntime.concurrent.ListenableFuture;
@@ -50,18 +51,34 @@ public class wellDetails extends AppCompatActivity {
     private GraphicsOverlay mGraphicsOverlay;
     private Point mStart;
     private Point mEnd;
+    private Well selectedWell;
+    private String selectedWellID;
+
+    private TextView wellIDView;
+    private TextView wellNameView;
+    private TextView wellLatitudeView;
+    private TextView wellLongitudeView;
+    private TextView wellAddressView;
+    private TextView wellStatusView;
+    private TextView wellTypeView;
+    private TextView wellDateEnteredView;
+    private TextView wellOwnerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_well_details);
+        Bundle extras = getIntent().getExtras();
+        selectedWell = (Well)extras.get("Selected");
+        selectedWellID = extras.getString("Selected ID");
 
         mMapView = findViewById(R.id.mapView);
         //setupOAuthManager();
         setupMap();
         createGraphicsOverlay();
 
-
+        displayWellDetails();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -78,6 +95,29 @@ public class wellDetails extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void displayWellDetails()
+    {
+        wellIDView = findViewById(R.id.txvDetailsWellID);
+        wellNameView = findViewById(R.id.txvDetailsName);
+        wellLatitudeView = findViewById(R.id.txvDetailsLatitude);
+        wellLongitudeView = findViewById(R.id.txvDetailsLongitude);
+        wellAddressView = findViewById(R.id.txvDetailsAddress);
+        wellStatusView = findViewById(R.id.txvDetailsStatus);
+        wellTypeView = findViewById(R.id.txvDetailsWellType);
+        wellDateEnteredView = findViewById(R.id.txvDetailsDateEntered);
+        wellOwnerView = findViewById(R.id.txvDetailsOwner);
+
+        wellIDView.setText(selectedWellID);
+        wellNameView.setText(selectedWell.Name);
+        wellLatitudeView.setText(selectedWell.Latitude);
+        wellLongitudeView.setText(selectedWell.Longitude);
+        wellAddressView.setText(selectedWell.Address);
+        wellStatusView.setText(selectedWell.Status);
+        wellTypeView.setText(selectedWell.Type);
+        wellDateEnteredView.setText(selectedWell.Date);
+        wellOwnerView.setText(selectedWell.Owner);
     }
 
     private void setupMap() {
