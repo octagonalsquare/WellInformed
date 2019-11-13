@@ -174,6 +174,19 @@ class Well implements Serializable
         Date = date;
     }
 
+    Well(Map<String, Object> map)
+    {
+        Name = (String)map.get("Name");
+        Status = (String)map.get("Statu");
+        Address = (String)map.get("Address");
+        Latitude = (String)map.get("Latitude");
+        Longitude = (String)map.get("Longitude");
+        Type = (String)map.get("Type");
+        Owner = (String)map.get("Owner");
+        Date = (String)map.get("Date");
+    }
+
+
     @Exclude
     public Map<String, Object> ToMap()
     {
