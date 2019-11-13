@@ -9,6 +9,7 @@ import android.provider.ContactsContract;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -40,10 +41,10 @@ public class ownerIndex extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_index);
         database = FirebaseDatabase.getInstance();
-        myOwnerRef = database.getReference().child("Owner");
+        myOwnerRef = database.getReference();
 
         scrollView = findViewById(R.id.owner_scroll_view);
-        displayOwnerTable();
+        displayOwnerTable(myOwnerRef);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -71,13 +72,14 @@ public class ownerIndex extends AppCompatActivity {
         }
     }
 
-    public void displayOwnerTable() {
+    public void displayOwnerTable(DatabaseReference mOwnerRef) {
         table = new TableLayout(this);
         table.setStretchAllColumns(true);
 
         List<Owner> ownerList = new ArrayList<>();
-
-        myOwnerRef.addValueEventListener(new ValueEventListener() {
+        ownerList.clear();
+        mOwnerRef = mOwnerRef.child("Owner");
+        mOwnerRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot postSnapshot:dataSnapshot.getChildren()){
@@ -85,6 +87,7 @@ public class ownerIndex extends AppCompatActivity {
                     ownerList.add(owner);
                 }
 
+                addOwnersToTable(ownerList);
             }
 
             @Override
@@ -92,6 +95,9 @@ public class ownerIndex extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void addOwnersToTable(List<Owner> ownerList) {
 
         for (int i = 0; i < ownerList.size(); i++) {
             TableRow row = new TableRow(this);
@@ -101,12 +107,18 @@ public class ownerIndex extends AppCompatActivity {
 
             TextView name = new TextView(this);
             name.setText(ownerList.get(i).Name);
+            name.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
 
             TextView city = new TextView(this);
             city.setText(ownerList.get(i).City);
+            city.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
 
             TextView state = new TextView(this);
             state.setText(ownerList.get(i).State);
+            state.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
 
             row.addView(name);
             row.addView(city);
@@ -127,6 +139,8 @@ class Owner
     public String StreetAddress;
     public String City;
     public String State;
+
+    Owner(){ };
 
     Owner(String name, String streetAddress, String city, String state)
     {

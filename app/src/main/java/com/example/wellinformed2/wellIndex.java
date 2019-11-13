@@ -22,6 +22,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.esri.arcgisruntime.symbology.TextSymbol;
+import com.google.firebase.FirebaseError;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -56,7 +57,7 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
         myRef = database.getReference();
 
         scrollView = findViewById(R.id.well_scroll_view);
-        //displayWellTable();
+        displayWellTable(myRef);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -89,18 +90,44 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
         }
     }
 
-    public void displayWellTable() {
+    public void displayWellTable(DatabaseReference mWellRef) {
         table = new TableLayout(this);
         table.setStretchAllColumns(true);
 
         List<Well> wellList = new ArrayList<>();
 
-        for (int i = 1; i < 21; i++)
+        /*for (int i = 1; i < 21; i++)
         {
             myRef.child("Well").child(Integer.toString(i)).setValue(wellList.get(i).ToMap());
-        }
+        }*/
 
-        for (int i = 0; i < wellList.size(); i++) {
+        mWellRef = mWellRef.child("Well");
+        final List<Well> wellIndexList = new ArrayList<>();
+        wellIndexList.clear();
+
+        mWellRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot postSnapshot:dataSnapshot.getChildren()) {
+                    Well well = postSnapshot.getValue(Well.class);
+                    wellIndexList.add(well);
+                }
+
+                addWellToTable(wellIndexList);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                System.out.println("The read failed: " + FirebaseError.ERROR_INTERNAL_ERROR);
+            }
+        });
+
+
+    }
+
+    private void addWellToTable(List<Well> wellIndexList) {
+
+        for (int i = 0; i < wellIndexList.size(); i++) {
             TableRow row = new TableRow(this);
             TableRow.LayoutParams lp = new TableRow.LayoutParams(FILL_PARENT, FILL_PARENT);
             row.setLayoutParams(lp);
@@ -109,11 +136,11 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
             id.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);*/
 
             TextView name = new TextView(this);
-            name.setText(wellList.get(i).Name);
+            name.setText(wellIndexList.get(i).Name);
             name.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
             TextView status = new TextView(this);
-            status.setText(wellList.get(i).Status);
+            status.setText(wellIndexList.get(i).Status);
             status.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
 
@@ -141,6 +168,7 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
             table.addView(row, i);
         }
         scrollView.addView(table);
+
 
     }
 

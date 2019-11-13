@@ -1,5 +1,6 @@
 package com.example.wellinformed2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,17 +8,20 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.google.firebase.FirebaseError;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,7 +45,7 @@ public class drillerIndex extends AppCompatActivity {
         myRef = database.getReference();
 
         scrollView = findViewById(R.id.driller_scroll_view);
-        displayDrillerTable();
+        displayDrillerTable(myRef);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -69,7 +73,7 @@ public class drillerIndex extends AppCompatActivity {
         }
     }
 
-    public void displayDrillerTable() {
+    public void displayDrillerTable(DatabaseReference mDrillerRef) {
         table = new TableLayout(this);
         table.setStretchAllColumns(true);
 
@@ -96,7 +100,7 @@ public class drillerIndex extends AppCompatActivity {
             {
                 System.out.println("Database Error:" + databaseError.getMessage());
             }
-        });*/
+        });
 
         drillerList.add(new Driller("Craig", "CJonesDigging"));
 
@@ -114,26 +118,55 @@ public class drillerIndex extends AppCompatActivity {
 
         drillerList.add(new Driller("Bill","Well Dig It"));
 
-        /*for (int i = 0; i < drillerList.size(); i++)
+        for (int i = 0; i < drillerList.size(); i++)
         {
             myRef.child("Driller").child(Integer.toString(i)).setValue(drillerList.get(i).ToMap());
         }*/
 
+        mDrillerRef = mDrillerRef.child("Driller");
+        final List<Driller> drillerIndexList = new ArrayList<>();
+        drillerIndexList.clear();
 
-        for (int i = 0; i < drillerList.size(); i++) {
+        mDrillerRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot postSnapshot:dataSnapshot.getChildren()) {
+                    Driller driller = postSnapshot.getValue(Driller.class);
+                    drillerIndexList.add(driller);
+                }
+
+                addDrillerToTable(drillerIndexList);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                System.out.println("The read failed: " + FirebaseError.ERROR_INTERNAL_ERROR);
+            }
+        });
+    }
+
+    private void addDrillerToTable(List<Driller> drillerIndexList) {
+
+        for (int i = 0; i < drillerIndexList.size(); i++) {
             TableRow row = new TableRow(this);
             TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.FILL_PARENT);
 
             row.setLayoutParams(lp);
 
             TextView name = new TextView(this);
-            name.setText(drillerList.get(i).Name);
+            name.setText(drillerIndexList.get(i).Name);
+            name.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
 
             TextView companyName = new TextView(this);
-            companyName.setText(drillerList.get(i).CompanyName);
+            companyName.setText(drillerIndexList.get(i).CompanyName);
+            companyName.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
 
             TextView more = new TextView(this);
             more.setText("...");
+            more.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
 
             row.addView(name);
             row.addView(companyName);
@@ -145,6 +178,7 @@ public class drillerIndex extends AppCompatActivity {
             table.addView(row, i);
         }
         scrollView.addView(table);
+
     }
 }
 
@@ -154,6 +188,8 @@ class Driller
     public String CompanyName;
     public int LicenseNumber = 0;
     public String LicenseExpirationDate;
+
+    Driller(){};
 
     Driller(String name, String companyName, int licenseNumber,
             String licenseExpirationDate)
