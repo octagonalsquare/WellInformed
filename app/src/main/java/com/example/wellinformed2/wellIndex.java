@@ -162,6 +162,8 @@ class Well implements Serializable
     public String Owner;
     public String Date;
 
+    Well(){ };
+
     Well(String name, String latitude, String longitude,String status, String address, String type, String owner, String date)
     {
         Name = name;
