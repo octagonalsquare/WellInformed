@@ -62,7 +62,7 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.navigation_menu, menu);
+        inflater.inflate(R.menu.well_index_menu, menu);
         return true;
     }
 
@@ -71,20 +71,6 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
             case R.id.add_well:
                 startActivity(new Intent(this,AddWellActivity.class));
                 return true;
-            case R.id.nav_wellIndex:
-                startActivity(new Intent(this, wellIndex.class));
-                return true;
-            case R.id.nav_wellOwner:
-                startActivity(new Intent(this, ownerIndex.class));
-                return true;
-            case R.id.nav_wellDriller:
-                startActivity(new Intent(this,drillerIndex.class));
-                return true;
-            case R.id.nav_navigation:
-                startActivity(new Intent(this,navigation.class));
-                return true;
-            case R.id.nav_well_details:
-                startActivity(new Intent(this,wellDetails.class));
             default:
                 return super.onOptionsItemSelected(item);
         }

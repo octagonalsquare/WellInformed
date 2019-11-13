@@ -70,31 +70,6 @@ public class navigation extends AppCompatActivity {
         createGraphicsOverlay();
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.navigation_menu, menu);
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.nav_wellIndex:
-                startActivity(new Intent(this, wellIndex.class));
-                return true;
-            case R.id.nav_wellOwner:
-                startActivity(new Intent(this, ownerIndex.class));
-                return true;
-            case R.id.nav_wellDriller:
-                startActivity(new Intent(this,drillerIndex.class));
-                return true;
-            case R.id.nav_navigation:
-                startActivity(new Intent(this,navigation.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
     private void setupMap() {
         if (mMapView != null) {
             Basemap.Type basemapType = Basemap.Type.NAVIGATION_VECTOR;

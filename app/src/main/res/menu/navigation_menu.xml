@@ -4,23 +4,11 @@
     <!--tools:showIn="navigation_view"-->
 
     <item
-        android:id="@+id/add_well"
-        android:title="Add Well"/>
+        android:id="@+id/nav_dashboard"
+        android:title="Dashboard"/>
+    <item
+        android:id="@+id/nav_signout"
+        android:title="Sign Out"/>
 
-    <item
-        android:id="@+id/nav_wellIndex"
-        android:title="@string/well_index_textview"/>
-    <item
-        android:id="@+id/nav_wellOwner"
-        android:title="@string/well_owners_textview"/>
-    <item
-        android:id="@+id/nav_wellDriller"
-        android:title="@string/driller_index_textview"/>
-    <item
-        android:id="@+id/nav_navigation"
-        android:title="@string/navigation_textview"/>
-    <item
-        android:id="@+id/nav_well_details"
-        android:title="@string/well_details"/>
 
 </menu>

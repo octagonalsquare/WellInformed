@@ -56,17 +56,11 @@ public class drillerIndex extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.nav_wellIndex:
+            case R.id.nav_dashboard:
                 startActivity(new Intent(this, wellIndex.class));
                 return true;
-            case R.id.nav_wellOwner:
+            case R.id.nav_signout:
                 startActivity(new Intent(this, ownerIndex.class));
-                return true;
-            case R.id.nav_wellDriller:
-                startActivity(new Intent(this,drillerIndex.class));
-                return true;
-            case R.id.nav_navigation:
-                startActivity(new Intent(this,navigation.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

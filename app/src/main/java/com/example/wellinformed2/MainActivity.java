@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView txvWellOwner;
     TextView txvDrillerIndex;
     TextView txvNavigation;
+    Button btnSignOut;
 
 
     @Override
@@ -29,38 +30,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txvWellOwner=findViewById(R.id.txvWellOwner);
         txvDrillerIndex=findViewById(R.id.txvDrillerIndex);
         txvNavigation=findViewById(R.id.txvNavigation);
+        btnSignOut = findViewById(R.id.btnSignOut);
 
         //set click listener
         txvWellIndex.setOnClickListener(this);
         txvWellOwner.setOnClickListener(this);
         txvDrillerIndex.setOnClickListener(this);
         txvNavigation.setOnClickListener(this);
+        btnSignOut.setOnClickListener(this);
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.navigation_menu, menu);
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.nav_wellIndex:
-                startActivity(new Intent(this, wellIndex.class));
-                return true;
-            case R.id.nav_wellOwner:
-                startActivity(new Intent(this, ownerIndex.class));
-                return true;
-            case R.id.nav_wellDriller:
-                startActivity(new Intent(this, drillerIndex.class));
-                return true;
-            case R.id.nav_navigation:
-                startActivity(new Intent(this, navigation.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
 
     @Override
@@ -79,6 +58,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if(view==txvNavigation){
             startActivity(new Intent(this, navigation.class));
+        }
+        if(view==btnSignOut){
+            FirebaseAuth.getInstance().signOut();
+            finish();
+            startActivity(new Intent(this, LoginActivity.class));
         }
     }
 }
