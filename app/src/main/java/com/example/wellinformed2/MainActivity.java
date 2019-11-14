@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(this, drillerIndex.class));
         }
         if(view==txvNavigation){
-            startActivity(new Intent(this, navigation.class));
+            startActivity(new Intent(this, GoogleMapActivity.class));
         }
         if(view==btnSignOut){
             FirebaseAuth.getInstance().signOut();
