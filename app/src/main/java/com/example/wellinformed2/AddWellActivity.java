@@ -75,19 +75,42 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
         final String wellStatus = edtWellStatus.getText().toString().trim();
         final String ownerName = edtOwnerName.getText().toString().trim();
         final String dateEntered = edtDateEntered.getText().toString().trim();
+        final String drillerName = edtDrillerName.getText().toString().trim();
 
-
-        String key = mDatabaseRef.child("Well").push().getKey();
+        String key = drillerName + ":" +wellName;
         Well newWell = new Well(wellName, latitude, longitude, wellStatus, address, wellType, ownerName, dateEntered);
         Map<String, Object> wellValues = newWell.ToMap();
 
         Map<String, Object> childUpdates = new HashMap<>();
+        mDatabaseRef.child("Well").addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Boolean found = false;
+                for( DataSnapshot data : dataSnapshot.getChildren())
+                {
+                    if (data.getKey() == key)
+                    {
+                        found = true;
+                    }
+                }
+                if (!found)
+                {
+                    childUpdates.put("/Well/" + key, wellValues);
+                    mDatabaseRef.updateChildren(childUpdates);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         childUpdates.put("/Well/" + key, wellValues);
 
         submitOwner(key, newWell.Name);
         submitDriller(key, newWell.Name);
-
-        mDatabaseRef.updateChildren(childUpdates);
     }
 
     public void submitOwner(String wellKey, String wellName)
@@ -98,7 +121,7 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
 
         final String ownerAddress = "13214 Bob Ave. Tyler, Texas";
 
-        String key = mDatabaseRef.child("Owner").push().getKey();
+        String key = ownerName;
         Owner newOwner = new Owner(ownerName, ownerAddress, ownerCity, ownerState);
         Map<String, Object> ownerValues = newOwner.ToMap();
 
@@ -111,7 +134,7 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
                 Boolean found = false;
                 for( DataSnapshot data : dataSnapshot.getChildren())
                 {
-                    if (data.getValue(Owner.class) == newOwner)
+                    if (data.getKey() == key)
                     {
                         found = true;
                     }
@@ -138,7 +161,7 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
         final int drillerLicenseNumber = 45678;
         final String drillerLicenseExpirationDate = "11/5/2020";
 
-        String key = mDatabaseRef.child("Driller").push().getKey();
+        String key = drillerName;
         Driller newDriller = new Driller(drillerName, drillerCompany, drillerLicenseNumber, drillerLicenseExpirationDate);
         Map<String, Object> wellValues = newDriller.ToMap();
         Map<String, Object> childUpdates = new HashMap<>();
@@ -149,7 +172,7 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
                 Boolean found = false;
                 for( DataSnapshot data : dataSnapshot.getChildren())
                 {
-                    if (data.getValue(Driller.class) == newDriller)
+                    if (data.getKey() == key)
                     {
                         found = true;
                     }
