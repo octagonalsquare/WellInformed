@@ -13,12 +13,15 @@ import android.view.MotionEvent;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class wellDetails extends AppCompatActivity {
+
 
     private Well selectedWell;
     private String selectedWellID;
@@ -41,6 +44,7 @@ public class wellDetails extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         selectedWell = (Well)extras.get("Selected");
         selectedWellID = extras.getString("Selected ID");
+
 
         displayWellDetails();
     }
@@ -83,4 +87,6 @@ public class wellDetails extends AppCompatActivity {
         wellDateEnteredView.setText(selectedWell.Date);
         wellOwnerView.setText(selectedWell.Owner);
     }
+
+
 }

@@ -104,6 +104,7 @@ public class GoogleMapActivity extends FragmentActivity implements
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         enableMyLocation();
+
         // Add points for waterwells
         googleMap.setOnMarkerClickListener(this);
         googleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
@@ -113,7 +114,8 @@ public class GoogleMapActivity extends FragmentActivity implements
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot postSnapshot:dataSnapshot.getChildren()) {
                     Well well = postSnapshot.getValue(Well.class);
-                    if(well.Latitude!=null&&well.Longitude!=null) {
+
+                    if(!well.Latitude.equals("")&&!well.Longitude.equals("")) {
                         LatLng wellLocation = new LatLng(Double.parseDouble(well.Latitude), Double.parseDouble(well.Longitude));
                         mMap.addMarker(new MarkerOptions().position(wellLocation).title(well.Name)).setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
                     }
