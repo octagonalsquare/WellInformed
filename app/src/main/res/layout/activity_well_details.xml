@@ -276,35 +276,6 @@
                 android:textColor="@color/darkBackground"
                 android:textSize="20sp" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
-
-            <TextView
-                android:id="@+id/txvDetailsTitleLegacyID"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_column="1"
-                android:alpha="1"
-                android:background="@color/lightBackground"
-                android:fontFamily="sans-serif-smallcaps"
-                android:gravity="center_vertical"
-                android:text="Legacy ID"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/darkBackground"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/txvDetailsLegacyID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/white_rounded_corner"
-                android:fontFamily="sans-serif-smallcaps"
-                android:gravity="center_vertical"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/darkBackground"
-                android:textSize="20sp" />
-
         </LinearLayout>
     </ScrollView>
 
