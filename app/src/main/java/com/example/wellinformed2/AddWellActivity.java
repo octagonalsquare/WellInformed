@@ -104,7 +104,8 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
 
         Map<String, Object> childUpdates = new HashMap<>();
 
-        mDatabaseRef.child("Owner").addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabaseRef.child("Owner").addListenerForSingleValueEvent(new ValueEventListener()
+        {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Boolean found = false;
@@ -119,6 +120,7 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
                 {
                     childUpdates.put("/Owner/" + key, ownerValues);
                     childUpdates.put("/Owner-Well/" + key + "/" + wellKey, wellName);
+                    mDatabaseRef.updateChildren(childUpdates);
                 }
             }
 
@@ -127,9 +129,6 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
 
             }
         });
-
-        mDatabaseRef.updateChildren(childUpdates);
-
     }
 
     public void submitDriller(String wellKey, String wellName)
@@ -160,6 +159,7 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
                 {
                     childUpdates.put("/Driller/" + key, wellValues);
                     childUpdates.put("/Driller-Well/" + key + "/" + wellKey, wellName);
+                    mDatabaseRef.updateChildren(childUpdates);
                 }
             }
 
@@ -168,8 +168,5 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
 
             }
         });
-
-        mDatabaseRef.updateChildren(childUpdates);
-
     }
 }

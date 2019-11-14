@@ -106,9 +106,11 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
 
     }
 
-    private void addWellToTable(List<Well> wellIndexList) {
-
-        for (int i = 0; i < wellIndexList.size(); i++) {
+    private void addWellToTable(List<Well> wellIndexList)
+    {
+        scrollView.removeAllViews();
+        for (int i = 0; i < wellIndexList.size(); i++)
+        {
             TableRow row = new TableRow(this);
             TableRow.LayoutParams lp = new TableRow.LayoutParams(FILL_PARENT, FILL_PARENT);
             row.setLayoutParams(lp);
@@ -143,6 +145,7 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
 
             more.setOnClickListener(this);
 
+            row.addView(id);
             row.addView(name);
             row.addView(status);
             row.addView(more);
@@ -153,8 +156,6 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
             table.addView(row, i);
         }
         scrollView.addView(table);
-
-
     }
 
 
