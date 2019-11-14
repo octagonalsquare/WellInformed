@@ -113,9 +113,10 @@ public class GoogleMapActivity extends FragmentActivity implements
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot postSnapshot:dataSnapshot.getChildren()) {
                     Well well = postSnapshot.getValue(Well.class);
-                    double latitude = Double.parseDouble(well.Latitude);
-                    LatLng wellLocation = new LatLng(Double.parseDouble(well.Latitude),Double.parseDouble(well.Longitude));
-                    mMap.addMarker(new MarkerOptions().position(wellLocation).title(well.Name)).setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+                    if(well.Latitude!=null&&well.Longitude!=null) {
+                        LatLng wellLocation = new LatLng(Double.parseDouble(well.Latitude), Double.parseDouble(well.Longitude));
+                        mMap.addMarker(new MarkerOptions().position(wellLocation).title(well.Name)).setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+                    }
                 }
             }
 

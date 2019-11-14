@@ -42,9 +42,6 @@
             android:label="@string/title_activity_google_map"></activity>
         <activity android:name=".AddWellActivity" />
         <activity
-            android:name=".navigation"
-            android:label="Navigation" />
-        <activity
             android:name=".wellDetails"
             android:label="Well Details" />
         <activity android:name=".LoginActivity">
@@ -67,20 +64,6 @@
         <activity
             android:name=".wellInspection"
             android:label="Well Inspection" />
-        <activity
-            android:name="com.esri.arcgisruntime.security.DefaultOAuthIntentReceiver"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:label="OAuthIntentReceiver"
-            android:launchMode="singleTask">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="my-devlab-app" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
