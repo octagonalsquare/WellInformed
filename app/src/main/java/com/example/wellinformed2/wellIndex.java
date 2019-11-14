@@ -21,7 +21,6 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.esri.arcgisruntime.symbology.TextSymbol;
 import com.google.firebase.FirebaseError;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
