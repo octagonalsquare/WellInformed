@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.google.firebase.database.DataSnapshot;
@@ -27,10 +28,14 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
     EditText edtWellType;
     EditText edtWellStatus;
     EditText edtOwnerName;
-    EditText edtDateEntered;
+    DatePicker edtDateEntered;
     EditText edtOwnerCity;
     EditText edtOwnerState;
     EditText edtDrillerName;
+    EditText edtDrillerCompany;
+    EditText edtDrillerLicenseNumber;
+    DatePicker edtDrillerLicenseExpirationDate;
+    EditText edtOwnerAddress;
     Button btnSubmitWell;
 
     FirebaseDatabase database;
@@ -54,7 +59,11 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
         edtDateEntered = findViewById(R.id.edtDateEntered);
         edtOwnerCity = findViewById(R.id.edtOwnerCity);
         edtOwnerState = findViewById(R.id.edtOwnerState);
+        edtOwnerAddress = findViewById(R.id.edtOwnerAddress);
         edtDrillerName = findViewById(R.id.edtDrillerName);
+        edtDrillerLicenseNumber = findViewById(R.id.edtDrillerLicenseNumber);
+        edtDrillerCompany = findViewById(R.id.edtDrillerCompany);
+        edtDrillerLicenseExpirationDate = findViewById(R.id.edtDrillerLicenseExpirationDate);
         btnSubmitWell = findViewById(R.id.btnSumbitWell);
 
         btnSubmitWell.setOnClickListener(this);
@@ -74,14 +83,16 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
         final String wellType = edtWellType.getText().toString().trim();
         final String wellStatus = edtWellStatus.getText().toString().trim();
         final String ownerName = edtOwnerName.getText().toString().trim();
-        final String dateEntered = edtDateEntered.getText().toString().trim();
+        final String dateEntered = edtDateEntered.getDayOfMonth() + "/" + edtDateEntered.getMonth()
+                + "/" + edtDateEntered.getYear();
         final String drillerName = edtDrillerName.getText().toString().trim();
 
-        String key = drillerName + ":" +wellName;
+        String key = drillerName + ":" + wellName;
         Well newWell = new Well(wellName, latitude, longitude, wellStatus, address, wellType, ownerName, dateEntered);
         Map<String, Object> wellValues = newWell.ToMap();
 
         Map<String, Object> childUpdates = new HashMap<>();
+
         mDatabaseRef.child("Well").addListenerForSingleValueEvent(new ValueEventListener()
         {
             @Override
@@ -89,7 +100,7 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
                 Boolean found = false;
                 for( DataSnapshot data : dataSnapshot.getChildren())
                 {
-                    if (data.getKey() == key)
+                    if (data.getKey().compareTo(key) == 0)
                     {
                         found = true;
                     }
@@ -107,8 +118,6 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
             }
         });
 
-        childUpdates.put("/Well/" + key, wellValues);
-
         submitOwner(key, newWell.Name);
         submitDriller(key, newWell.Name);
     }
@@ -118,8 +127,7 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
         final String ownerName = edtOwnerName.getText().toString().trim();
         final String ownerCity = edtOwnerCity.getText().toString().trim();
         final String ownerState = edtOwnerState.getText().toString().trim();
-
-        final String ownerAddress = "13214 Bob Ave. Tyler, Texas";
+        final String ownerAddress = edtOwnerAddress.getText().toString().trim();
 
         String key = ownerName;
         Owner newOwner = new Owner(ownerName, ownerAddress, ownerCity, ownerState);
@@ -134,7 +142,7 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
                 Boolean found = false;
                 for( DataSnapshot data : dataSnapshot.getChildren())
                 {
-                    if (data.getKey() == key)
+                    if (data.getKey().compareTo(key) == 0)
                     {
                         found = true;
                     }
@@ -156,10 +164,21 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
 
     public void submitDriller(String wellKey, String wellName)
     {
-        final String drillerName = "Craig";
-        final String drillerCompany = "Well Informed";
-        final int drillerLicenseNumber = 45678;
-        final String drillerLicenseExpirationDate = "11/5/2020";
+        final String drillerName = edtDrillerName.getText().toString().trim();
+        final String drillerCompany = edtDrillerCompany.getText().toString().trim();
+        int temp;
+        if (edtDrillerLicenseNumber.getText().toString().trim().compareTo("") != 0)
+        {
+            temp = Integer.parseInt(edtDrillerLicenseNumber.getText().toString().trim());
+        }
+        else
+        {
+            temp = 0;
+        }
+        final int drillerLicenseNumber = temp;
+        final String drillerLicenseExpirationDate = edtDrillerLicenseExpirationDate.getDayOfMonth()
+                + "/" + edtDrillerLicenseExpirationDate.getMonth() + "/" 
+                + edtDrillerLicenseExpirationDate.getYear();
 
         String key = drillerName;
         Driller newDriller = new Driller(drillerName, drillerCompany, drillerLicenseNumber, drillerLicenseExpirationDate);
@@ -172,7 +191,7 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
                 Boolean found = false;
                 for( DataSnapshot data : dataSnapshot.getChildren())
                 {
-                    if (data.getKey() == key)
+                    if (data.getKey().compareTo(key) == 0)
                     {
                         found = true;
                     }
