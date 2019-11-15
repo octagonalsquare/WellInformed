@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -86,6 +88,26 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
         final String dateEntered = edtDateEntered.getDayOfMonth() + "/" + edtDateEntered.getMonth()
                 + "/" + edtDateEntered.getYear();
         final String drillerName = edtDrillerName.getText().toString().trim();
+
+        if (TextUtils.isEmpty(wellName)) {
+            Toast.makeText(this, "Please enter well name", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (TextUtils.isEmpty(latitude)) {
+            Toast.makeText(this, "Please enter latitude coordinates", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (TextUtils.isEmpty(longitude)) {
+            Toast.makeText(this, "Please enter longitude coordinates", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (TextUtils.isEmpty(drillerName)) {
+            Toast.makeText(this, "Please enter driller name", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         String key = drillerName + ":" + wellName;
         Well newWell = new Well(wellName, latitude, longitude, wellStatus, address, wellType, ownerName, dateEntered);

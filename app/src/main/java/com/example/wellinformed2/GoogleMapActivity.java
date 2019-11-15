@@ -7,31 +7,29 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static java.sql.Types.DOUBLE;
+import com.google.maps.android.clustering.ClusterManager;
+import com.google.maps.android.ui.IconGenerator;
 
 
 public class GoogleMapActivity extends FragmentActivity implements
@@ -44,13 +42,12 @@ public class GoogleMapActivity extends FragmentActivity implements
 
     private GoogleMap mMap;
     private DatabaseReference mWellRef;
-    Marker wellMarker;
+    private ClusterManager mClusterManager;
+    private MyClusterManagerRenderer mClusterManagerRenderer;
 
-    //Location currentLocation;
-    //FusedLocationProviderClient fusedLocationProviderClient;
+
     private static final int MY_LOCATION_REQUEST_CODE = 901;
 
-    //Boolean mLocationPermissionsGranted = false;
     private boolean mPermissionDenied;
 
 
@@ -59,36 +56,12 @@ public class GoogleMapActivity extends FragmentActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_map);
 
-        //fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        //fetchLastLocation();
-
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
 
     }
-
-    /*private void fetchLastLocation() {
-        if(ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION!=PackageManager.PERMISSION_GRANTED)) {
-
-        }
-        Task<Location> task = fusedLocationProviderClient.getLastLocation();
-        task.addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if(location!=null){
-                    currentLocation = location;
-                    Toast.makeText(getApplicationContext(),currentLocation.getLatitude()+""+currentLocation.getLongitude(),Toast.LENGTH_SHORT);
-                    // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-
-                }
-            }
-        });
-
-
-
-    }*/
 
 
     /**
@@ -104,6 +77,7 @@ public class GoogleMapActivity extends FragmentActivity implements
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         enableMyLocation();
+        IconGenerator customIcon = new IconGenerator(this);
 
         // Add points for waterwells
         googleMap.setOnMarkerClickListener(this);
@@ -116,8 +90,14 @@ public class GoogleMapActivity extends FragmentActivity implements
                     Well well = postSnapshot.getValue(Well.class);
 
                     if(!well.Latitude.equals("")&&!well.Longitude.equals("")) {
-                        LatLng wellLocation = new LatLng(Double.parseDouble(well.Latitude), Double.parseDouble(well.Longitude));
-                        mMap.addMarker(new MarkerOptions().position(wellLocation).title(well.Name)).setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+                        if(well.Status.toUpperCase().equals("ACTIVE")) {
+                            LatLng wellLocation = new LatLng(Double.parseDouble(well.Latitude), Double.parseDouble(well.Longitude));
+                            mMap.addMarker(new MarkerOptions().position(wellLocation).title("This is a well").snippet(well.Latitude + " " + well.Longitude)).setIcon(BitmapDescriptorFactory.fromBitmap(customIcon.makeIcon(well.Name)));
+                        }
+                        else if(well.Status.toUpperCase().equals("PLUGGED")){
+                            LatLng wellLocation = new LatLng(Double.parseDouble(well.Latitude), Double.parseDouble(well.Longitude));
+                            mMap.addMarker(new MarkerOptions().position(wellLocation).title("This is a well").snippet(well.Latitude + " " + well.Longitude)).setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+                        }
                     }
                 }
             }
@@ -134,6 +114,61 @@ public class GoogleMapActivity extends FragmentActivity implements
 
 
     }
+
+    /*private void addMapMarkers(){
+        if(mMap != null){
+
+            if(mClusterManager == null){
+                mClusterManager = new ClusterManager<ClusterMarker>(getActivity().getApplicationContext(), mGoogleMap);
+            }
+            if(mClusterManagerRenderer == null){
+                mClusterManagerRenderer = new MyClusterManagerRenderer(
+                        getActivity(),
+                        mGoogleMap,
+                        mClusterManager
+                );
+                mClusterManager.setRenderer(mClusterManagerRenderer);
+            }
+
+            for(UserLocation userLocation: mUserLocations){
+
+                Log.d(TAG, "addMapMarkers: location: " + userLocation.getGeo_point().toString());
+                try{
+                    String snippet = "";
+                    if(userLocation.getUser().getUser_id().equals(FirebaseAuth.getInstance().getUid())){
+                        snippet = "This is you";
+                    }
+                    else{
+                        snippet = "Determine route to " + userLocation.getUser().getUsername() + "?";
+                    }
+
+                    int avatar = R.drawable.cartman_cop; // set the default avatar
+                    try{
+                        avatar = Integer.parseInt(userLocation.getUser().getAvatar());
+                    }catch (NumberFormatException e){
+                        Log.d(TAG, "addMapMarkers: no avatar for " + userLocation.getUser().getUsername() + ", setting default.");
+                    }
+                    ClusterMarker newClusterMarker = new ClusterMarker(
+                            new LatLng(userLocation.getGeo_point().getLatitude(), userLocation.getGeo_point().getLongitude()),
+                            userLocation.getUser().getUsername(),
+                            snippet,
+                            avatar,
+                            userLocation.getUser()
+                    );
+                    mClusterManager.addItem(newClusterMarker);
+                    mClusterMarkers.add(newClusterMarker);
+
+                }catch (NullPointerException e){
+                    Log.e(TAG, "addMapMarkers: NullPointerException: " + e.getMessage() );
+                }
+
+            }
+            mClusterManager.cluster();
+
+            setCameraView();
+        }
+
+    }*/
 
     /**
      * Enables the My Location layer if the fine location permission has been granted.
