@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -72,11 +71,14 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
+    //Onclick function executes when submit button is clicked
     @Override
     public void onClick(View view) {
         submitWell();
     }
 
+    //This function takes all the details the user enters into the fields and stores them into a variable
+    //once variables are assigned a value they are uploaded to the database
     public void submitWell(){
         final String wellName = edtWellName.getText().toString().trim();
         final String latitude = edtLatitude.getText().toString().trim();
@@ -144,6 +146,9 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
         submitDriller(key, newWell.Name);
     }
 
+    //submitOwner takes all the details the user enters into the fields of
+    //the owner section and stores them in a variable
+    //once variable are assigned a value they are uploaded to the database
     public void submitOwner(String wellKey, String wellName)
     {
         final String ownerName = edtOwnerName.getText().toString().trim();
@@ -184,6 +189,9 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
         });
     }
 
+    //submitDriller takes all the details the user enters inot the fields of
+    //the driller section and stores them in a variable
+    //once variables are assigned a value they are uploaded to the database
     public void submitDriller(String wellKey, String wellName)
     {
         final String drillerName = edtDrillerName.getText().toString().trim();

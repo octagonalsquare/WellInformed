@@ -29,6 +29,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
+//drillerIndex activity displays all the current drillers in the database
 public class drillerIndex extends AppCompatActivity {
 
     TableLayout table;
@@ -48,12 +50,15 @@ public class drillerIndex extends AppCompatActivity {
         displayDrillerTable(myRef);
     }
 
+    //When this activity starts this is initiated to create an options menu in the
+    //the activity window in the top right
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.navigation_menu, menu);
         return true;
     }
 
+    //Gives directions to each button to do if selected
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_dashboard:
@@ -67,6 +72,7 @@ public class drillerIndex extends AppCompatActivity {
         }
     }
 
+    //Gets the drillers information from the database
     public void displayDrillerTable(DatabaseReference mDrillerRef) {
         table = new TableLayout(this);
         table.setStretchAllColumns(true);
@@ -139,6 +145,7 @@ public class drillerIndex extends AppCompatActivity {
         });
     }
 
+    //Adds a driller information to the table to be displayed
     private void addDrillerToTable(List<Driller> drillerIndexList) {
 
         for (int i = 0; i < drillerIndexList.size(); i++) {
@@ -176,6 +183,9 @@ public class drillerIndex extends AppCompatActivity {
     }
 }
 
+
+//Driller class creates an object that stores the details of a driller such as
+//name, company name, license number, and license expiration date
 class Driller
 {
     public String Name;

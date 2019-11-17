@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,7 +14,6 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,11 +22,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//Activity displays a table with owner information to display all owners in firebase
 public class ownerIndex extends AppCompatActivity {
 
     TableLayout table;
@@ -40,6 +38,7 @@ public class ownerIndex extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_index);
+
         database = FirebaseDatabase.getInstance();
         myOwnerRef = database.getReference();
 
@@ -47,12 +46,15 @@ public class ownerIndex extends AppCompatActivity {
         displayOwnerTable(myOwnerRef);
     }
 
+    //When this activity starts this is initiated to create an options menu in the
+    //the activity window in the top right
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.navigation_menu, menu);
         return true;
     }
 
+    //Gives directions to each button to do if selected
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_dashboard:
@@ -66,6 +68,7 @@ public class ownerIndex extends AppCompatActivity {
         }
     }
 
+    //Gets owner information from firebase and stores in a array list
     public void displayOwnerTable(DatabaseReference mOwnerRef) {
         table = new TableLayout(this);
         table.setStretchAllColumns(true);
@@ -91,6 +94,7 @@ public class ownerIndex extends AppCompatActivity {
         });
     }
 
+    //adds owner information to table to be displays
     private void addOwnersToTable(List<Owner> ownerList) {
 
         for (int i = 0; i < ownerList.size(); i++) {
@@ -127,6 +131,8 @@ public class ownerIndex extends AppCompatActivity {
     }
 }
 
+
+//owner object that store data of a owner
 class Owner
 {
     public String Name;

@@ -2,13 +2,9 @@ package com.example.wellinformed2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -18,6 +14,8 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+//well inspection activity creates a report to a certain well that it will be attached to by displaying
+//different data fields that the user will enter
 public class wellInspection extends AppCompatActivity implements View.OnClickListener
 {
     TextView submitButton;
@@ -36,6 +34,7 @@ public class wellInspection extends AppCompatActivity implements View.OnClickLis
         submitButton.setOnClickListener(this);
     }
 
+    //Submit button is clicked add report to well
     @Override
     public void onClick(View view)
     {
@@ -45,6 +44,7 @@ public class wellInspection extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    //report is created by taking all the fields the user entered
     public void createInspection()
     {
         Boolean complete = new Boolean(true);
@@ -271,10 +271,12 @@ public class wellInspection extends AppCompatActivity implements View.OnClickLis
                     FlowTestMethodTime, SanitaryWellSeal, SepticDistance, PropertyLineDistance,
                     NearestWellDistance, AerobicSprayAreaDistance, SepticLateralLinesDistance,
                     OtherContaminationSourcesDistance);
-            mDatabaseRef.child("InspectionReports").setValue(report);
+            mDatabaseRef.child("Well-InspectionReports").setValue(report);
         }
     }
-    
+
+    //well inspection class stores the data the user entered in a
+    //well report object that will be passed to the fierbase to store it
     class WellInspection
     {
         public  String WellName;

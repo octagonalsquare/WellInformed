@@ -3,23 +3,13 @@ package com.example.wellinformed2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.widget.TextView;
-import android.widget.Toast;
 
-
-
-import java.net.MalformedURLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-
+//well details activity that displays the details of a selected well
 public class wellDetails extends AppCompatActivity {
 
 
@@ -49,12 +39,15 @@ public class wellDetails extends AppCompatActivity {
         displayWellDetails();
     }
 
+    //When this activity starts this is initiated to create an options menu in the
+    //the activity window in the top right
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.well_details_menu, menu);
         return true;
     }
 
+    //Gives directions to each button to do if selected
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_inpection_report:
@@ -65,6 +58,7 @@ public class wellDetails extends AppCompatActivity {
         }
     }
 
+    //displays well details by setting the text of the appropriate text view
     public void displayWellDetails()
     {
         wellIDView = findViewById(R.id.txvDetailsWellID);

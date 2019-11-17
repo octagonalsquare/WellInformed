@@ -6,30 +6,23 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.google.firebase.FirebaseError;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.core.Tag;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -60,12 +53,15 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
         displayWellTable(myRef);
     }
 
+    //When this activity starts this is initiated to create an options menu in the
+    //the activity window in the top right
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.well_index_menu, menu);
         return true;
     }
 
+    //Gives directions to each button to do if selected
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.add_well:
@@ -76,6 +72,7 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
         }
     }
 
+    //retrieves information of each well in the database and stores it in a array list
     public void displayWellTable(DatabaseReference mWellRef) {
         table = new TableLayout(this);
         table.setStretchAllColumns(true);
@@ -101,10 +98,9 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
                 System.out.println("The read failed: " + FirebaseError.ERROR_INTERNAL_ERROR);
             }
         });
-
-
     }
 
+    //takes well array list and adds a TextView with a detail about the well and adds it to the table
     private void addWellToTable(List<Well> wellIndexList)
     {
         scrollView.removeAllViews();
@@ -158,6 +154,8 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
     }
 
 
+    //When well more button is clicked it stores the data of the well in a bundle to pass to
+    //well details page
     @Override
     public void onClick(View view)
     {
@@ -169,6 +167,7 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
     }
 }
 
+//Well class stores the details of a certain well as an object
 class Well implements Serializable
 {
     public String Name;

@@ -1,20 +1,20 @@
 package com.example.wellinformed2;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.firebase.geofire.GeoFire;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -23,28 +23,33 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.maps.android.clustering.ClusterManager;
 import com.google.maps.android.ui.IconGenerator;
 
-
+//GoogleMapActivity displays google map with custom markers with wells name
+//When a marker is clicked it displays more details about the well.
 public class GoogleMapActivity extends FragmentActivity implements
         OnMapReadyCallback,
         View.OnClickListener,
         GoogleMap.OnMyLocationButtonClickListener,
         GoogleMap.OnMyLocationClickListener,
-        ActivityCompat.OnRequestPermissionsResultCallback, GoogleMap.OnMarkerClickListener {
+        ActivityCompat.OnRequestPermissionsResultCallback,
+        GoogleMap.OnMarkerClickListener{
 
 
+    private static final String TAG = "Service location:";
     private GoogleMap mMap;
     private DatabaseReference mWellRef;
-    private ClusterManager mClusterManager;
-    private MyClusterManagerRenderer mClusterManagerRenderer;
-
+    private DatabaseReference mUserRef;
+    private Location userLocation;
+    protected LocationManager locationManager;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    GeoFire geoFire = new GeoFire(FirebaseDatabase.getInstance().getReference().child("geoFire"));
 
     private static final int MY_LOCATION_REQUEST_CODE = 901;
 
@@ -77,15 +82,66 @@ public class GoogleMapActivity extends FragmentActivity implements
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         enableMyLocation();
+
+        addWellMarkers(mMap);
+        //updateUserLocation(mMap);
+
+    }
+
+    //method is in progress - This will updated the user information in the database evertime a user's location is changed
+    //and will display that change on the map to provide user location
+    private void updateUserLocation(GoogleMap googleMap){
+        IconGenerator customIcon = new IconGenerator(this);
+
+        googleMap.setOnMarkerClickListener(this);
+        mUserRef = FirebaseDatabase.getInstance().getReference().child("User").child(mAuth.getUid());
+        mUserRef.child("latitude").setValue(userLocation.getLatitude());
+        mUserRef.child("longitude").setValue(userLocation.getLongitude());
+
+        mUserRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                googleMap.clear();
+                for(DataSnapshot userSnapshot:dataSnapshot.getChildren()){
+                    User user = dataSnapshot.getValue(User.class);
+                    mMap.addMarker(new MarkerOptions().position(new LatLng(user.getLatitude(),user.getLongitude())).title("Jesus Quintero")).setIcon(BitmapDescriptorFactory.fromBitmap(customIcon.makeIcon("Jesus Quintero Ortiz")));
+                }
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    //Adds well markers with custom well name to display on the map
+    private void addWellMarkers(GoogleMap googleMap){
         IconGenerator customIcon = new IconGenerator(this);
 
         // Add points for waterwells
         googleMap.setOnMarkerClickListener(this);
         googleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
         mWellRef = FirebaseDatabase.getInstance().getReference().child("Well");
-        mWellRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        mWellRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                googleMap.clear();
                 for(DataSnapshot postSnapshot:dataSnapshot.getChildren()) {
                     Well well = postSnapshot.getValue(Well.class);
 
@@ -108,67 +164,7 @@ public class GoogleMapActivity extends FragmentActivity implements
             }
         });
 
-        //LatLng sydney = new LatLng(-34, 151);
-        //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-
-
-
     }
-
-    /*private void addMapMarkers(){
-        if(mMap != null){
-
-            if(mClusterManager == null){
-                mClusterManager = new ClusterManager<ClusterMarker>(getActivity().getApplicationContext(), mGoogleMap);
-            }
-            if(mClusterManagerRenderer == null){
-                mClusterManagerRenderer = new MyClusterManagerRenderer(
-                        getActivity(),
-                        mGoogleMap,
-                        mClusterManager
-                );
-                mClusterManager.setRenderer(mClusterManagerRenderer);
-            }
-
-            for(UserLocation userLocation: mUserLocations){
-
-                Log.d(TAG, "addMapMarkers: location: " + userLocation.getGeo_point().toString());
-                try{
-                    String snippet = "";
-                    if(userLocation.getUser().getUser_id().equals(FirebaseAuth.getInstance().getUid())){
-                        snippet = "This is you";
-                    }
-                    else{
-                        snippet = "Determine route to " + userLocation.getUser().getUsername() + "?";
-                    }
-
-                    int avatar = R.drawable.cartman_cop; // set the default avatar
-                    try{
-                        avatar = Integer.parseInt(userLocation.getUser().getAvatar());
-                    }catch (NumberFormatException e){
-                        Log.d(TAG, "addMapMarkers: no avatar for " + userLocation.getUser().getUsername() + ", setting default.");
-                    }
-                    ClusterMarker newClusterMarker = new ClusterMarker(
-                            new LatLng(userLocation.getGeo_point().getLatitude(), userLocation.getGeo_point().getLongitude()),
-                            userLocation.getUser().getUsername(),
-                            snippet,
-                            avatar,
-                            userLocation.getUser()
-                    );
-                    mClusterManager.addItem(newClusterMarker);
-                    mClusterMarkers.add(newClusterMarker);
-
-                }catch (NullPointerException e){
-                    Log.e(TAG, "addMapMarkers: NullPointerException: " + e.getMessage() );
-                }
-
-            }
-            mClusterManager.cluster();
-
-            setCameraView();
-        }
-
-    }*/
 
     /**
      * Enables the My Location layer if the fine location permission has been granted.
@@ -180,10 +176,28 @@ public class GoogleMapActivity extends FragmentActivity implements
             PermissionUtils.requestPermission(this, MY_LOCATION_REQUEST_CODE, Manifest.permission.ACCESS_FINE_LOCATION, true);
         } else if (mMap != null) {
             // Access to the location has been granted to the app.
+            locationManager = (LocationManager)this.getSystemService(LOCATION_SERVICE);
+            userLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            userLocation.setElapsedRealtimeNanos(3000);
+            /*if(userLocation!=null){
+                geoFire.setLocation(mAuth.getUid(), new GeoLocation(userLocation.getLatitude(), userLocation.getLongitude()), new GeoFire.CompletionListener() {
+                    @Override
+                    public void onComplete(String key, DatabaseError error) {
+                        if(error!=null){
+                            System.err.println("There was an error saving the location to GeoFire: " + error);
+                        }
+                        else{
+                            System.out.println("Location saved on server successfully!");
+                        }
+
+                    }
+                });
+            }*/
             mMap.setMyLocationEnabled(true);
         }
     }
 
+    //Checks to see if permission is granted so the app can access the user's location
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
@@ -201,18 +215,21 @@ public class GoogleMapActivity extends FragmentActivity implements
         }
     }
 
+    //displays a message that the location button was clicked
     @Override
     public boolean onMyLocationButtonClick() {
         Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT).show();
         return false;
     }
 
+    //displays message with the user's location when clicked
     @Override
     public void onMyLocationClick(@NonNull Location location) {
         Toast.makeText(this, "Current location:\n" + location, Toast.LENGTH_LONG).show();
 
     }
 
+    //if permission is not granted then displays a message to the user
     @Override
     protected void onResumeFragments() {
         super.onResumeFragments();

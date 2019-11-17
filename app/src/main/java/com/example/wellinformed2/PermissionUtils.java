@@ -9,7 +9,6 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
@@ -39,8 +38,6 @@ public abstract class PermissionUtils {
      * Checks if the result contains a {@link PackageManager#PERMISSION_GRANTED} result for a
      * permission from a runtime permissions request.
      */
-     //@see android.support.v4.app.ActivityCompat.OnRequestPermissionsResultCallback
-
     public static boolean isPermissionGranted(String[] grantPermissions, int[] grantResults,
                                               String permission) {
         for (int i = 0; i < grantPermissions.length; i++) {
@@ -73,6 +70,7 @@ public abstract class PermissionUtils {
             return dialog;
         }
 
+        //Alert the user that location permission has been denied
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             mFinishActivity = getArguments().getBoolean(ARGUMENT_FINISH_ACTIVITY);
@@ -82,6 +80,7 @@ public abstract class PermissionUtils {
                     .setPositiveButton(android.R.string.ok, null)
                     .create();
         }
+
 
         @Override
         public void onDismiss(DialogInterface dialog) {
@@ -131,6 +130,7 @@ public abstract class PermissionUtils {
             return dialog;
         }
 
+        //notifies the user that location will be detected
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             Bundle arguments = getArguments();
@@ -154,6 +154,7 @@ public abstract class PermissionUtils {
                     .create();
         }
 
+        //notifies the user that permission is required
         @Override
         public void onDismiss(DialogInterface dialog) {
             super.onDismiss(dialog);

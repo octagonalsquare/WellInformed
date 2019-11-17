@@ -48,8 +48,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         //if current user does not return null
         if(mAuth.getCurrentUser()!=null)
-        { //that means the user is already logged in
-
+        {
+            //that means the user is already logged in
             database = FirebaseDatabase.getInstance();
 
             mDatabase = database.getReference().child("users").child(user.getUid());
@@ -71,30 +71,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
 
         //initialize View
-
         edtEmail = findViewById(R.id.edtEmail);
         edtPassword = findViewById(R.id.edtPassword);
         btnLogin = findViewById(R.id.btnSignIn);
 
         btnLogin.setOnClickListener(this);
 
-        btnLogin=findViewById(R.id.btnSignIn);
+        //btnLogin=findViewById(R.id.btnSignIn);
 
-        btnLogin.setOnClickListener(this);
+        //btnLogin.setOnClickListener(this);
     }
 
+    //When Sign in button is clicked sign in the user
     @Override
     public void onClick(View view) {
         if(view==btnLogin){
             userLogin();
-            //startActivity(new Intent(this,MainActivity.class));
-            //ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this);
-            //Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            //startActivity(intent, options.toBundle());
-            //overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         }
     }
 
+    //Authenticates user using the stored credentials in google firebase
     private void userLogin() {
 
         String email = edtEmail.getText().toString().trim();

@@ -41,9 +41,11 @@
             android:name=".GoogleMapActivity"
             android:label="@string/title_activity_google_map"></activity>
         <activity android:name=".AddWellActivity" />
+
         <activity
             android:name=".wellDetails"
             android:label="Well Details" />
+
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,16 +53,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".ownerIndex"
             android:label="Owner Index" />
+
         <activity
             android:name=".drillerIndex"
             android:label="Driller Index" />
+
         <activity
             android:name=".wellIndex"
             android:label="Well Index" />
+
         <activity android:name=".MainActivity" />
+
         <activity
             android:name=".wellInspection"
             android:label="Well Inspection" />
