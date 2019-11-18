@@ -136,15 +136,8 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
 
 
             more = new TextView(this);
-            //more.setText(wellList.get(i).More);
-            //more.getCompoundDrawables(getResources().getDrawable(R.drawable.));
             more.setBackground(getResources().getDrawable(R.drawable.ic_more_horiz_black_24dp));
-            //more.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            //more.setGravity(Gravity.CENTER_VERTICAL);
             lp.gravity = Gravity.CENTER;
-            //lp.width=2;
-            //lp.height=70;
-            //lp.setMargins(3,10,3,1);
             more.setLayoutParams(lp);
             more.setId(i);
 
