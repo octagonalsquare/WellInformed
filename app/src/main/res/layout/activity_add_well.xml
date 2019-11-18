@@ -4,13 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="0dp"
     android:background="@color/lightBackground"
+    android:paddingLeft="5dp"
+    android:paddingTop="5dp"
+    android:paddingRight="5dp"
+    android:paddingBottom="5dp"
     tools:context=".AddWellActivity">
 
     <ScrollView
         android:id="@+id/well_details_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -22,7 +31,12 @@
             android:id="@+id/add_well_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="0dp"
             android:orientation="vertical"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,6 +47,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="101dp"
                 android:gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="Add Well Details"
                 android:textAlignment="center"
                 android:textSize="30sp"
@@ -42,8 +60,6 @@
                 android:id="@+id/edtWellName"
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint=" Well Name"
                 android:padding="5dp"
@@ -57,14 +73,16 @@
             <View
                 android:id="@+id/view89"
                 android:layout_width="match_parent"
-                android:layout_height="28dp" />
+                android:layout_height="28dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <EditText
                 android:id="@+id/edtLatitude"
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint=" Latitude"
                 android:padding="5dp"
@@ -78,14 +96,16 @@
             <View
                 android:id="@+id/view3"
                 android:layout_width="match_parent"
-                android:layout_height="28dp" />
+                android:layout_height="28dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <EditText
                 android:id="@+id/edtLongitude"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint=" Longitude"
                 android:padding="5dp"
@@ -99,14 +119,16 @@
             <View
                 android:id="@+id/view4"
                 android:layout_width="match_parent"
-                android:layout_height="28dp" />
+                android:layout_height="28dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <EditText
                 android:id="@+id/edtAddress"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint=" Address"
                 android:padding="5dp"
@@ -120,14 +142,16 @@
             <View
                 android:id="@+id/view5"
                 android:layout_width="match_parent"
-                android:layout_height="28dp" />
+                android:layout_height="28dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <EditText
                 android:id="@+id/edtWellType"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint=" Well Type"
                 android:padding="5dp"
@@ -141,14 +165,16 @@
             <View
                 android:id="@+id/view6"
                 android:layout_width="match_parent"
-                android:layout_height="28dp" />
+                android:layout_height="28dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <EditText
                 android:id="@+id/edtStatus"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint=" Status"
                 android:padding="5dp"
@@ -162,17 +188,20 @@
             <View
                 android:id="@+id/view7"
                 android:layout_width="match_parent"
-                android:layout_height="28dp" />
+                android:layout_height="28dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <TextView
                 android:id="@+id/txvWellDateEntered"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:layout_margin="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="License Expiration Date"
                 android:textAlignment="viewStart"
                 android:textSize="18sp"
@@ -182,20 +211,32 @@
                 android:id="@+id/edtDateEntered"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/lightBackground"
                 android:calendarViewShown="false"
                 android:datePickerMode="spinner"
-                android:background="@color/lightBackground" />
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <View
                 android:id="@+id/view8"
                 android:layout_width="match_parent"
-                android:layout_height="28dp" />
+                android:layout_height="28dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <TextView
                 android:id="@+id/txvOwnerDetails"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="Owner Details"
                 android:textAlignment="center"
                 android:textSize="24sp"
@@ -205,8 +246,6 @@
                 android:id="@+id/edtOwnerName"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint=" Owner Name"
                 android:padding="5dp"
@@ -220,14 +259,17 @@
             <View
                 android:id="@+id/view9"
                 android:layout_width="match_parent"
-                android:layout_height="28dp" />
+                android:layout_height="28dp"
+                android:layout_marginLeft="0dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <EditText
                 android:id="@+id/edtOwnerAddress"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint=" Owner Street Address"
                 android:padding="5dp"
@@ -241,14 +283,16 @@
             <View
                 android:id="@+id/view12"
                 android:layout_width="match_parent"
-                android:layout_height="28dp" />
+                android:layout_height="28dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <EditText
                 android:id="@+id/edtOwnerCity"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint=" Owner City"
                 android:padding="5dp"
@@ -262,14 +306,16 @@
             <View
                 android:id="@+id/view10"
                 android:layout_width="match_parent"
-                android:layout_height="28dp" />
+                android:layout_height="28dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <EditText
                 android:id="@+id/edtOwnerState"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint=" Owner State"
                 android:padding="5dp"
@@ -283,13 +329,21 @@
             <View
                 android:id="@+id/view11"
                 android:layout_width="match_parent"
-                android:layout_height="28dp" />
+                android:layout_height="28dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <TextView
                 android:id="@+id/txvDrillerDetails"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="Driller Details"
                 android:textAlignment="center"
                 android:textSize="24sp"
@@ -299,8 +353,6 @@
                 android:id="@+id/edtDrillerName"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint=" Driller Name"
                 android:padding="5dp"
@@ -314,14 +366,16 @@
             <View
                 android:id="@+id/view13"
                 android:layout_width="match_parent"
-                android:layout_height="28dp" />
+                android:layout_height="28dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <EditText
                 android:id="@+id/edtDrillerCompany"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint=" Driller Company"
                 android:padding="5dp"
@@ -335,14 +389,16 @@
             <View
                 android:id="@+id/view14"
                 android:layout_width="match_parent"
-                android:layout_height="28dp" />
+                android:layout_height="28dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <EditText
                 android:id="@+id/edtDrillerLicenseNumber"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint=" Driller License Number"
                 android:inputType="number"
@@ -357,17 +413,21 @@
             <View
                 android:id="@+id/view15"
                 android:layout_width="match_parent"
-                android:layout_height="28dp" />
+                android:layout_height="28dp"
+                android:layout_marginLeft="0dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <TextView
                 android:id="@+id/txvDrillerLicenseExpirationDate"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:layout_margin="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="License Expiration Date"
                 android:textAlignment="viewStart"
                 android:textSize="18sp"
@@ -377,22 +437,33 @@
                 android:id="@+id/edtDrillerLicenseExpirationDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:background="@color/lightBackground"
                 android:calendarViewShown="false"
                 android:datePickerMode="spinner"
-                android:background="@color/lightBackground"/>
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <View
                 android:id="@+id/view16"
                 android:layout_width="match_parent"
-                android:layout_height="28dp" />
+                android:layout_height="28dp"
+                android:layout_marginLeft="0dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <Button
                 android:id="@+id/btnSumbitWell"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="0dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"
+                android:background="@drawable/rounded_corner"
                 android:gravity="center"
                 android:padding="5dp"
                 android:paddingStart="5dp"
@@ -401,7 +472,6 @@
                 android:paddingEnd="5dp"
                 android:paddingRight="5dp"
                 android:paddingBottom="5dp"
-                android:background="@drawable/rounded_corner"
                 android:text="Add Well" />
 
         </LinearLayout>

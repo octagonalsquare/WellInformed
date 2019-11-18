@@ -4,13 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".wellInspection"
-    android:background="@color/lightBackground">
+    android:background="@color/lightBackground"
+    android:paddingLeft="5dp"
+    android:paddingTop="5dp"
+    android:paddingRight="5dp"
+    android:paddingBottom="5dp"
+    tools:context=".wellInspection">
 
     <ScrollView
         android:id="@+id/inspection_scroll_view"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,16 +27,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp">
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="43dp"
                 android:layout_column="1"
                 android:alpha="1"
                 android:background="@color/lightBackground"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="Well Name"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
@@ -37,25 +53,36 @@
             <EditText
                 android:id="@+id/WellInspectionWellName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint="ie: Well #1"
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></EditText>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="43dp"
                 android:layout_column="1"
                 android:alpha="1"
                 android:background="@color/lightBackground"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="Well ID"
-                android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
                 android:textSize="20sp" />
@@ -63,20 +90,28 @@
             <EditText
                 android:id="@+id/WellInspectionWellID"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint="ie: Well #1"
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></EditText>
 
             <TextView
                 android:id="@+id/txvDrillerLicenseExpirationDate"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="43dp"
                 android:layout_margin="5dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="5dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="Today's Date"
                 android:textAlignment="center"
                 android:textSize="18sp"
@@ -85,23 +120,35 @@
             <DatePicker
                 android:id="@+id/WellInspectionTodaysDate"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
+                android:background="@color/lightBackground"
                 android:calendarViewShown="false"
                 android:datePickerMode="spinner"
-                android:background="@color/lightBackground"/>
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="43dp"
                 android:layout_column="1"
                 android:alpha="1"
                 android:background="@color/lightBackground"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="Well Address"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
@@ -110,23 +157,35 @@
             <EditText
                 android:id="@+id/WellInspectionWellAddress"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint="ie: 123 Smith Drive Tyler, Texas"
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></EditText>
 
             <View
-            android:layout_width="match_parent"
-            android:layout_height="20dp"/>
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="43dp"
                 android:layout_column="1"
                 android:alpha="1"
                 android:background="@color/lightBackground"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="Total Depth"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
@@ -135,23 +194,35 @@
             <EditText
                 android:id="@+id/WellInspectionTotalDepth"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint="ie: 1000 ft."
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></EditText>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="43dp"
                 android:layout_column="1"
                 android:alpha="1"
                 android:background="@color/lightBackground"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="Water Level"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
@@ -160,24 +231,35 @@
             <EditText
                 android:id="@+id/WellInspectionWaterLevel"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint="ie: 500 ft."
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></EditText>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:paddingTop="10dp" />
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="43dp"
                 android:layout_column="1"
                 android:alpha="1"
                 android:background="@color/lightBackground"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="Casing Type"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
@@ -186,23 +268,35 @@
             <EditText
                 android:id="@+id/WellInspectionCasingType"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint="ie: round"
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></EditText>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="43dp"
                 android:layout_column="1"
                 android:alpha="1"
                 android:background="@color/lightBackground"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="Casing Height"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
@@ -211,23 +305,35 @@
             <EditText
                 android:id="@+id/WellInspectionCasingHeight"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint="ie: Well #1"
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></EditText>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="43dp"
                 android:layout_column="1"
                 android:alpha="1"
                 android:background="@color/lightBackground"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="Sleeve Type"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
@@ -236,23 +342,35 @@
             <EditText
                 android:id="@+id/WellInspectionSleeveType"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint="ie: Well #1"
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></EditText>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="43dp"
                 android:layout_column="1"
                 android:alpha="1"
                 android:background="@color/lightBackground"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="Sleeve Height"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
@@ -261,23 +379,35 @@
             <EditText
                 android:id="@+id/WellInspectionSleeveHeight"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint="ie: Well #1"
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></EditText>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="43dp"
                 android:layout_column="1"
                 android:alpha="1"
                 android:background="@color/lightBackground"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="Screen Depth"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
@@ -286,23 +416,35 @@
             <EditText
                 android:id="@+id/WellInspectionScreenDepth"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint="ie: Well #1"
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></EditText>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="43dp"
                 android:layout_column="1"
                 android:alpha="1"
                 android:background="@color/lightBackground"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="Annular Cement Depth"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
@@ -311,23 +453,35 @@
             <EditText
                 android:id="@+id/WellInspectionAnnularCementDepth"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint="ie: Well #1"
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></EditText>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="43dp"
                 android:layout_column="1"
                 android:alpha="1"
                 android:background="@color/lightBackground"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="Annular Cement Verified"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
@@ -336,23 +490,35 @@
             <EditText
                 android:id="@+id/WellInspectionAnnularCementVerified"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint="ie: Well #1"
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></EditText>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="43dp"
                 android:layout_column="1"
                 android:alpha="1"
                 android:background="@color/lightBackground"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="Pad Dimensions"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
@@ -361,23 +527,35 @@
             <EditText
                 android:id="@+id/WellInspectionPadDimensions"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint="ie: Well #1"
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></EditText>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="43dp"
                 android:layout_column="1"
                 android:alpha="1"
                 android:background="@color/lightBackground"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="Flow Test GPM"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
@@ -386,23 +564,35 @@
             <EditText
                 android:id="@+id/WellInspectionFlowTestGPM"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint="ie: Well #1"
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></EditText>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="43dp"
                 android:layout_column="1"
                 android:alpha="1"
                 android:background="@color/lightBackground"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="Flow Test Method"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
@@ -411,23 +601,35 @@
             <EditText
                 android:id="@+id/WellInspectionFlowTestMethodTime"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint="ie: Well #1"
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></EditText>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="43dp"
                 android:layout_column="1"
                 android:alpha="1"
                 android:background="@color/lightBackground"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="Sanitary Well Seal"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
@@ -436,21 +638,33 @@
             <RadioButton
                 android:id="@+id/WellInspectionSanitaryWellSeal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"></RadioButton>
+                android:layout_height="43dp"
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></RadioButton>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="43dp"
                 android:layout_column="1"
                 android:alpha="1"
                 android:background="@color/lightBackground"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="Various Distances"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
@@ -459,74 +673,122 @@
             <EditText
                 android:id="@+id/WellInspectionSepticDistance"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint="Septic System Distance"
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></EditText>
 
             <View
-            android:layout_width="match_parent"
-            android:layout_height="10dp"/>
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <EditText
                 android:id="@+id/WellInspectionPropertyLineDistance"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint="Property Line"
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></EditText>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="10dp"/>
+                android:layout_height="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <EditText
                 android:id="@+id/WellInspectionNearestWellDistance"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint="Nearest Well"
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></EditText>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="10dp"/>
+                android:layout_height="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <EditText
                 android:id="@+id/WellInspectionAerobicSprayAreaDistance"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint="Aerobic Spray Area"
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></EditText>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="10dp"/>
+                android:layout_height="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <EditText
                 android:id="@+id/WellInspectionSepticLateralLinesDistance"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint="Septic Lateral Lines"
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></EditText>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="10dp"/>
+                android:layout_height="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <EditText
                 android:id="@+id/WellInspectionOtherContaminationSourcesDistance"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:background="@drawable/white_rounded_corner"
                 android:hint="Other Contamination Sources"
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></EditText>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
             <TextView
                 android:id="@+id/WellInspectionSubmit"
@@ -534,6 +796,10 @@
                 android:layout_height="50dp"
                 android:background="@drawable/rounded_corner"
                 android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="SUBMIT"
                 android:textAlignment="center"
                 android:textColor="#F9F9F9"
@@ -541,7 +807,11 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
 
         </LinearLayout>
     </ScrollView>

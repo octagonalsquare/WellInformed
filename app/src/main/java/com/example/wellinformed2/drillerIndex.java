@@ -77,52 +77,6 @@ public class drillerIndex extends AppCompatActivity {
         table = new TableLayout(this);
         table.setStretchAllColumns(true);
 
-        List<Driller> drillerList = new ArrayList<>();
-
-        /*myRef.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                Driller newDriller = dataSnapshot.getValue(Driller.class);
-                drillerList.add(newDriller);
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {}
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {}
-
-            @Override
-            public void onCancelled(DatabaseError databaseError)
-            {
-                System.out.println("Database Error:" + databaseError.getMessage());
-            }
-        });
-
-        drillerList.add(new Driller("Craig", "CJonesDigging"));
-
-        drillerList.add(new Driller("John", "CJonesDigging"));
-
-        drillerList.add(new Driller("Josh","Well Dig It"));
-
-        drillerList.add(new Driller("Caleb", "Well Informed"));
-
-        drillerList.add(new Driller("Yash", "Well Informed"));
-
-        drillerList.add(new Driller("Jesus","Well Informed"));
-
-        drillerList.add(new Driller("Will", "Well Informed"));
-
-        drillerList.add(new Driller("Bill","Well Dig It"));
-
-        for (int i = 0; i < drillerList.size(); i++)
-        {
-            myRef.child("Driller").child(Integer.toString(i)).setValue(drillerList.get(i).ToMap());
-        }*/
-
         mDrillerRef = mDrillerRef.child("Driller");
         final List<Driller> drillerIndexList = new ArrayList<>();
         drillerIndexList.clear();
@@ -150,23 +104,26 @@ public class drillerIndex extends AppCompatActivity {
 
         for (int i = 0; i < drillerIndexList.size(); i++) {
             TableRow row = new TableRow(this);
-            TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.FILL_PARENT);
+            TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, 30);
 
             row.setLayoutParams(lp);
 
             TextView name = new TextView(this);
             name.setText(drillerIndexList.get(i).Name);
             name.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            name.setTextSize(20);
 
 
             TextView companyName = new TextView(this);
             companyName.setText(drillerIndexList.get(i).CompanyName);
             companyName.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            companyName.setTextSize(20);
 
 
             TextView more = new TextView(this);
             more.setText("...");
             more.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            more.setTextSize(20);
 
 
             row.addView(name);
@@ -193,7 +150,7 @@ class Driller
     public int LicenseNumber = 0;
     public String LicenseExpirationDate;
 
-    Driller(){};
+    Driller(){}
 
     Driller(String name, String companyName, int licenseNumber,
             String licenseExpirationDate)

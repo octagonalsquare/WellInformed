@@ -99,23 +99,26 @@ public class ownerIndex extends AppCompatActivity {
 
         for (int i = 0; i < ownerList.size(); i++) {
             TableRow row = new TableRow(this);
-            TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.FILL_PARENT);
+            TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, 30);
 
             row.setLayoutParams(lp);
 
             TextView name = new TextView(this);
             name.setText(ownerList.get(i).Name);
             name.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            name.setTextSize(20);
 
 
             TextView city = new TextView(this);
             city.setText(ownerList.get(i).City);
             city.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            city.setTextSize(20);
 
 
             TextView state = new TextView(this);
             state.setText(ownerList.get(i).State);
             state.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            state.setTextSize(20);
 
 
             row.addView(name);

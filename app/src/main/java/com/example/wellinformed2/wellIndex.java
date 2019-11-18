@@ -31,6 +31,7 @@ import java.util.List;
 import java.util.Map;
 
 import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
 public class wellIndex extends AppCompatActivity implements View.OnClickListener {
 
@@ -107,7 +108,7 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
         for (int i = 0; i < wellIndexList.size(); i++)
         {
             TableRow row = new TableRow(this);
-            TableRow.LayoutParams lp = new TableRow.LayoutParams(FILL_PARENT, FILL_PARENT);
+            TableRow.LayoutParams lp = new TableRow.LayoutParams(MATCH_PARENT, 30);
             row.setLayoutParams(lp);
 
             TextView id = new TextView(this);
@@ -115,14 +116,17 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
             ID = ID.substring(0, Math.min(ID.length(), 3));
             id.setText(ID + "...");
             id.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            id.setTextSize(20);
 
             TextView name = new TextView(this);
             name.setText(wellIndexList.get(i).Name);
             name.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            name.setTextSize(20);
 
             TextView status = new TextView(this);
             status.setText(wellIndexList.get(i).Status);
             status.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            status.setTextSize(20);
 
 
             more = new TextView(this);
