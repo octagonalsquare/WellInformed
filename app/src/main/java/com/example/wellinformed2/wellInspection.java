@@ -42,9 +42,10 @@ public class wellInspection extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_well_inspection);
         Bundle extras = getIntent().getExtras();
-        wellName = (String)extras.get("Well Name");
-        wellID = (String)extras.get("Well ID");
-        drillerName = (String)extras.get("Driller Name");
+        Well temp = (Well)extras.get("Selected Well");
+        wellName = temp.Name;
+        wellID = temp.ID;
+        drillerName = temp.DrillerName;
 
         submitButton = findViewById(R.id.WellInspectionSubmit);
 

@@ -33,7 +33,7 @@
             tools:layout_editor_absoluteY="1dp">
 
             <TextView
-                android:id="@+id/txvDetailsWellID"
+                android:id="@+id/txvDetailsWellName"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:fontFamily="sans-serif-smallcaps"
@@ -42,14 +42,14 @@
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 app:layout_constraintBottom_toTopOf="@+id/inspection_scroll_view"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/txvDetailsTitleWellName"
+                android:id="@+id/txvDetailsTitleWellID"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:layout_column="1"
@@ -61,13 +61,13 @@
                 android:paddingTop="5dp"
                 android:paddingRight="5dp"
                 android:paddingBottom="5dp"
-                android:text="Well Name"
+                android:text="Well ID"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/txvDetailsName"
+                android:id="@+id/txvDetailsID"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:fontFamily="sans-serif-smallcaps"
@@ -339,6 +339,14 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
                 android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/buttonDetailsStartInspection"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/rounded_corner"
+                android:text="Create Inspection Report"
+                android:textSize="20sp"/>
 
         </LinearLayout>
     </ScrollView>

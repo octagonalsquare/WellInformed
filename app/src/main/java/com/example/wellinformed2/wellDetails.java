@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 //well details activity that displays the details of a selected well
@@ -25,7 +27,7 @@ public class wellDetails extends AppCompatActivity {
     private TextView wellTypeView;
     private TextView wellDateEnteredView;
     private TextView wellOwnerView;
-
+    private Button inspectionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,38 +37,26 @@ public class wellDetails extends AppCompatActivity {
         selectedWell = (Well)extras.get("Selected");
         selectedWellID = extras.getString("Selected ID");
 
+        inspectionButton = findViewById(R.id.buttonDetailsStartInspection);
+        inspectionButton.setOnClickListener(this::onClick);
 
         displayWellDetails();
     }
 
-    //When this activity starts this is initiated to create an options menu in the
-    //the activity window in the top right
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.well_details_menu, menu);
-        return true;
-    }
-
     //Gives directions to each button to do if selected
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.nav_inpection_report:
-                Intent i = new Intent(this, wellDetails.class);
-                i.putExtra("Well Name", selectedWell.Name);
-                i.putExtra("Well ID", selectedWell.ID);
-                i.putExtra("Driller Name", selectedWell.DrillerName);
-                startActivity(i);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+
+    public void onClick(View view)
+    {
+        Intent i = new Intent(this, wellInspection.class);
+        i.putExtra("Selected Well", selectedWell);
+        startActivity(i);
     }
 
     //displays well details by setting the text of the appropriate text view
     public void displayWellDetails()
     {
-        wellIDView = findViewById(R.id.txvDetailsWellID);
-        wellNameView = findViewById(R.id.txvDetailsName);
+        wellIDView = findViewById(R.id.txvDetailsID);
+        wellNameView = findViewById(R.id.txvDetailsWellName);
         wellLatitudeView = findViewById(R.id.txvDetailsLatitude);
         wellLongitudeView = findViewById(R.id.txvDetailsLongitude);
         wellAddressView = findViewById(R.id.txvDetailsAddress);
@@ -85,6 +75,4 @@ public class wellDetails extends AppCompatActivity {
         wellDateEnteredView.setText(selectedWell.Date);
         wellOwnerView.setText(selectedWell.Owner);
     }
-
-
 }
