@@ -27,7 +27,8 @@ import java.util.List;
 import java.util.Map;
 
 //Activity displays a table with owner information to display all owners in firebase
-public class ownerIndex extends AppCompatActivity {
+public class ownerIndex extends AppCompatActivity
+{
 
     TableLayout table;
     ScrollView scrollView;
@@ -35,7 +36,8 @@ public class ownerIndex extends AppCompatActivity {
     DatabaseReference myOwnerRef;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_index);
 
@@ -48,15 +50,18 @@ public class ownerIndex extends AppCompatActivity {
 
     //When this activity starts this is initiated to create an options menu in the
     //the activity window in the top right
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.navigation_menu, menu);
         return true;
     }
 
     //Gives directions to each button to do if selected
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
             case R.id.nav_dashboard:
                 startActivity(new Intent(this, wellIndex.class));
                 return true;
@@ -69,17 +74,21 @@ public class ownerIndex extends AppCompatActivity {
     }
 
     //Gets owner information from firebase and stores in a array list
-    public void displayOwnerTable(DatabaseReference mOwnerRef) {
+    public void displayOwnerTable(DatabaseReference mOwnerRef)
+    {
         table = new TableLayout(this);
         table.setStretchAllColumns(true);
 
         List<Owner> ownerList = new ArrayList<>();
         ownerList.clear();
         mOwnerRef = mOwnerRef.child("Owner");
-        mOwnerRef.addValueEventListener(new ValueEventListener() {
+        mOwnerRef.addValueEventListener(new ValueEventListener()
+        {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot postSnapshot:dataSnapshot.getChildren()){
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                for(DataSnapshot postSnapshot:dataSnapshot.getChildren())
+                {
                     Owner owner = postSnapshot.getValue(Owner.class);
                     ownerList.add(owner);
                 }
@@ -95,9 +104,10 @@ public class ownerIndex extends AppCompatActivity {
     }
 
     //adds owner information to table to be displays
-    private void addOwnersToTable(List<Owner> ownerList) {
-
-        for (int i = 0; i < ownerList.size(); i++) {
+    private void addOwnersToTable(List<Owner> ownerList)
+    {
+        for (int i = 0; i < ownerList.size(); i++)
+        {
             TableRow row = new TableRow(this);
             TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, 30);
 

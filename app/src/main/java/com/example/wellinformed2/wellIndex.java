@@ -2,7 +2,6 @@ package com.example.wellinformed2;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,11 +29,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
-public class wellIndex extends AppCompatActivity implements View.OnClickListener {
-
+public class wellIndex extends AppCompatActivity implements View.OnClickListener
+{
     TableLayout table;
     ScrollView scrollView;
     TextView more;
@@ -43,7 +41,8 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
     List<Well> wellIndexList;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_well_index);
 
@@ -56,14 +55,16 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
 
     //When this activity starts this is initiated to create an options menu in the
     //the activity window in the top right
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.well_index_menu, menu);
         return true;
     }
 
     //Gives directions to each button to do if selected
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         switch (item.getItemId()) {
             case R.id.add_well:
                 startActivity(new Intent(this,AddWellActivity.class));
@@ -74,7 +75,8 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
     }
 
     //retrieves information of each well in the database and stores it in a array list
-    public void displayWellTable(DatabaseReference mWellRef) {
+    public void displayWellTable(DatabaseReference mWellRef)
+    {
         table = new TableLayout(this);
         table.setStretchAllColumns(true);
 
@@ -82,10 +84,13 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
         wellIndexList = new ArrayList<>();
         wellIndexList.clear();
 
-        mWellRef.addValueEventListener(new ValueEventListener() {
+        mWellRef.addValueEventListener(new ValueEventListener()
+        {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot postSnapshot:dataSnapshot.getChildren()) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                for(DataSnapshot postSnapshot:dataSnapshot.getChildren())
+                {
                     Well well = postSnapshot.getValue(Well.class);
                     well.AddID(postSnapshot.getKey());
                     wellIndexList.add(well);
@@ -95,7 +100,8 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
                 System.out.println("The read failed: " + FirebaseError.ERROR_INTERNAL_ERROR);
             }
         });
@@ -187,7 +193,8 @@ class Well implements Serializable
 
     Well(){ }
 
-    Well(String name, String latitude, String longitude, String status, String address, String type, String owner, String date, String drillerName)
+    Well(String name, String latitude, String longitude, String status, String address, String type,
+         String owner, String date, String drillerName)
     {
         Name = name;
         Latitude = latitude;

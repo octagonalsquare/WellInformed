@@ -15,7 +15,6 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.google.firebase.FirebaseError;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,14 +23,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 
 //drillerIndex activity displays all the current drillers in the database
-public class drillerIndex extends AppCompatActivity {
+public class drillerIndex extends AppCompatActivity
+{
 
     TableLayout table;
     ScrollView scrollView;
@@ -39,7 +38,8 @@ public class drillerIndex extends AppCompatActivity {
     DatabaseReference myRef;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driller_index);
 
@@ -52,14 +52,16 @@ public class drillerIndex extends AppCompatActivity {
 
     //When this activity starts this is initiated to create an options menu in the
     //the activity window in the top right
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.navigation_menu, menu);
         return true;
     }
 
     //Gives directions to each button to do if selected
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         switch (item.getItemId()) {
             case R.id.nav_dashboard:
                 startActivity(new Intent(this, wellIndex.class));
@@ -73,7 +75,8 @@ public class drillerIndex extends AppCompatActivity {
     }
 
     //Gets the drillers information from the database
-    public void displayDrillerTable(DatabaseReference mDrillerRef) {
+    public void displayDrillerTable(DatabaseReference mDrillerRef)
+    {
         table = new TableLayout(this);
         table.setStretchAllColumns(true);
 
@@ -81,10 +84,13 @@ public class drillerIndex extends AppCompatActivity {
         final List<Driller> drillerIndexList = new ArrayList<>();
         drillerIndexList.clear();
 
-        mDrillerRef.addValueEventListener(new ValueEventListener() {
+        mDrillerRef.addValueEventListener(new ValueEventListener()
+        {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot postSnapshot:dataSnapshot.getChildren()) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                for(DataSnapshot postSnapshot:dataSnapshot.getChildren())
+                {
                     Driller driller = postSnapshot.getValue(Driller.class);
                     drillerIndexList.add(driller);
                 }
@@ -93,16 +99,19 @@ public class drillerIndex extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
                 System.out.println("The read failed: " + FirebaseError.ERROR_INTERNAL_ERROR);
             }
         });
     }
 
     //Adds a driller information to the table to be displayed
-    private void addDrillerToTable(List<Driller> drillerIndexList) {
+    private void addDrillerToTable(List<Driller> drillerIndexList)
+    {
 
-        for (int i = 0; i < drillerIndexList.size(); i++) {
+        for (int i = 0; i < drillerIndexList.size(); i++)
+        {
             TableRow row = new TableRow(this);
             TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, 30);
 
