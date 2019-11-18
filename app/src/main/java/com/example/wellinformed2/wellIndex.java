@@ -179,10 +179,11 @@ class Well implements Serializable
     public String Owner;
     public String Date;
     public String ID;
+    public String DrillerName;
 
     Well(){ }
 
-    Well(String name, String latitude, String longitude, String status, String address, String type, String owner, String date)
+    Well(String name, String latitude, String longitude, String status, String address, String type, String owner, String date, String drillerName)
     {
         Name = name;
         Latitude = latitude;
@@ -192,6 +193,7 @@ class Well implements Serializable
         Type = type;
         Owner = owner;
         Date = date;
+        DrillerName = drillerName;
     }
 
     Well(Map<String, Object> map)

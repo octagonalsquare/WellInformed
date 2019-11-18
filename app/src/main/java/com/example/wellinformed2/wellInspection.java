@@ -1,24 +1,37 @@
 package com.example.wellinformed2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.sql.Date;
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 
 //well inspection activity creates a report to a certain well that it will be attached to by displaying
 //different data fields that the user will enter
 public class wellInspection extends AppCompatActivity implements View.OnClickListener
 {
     TextView submitButton;
+    String wellName;
+    String wellID;
+    String drillerName;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference mDatabaseRef;
@@ -28,6 +41,10 @@ public class wellInspection extends AppCompatActivity implements View.OnClickLis
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_well_inspection);
+        Bundle extras = getIntent().getExtras();
+        wellName = (String)extras.get("Well Name");
+        wellID = (String)extras.get("Well ID");
+        drillerName = (String)extras.get("Driller Name");
 
         submitButton = findViewById(R.id.WellInspectionSubmit);
 
@@ -51,6 +68,7 @@ public class wellInspection extends AppCompatActivity implements View.OnClickLis
         
         
         EditText edit = findViewById(R.id.WellInspectionWellName);
+        edit.setText(wellName);
         Editable editable = edit.getText();
         String WellName = editable.toString();
         if(TextUtils.isEmpty(WellName))
@@ -61,6 +79,7 @@ public class wellInspection extends AppCompatActivity implements View.OnClickLis
         }
 
         edit =  findViewById(R.id.WellInspectionWellID);
+        edit.setText(wellID);
         editable = edit.getText();
         String WellID = editable.toString();
         if(TextUtils.isEmpty(WellID))
@@ -69,6 +88,10 @@ public class wellInspection extends AppCompatActivity implements View.OnClickLis
             Toast.makeText(this, "Need Well ID", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        DatePicker today = findViewById(R.id.WellInspectionTodaysDate);
+        final String date = today.getDayOfMonth() + "/" + today.getMonth()
+                + "/" + today.getYear();
 
         edit =  findViewById(R.id.WellInspectionWellAddress);
         editable = edit.getText();
@@ -271,83 +294,113 @@ public class wellInspection extends AppCompatActivity implements View.OnClickLis
                     FlowTestMethodTime, SanitaryWellSeal, SepticDistance, PropertyLineDistance,
                     NearestWellDistance, AerobicSprayAreaDistance, SepticLateralLinesDistance,
                     OtherContaminationSourcesDistance);
-            mDatabaseRef.child("Well-InspectionReports").setValue(report);
+
+            Map<String, Object> childUpdates = new HashMap<>();
+            final String key = report.WellName + ":" + date;
+            final String wellKey = drillerName + ":" + wellName;
+
+            mDatabaseRef.child("InspectionReports").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Boolean found = false;
+                    for( DataSnapshot data : dataSnapshot.getChildren())
+                    {
+                        if (data.getKey().compareTo(key) == 0)
+                        {
+                            found = true;
+                        }
+                    }
+
+                    if (!found)
+                    {
+                        childUpdates.put("/InspectionReports/" + key, report);
+                        childUpdates.put("/Well-InspectionReports/" + wellKey + "/" + key, report);
+                        mDatabaseRef.updateChildren(childUpdates);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
         }
+    }
+}
+
+
+//well inspection class stores the data the user entered in a
+//well report object that will be passed to the fierbase to store it
+class WellInspection
+{
+    public  String WellName;
+    public  String WellID;
+    public  String WellAddress;
+    public  String TotalDepth;
+    public  String WaterLevel;
+    public  String CasingType;
+    public  String CasingHeight;
+    public  String SleeveType;
+    public  String SleeveHeight;
+    public  String ScreenDepth;
+    public  String AnnularCementDepth;
+    public  String AnnularCementVerified;
+    public  String PadDimensions;
+    public  String FlowTestGPM;
+    public  String FlowTestMethodTime;
+    public  Boolean SanitaryWellSeal;
+    public  String SepticDistance;
+    public  String PropertyLineDistance;
+    public  String NearestWellDistance;
+    public  String AerobicSprayAreaDistance;
+    public  String SepticLateralLinesDistance;
+    public  String OtherContaminationSourcesDistance;
+
+    WellInspection(String wellName,
+                   String wellID,
+                   String wellAddress,
+                   String totalDepth,
+                   String waterLevel,
+                   String casingType,
+                   String casingHeight,
+                   String sleeveType,
+                   String sleeveHeight,
+                   String screenDepth,
+                   String annularCementDepth,
+                   String annularCementVerified,
+                   String padDimensions,
+                   String flowTestGPM,
+                   String flowTestMethodTime,
+                   Boolean sanitaryWellSeal,
+                   String septicDistance,
+                   String propertyLineDistance,
+                   String nearestWellDistance,
+                   String aerobicSprayAreaDistance,
+                   String septicLateralLinesDistance,
+                   String otherContaminationSourcesDistance)
+    {
+        WellID = wellID;
+        WellName = wellName;
+        WellAddress = wellAddress;
+        CasingType = casingType;
+        FlowTestGPM = flowTestGPM;
+        CasingHeight = casingHeight;
+        SleeveHeight = sleeveHeight;
+        PadDimensions = padDimensions;
+        ScreenDepth = screenDepth;
+        SleeveType = sleeveType;
+        AnnularCementDepth = annularCementDepth;
+        WaterLevel = waterLevel;
+        TotalDepth = totalDepth;
+        AnnularCementVerified = annularCementVerified;
+        FlowTestMethodTime = flowTestMethodTime;
+        SanitaryWellSeal = sanitaryWellSeal;
+        SepticDistance = septicDistance;
+        PropertyLineDistance = propertyLineDistance;
+        NearestWellDistance = nearestWellDistance;
+        AerobicSprayAreaDistance = aerobicSprayAreaDistance;
+        SepticLateralLinesDistance = septicLateralLinesDistance;
+        OtherContaminationSourcesDistance = otherContaminationSourcesDistance;
     }
 
-    //well inspection class stores the data the user entered in a
-    //well report object that will be passed to the fierbase to store it
-    class WellInspection
-    {
-        public  String WellName;
-        public  String WellID;
-        public  String WellAddress;
-        public  String TotalDepth;
-        public  String WaterLevel;
-        public  String CasingType;
-        public  String CasingHeight;
-        public  String SleeveType;
-        public  String SleeveHeight;
-        public  String ScreenDepth;
-        public  String AnnularCementDepth;
-        public  String AnnularCementVerified;
-        public  String PadDimensions;
-        public  String FlowTestGPM;
-        public  String FlowTestMethodTime;
-        public  Boolean SanitaryWellSeal;
-        public  String SepticDistance;
-        public  String PropertyLineDistance;
-        public  String NearestWellDistance;
-        public  String AerobicSprayAreaDistance;
-        public  String SepticLateralLinesDistance;
-        public  String OtherContaminationSourcesDistance;
-        
-        WellInspection(String wellName,
-                String wellID,
-                String wellAddress,
-                String totalDepth,
-                String waterLevel,
-                String casingType,
-                String casingHeight,
-                String sleeveType,
-                String sleeveHeight,
-                String screenDepth,
-                String annularCementDepth,
-                String annularCementVerified,
-                String padDimensions,
-                String flowTestGPM,
-                String flowTestMethodTime,
-                Boolean sanitaryWellSeal,
-                String septicDistance,
-                String propertyLineDistance,
-                String nearestWellDistance,
-                String aerobicSprayAreaDistance,
-                String septicLateralLinesDistance,
-                String otherContaminationSourcesDistance)
-        {
-            WellID = wellID;
-            WellName = wellName;
-            WellAddress = wellAddress;
-            CasingType = casingType;
-            FlowTestGPM = flowTestGPM;
-            CasingHeight = casingHeight;
-            SleeveHeight = sleeveHeight;
-            PadDimensions = padDimensions;
-            ScreenDepth = screenDepth;
-            SleeveType = sleeveType;
-            AnnularCementDepth = annularCementDepth;
-            WaterLevel = waterLevel;
-            TotalDepth = totalDepth;
-            AnnularCementVerified = annularCementVerified;
-            FlowTestMethodTime = flowTestMethodTime;
-            SanitaryWellSeal = sanitaryWellSeal;
-            SepticDistance = septicDistance;
-            PropertyLineDistance = propertyLineDistance;
-            NearestWellDistance = nearestWellDistance;
-            AerobicSprayAreaDistance = aerobicSprayAreaDistance;
-            SepticLateralLinesDistance = septicLateralLinesDistance;
-            OtherContaminationSourcesDistance = otherContaminationSourcesDistance;
-        }
-        
-    }
 }

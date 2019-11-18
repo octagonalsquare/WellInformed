@@ -112,7 +112,7 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         String key = drillerName + ":" + wellName;
-        Well newWell = new Well(wellName, latitude, longitude, wellStatus, address, wellType, ownerName, dateEntered);
+        Well newWell = new Well(wellName, latitude, longitude, wellStatus, address, wellType, ownerName, dateEntered, drillerName);
         Map<String, Object> wellValues = newWell.ToMap();
 
         Map<String, Object> childUpdates = new HashMap<>();

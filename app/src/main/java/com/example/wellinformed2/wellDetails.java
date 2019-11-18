@@ -51,7 +51,11 @@ public class wellDetails extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_inpection_report:
-                startActivity(new Intent(this, wellInspection.class));
+                Intent i = new Intent(this, wellDetails.class);
+                i.putExtra("Well Name", selectedWell.Name);
+                i.putExtra("Well ID", selectedWell.ID);
+                i.putExtra("Driller Name", selectedWell.DrillerName);
+                startActivity(i);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
