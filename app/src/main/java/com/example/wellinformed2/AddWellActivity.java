@@ -214,7 +214,6 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
         String key = drillerName;
         Driller newDriller = new Driller(drillerName, drillerCompany, drillerLicenseNumber, drillerLicenseExpirationDate);
         Map<String, Object> wellValues = newDriller.ToMap();
-        wellValues.remove(drillerName);
         Map<String, Object> childUpdates = new HashMap<>();
 
         mDatabaseRef.child("Driller").addListenerForSingleValueEvent(new ValueEventListener() {
