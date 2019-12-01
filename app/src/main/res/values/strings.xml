@@ -12,4 +12,5 @@
     <string name="inspection_report">Create Inspection Report</string>
     <string name="well_details">Well Details</string>
     <string name="title_activity_google_map">wellMap</string>
+    <string name="title_activity_view_report">ViewReport</string>
 </resources>

@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:background="@color/lightBackground"
+    tools:context=".ViewReport">
+
+    <ScrollView
+        android:id="@+id/inspection_scroll_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Well Name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ReportWellName"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/evenRowBackground"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Well ID"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ReportWellID"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/evenRowBackground"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Report Date"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ReportDate"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/evenRowBackground"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Well Address"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ReportWellAddress"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/evenRowBackground"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Total Depth"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ReportTotalDepth"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/evenRowBackground"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Water Level"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ReportWaterLevel"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/evenRowBackground"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Casing Type"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ReportCasingType"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/evenRowBackground"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Casing Height"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ReportCasingHeight"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/evenRowBackground"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Sleeve Type"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ReportSleeveType"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/evenRowBackground"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Sleeve Height"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ReportSleeveHeight"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/evenRowBackground"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Screen Depth"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ReportScreenDepth"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/evenRowBackground"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Annular Cement Depth"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ReportAnnularCementDepth"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/evenRowBackground"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Annular Cement Verified"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ReportAnnularCementVerified"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/evenRowBackground"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Pad Dimensions"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ReportPadDimensions"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/evenRowBackground"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Flow Test GPM"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ReportFlowTestGPM"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/evenRowBackground"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Flow Test Method"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ReportFlowTestMethodTime"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/evenRowBackground"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Sanitary Well Seal"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/ReportSanitaryWellSeal"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></RadioButton>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Various Distances"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ReportSepticDistance"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/evenRowBackground"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:id="@+id/ReportPropertyLineDistance"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/evenRowBackground"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:id="@+id/ReportNearestWellDistance"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/evenRowBackground"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:id="@+id/ReportAerobicSprayAreaDistance"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/evenRowBackground"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:id="@+id/ReportSepticLateralLinesDistance"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/evenRowBackground"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:id="@+id/ReportOtherContaminationSourcesDistance"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/evenRowBackground"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:id="@+id/ReportSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/rounded_corner"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="SUBMIT"
+                android:textAlignment="center"
+                android:textColor="#F9F9F9"
+                android:textSize="25sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
