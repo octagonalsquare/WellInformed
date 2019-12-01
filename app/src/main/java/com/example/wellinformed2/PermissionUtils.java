@@ -86,7 +86,7 @@ public abstract class PermissionUtils {
         public void onDismiss(DialogInterface dialog) {
             super.onDismiss(dialog);
             if (mFinishActivity) {
-                Toast.makeText(getActivity(),"Location Permission is requiered",
+                Toast.makeText(getActivity(),"Location Permission is required",
                         Toast.LENGTH_SHORT).show();
                 getActivity().finish();
             }

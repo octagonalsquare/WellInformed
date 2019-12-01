@@ -12,7 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 //well details activity that displays the details of a selected well
-public class wellDetails extends AppCompatActivity {
+public class wellDetails extends AppCompatActivity implements View.OnClickListener
+{
 
 
     private Well selectedWell;
@@ -38,13 +39,13 @@ public class wellDetails extends AppCompatActivity {
         selectedWellID = extras.getString("Selected ID");
 
         inspectionButton = findViewById(R.id.buttonDetailsStartInspection);
-        inspectionButton.setOnClickListener(this::onClick);
+        inspectionButton.setOnClickListener(this);
 
         displayWellDetails();
     }
 
     //Gives directions to each button to do if selected
-
+    @Override
     public void onClick(View view)
     {
         Intent i = new Intent(this, wellInspection.class);
