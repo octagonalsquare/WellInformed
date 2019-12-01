@@ -181,6 +181,11 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
                     childUpdates.put("/Owner-Well/" + key + "/" + wellKey, wellName);
                     mDatabaseRef.updateChildren(childUpdates);
                 }
+                else
+                {
+                    childUpdates.put("/Owner-Well/" + key + "/" + wellKey, wellName);
+                    mDatabaseRef.updateChildren(childUpdates);
+                }
             }
 
             @Override
@@ -231,6 +236,11 @@ public class AddWellActivity extends AppCompatActivity implements View.OnClickLi
                 if (!found)
                 {
                     childUpdates.put("/Driller/" + key, wellValues);
+                    childUpdates.put("/Driller-Well/" + key + "/" + wellKey, wellName);
+                    mDatabaseRef.updateChildren(childUpdates);
+                }
+                else
+                {
                     childUpdates.put("/Driller-Well/" + key + "/" + wellKey, wellName);
                     mDatabaseRef.updateChildren(childUpdates);
                 }
