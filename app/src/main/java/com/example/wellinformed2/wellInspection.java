@@ -1,8 +1,5 @@
 package com.example.wellinformed2;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -13,14 +10,15 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.sql.Date;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -331,7 +329,7 @@ public class wellInspection extends AppCompatActivity implements View.OnClickLis
 
 
 //well inspection class stores the data the user entered in a
-//well report object that will be passed to the fierbase to store it
+//well report object that will be passed to the Firebase to store it
 class WellInspection
 {
     public  String WellName;

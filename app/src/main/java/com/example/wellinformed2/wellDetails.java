@@ -1,18 +1,15 @@
 package com.example.wellinformed2;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 //well details activity that displays the details of a selected well
-public class wellDetails extends AppCompatActivity implements View.OnClickListener
+public class wellDetails extends AppCompatActivity
 {
 
     private Well selectedWell;
@@ -38,13 +35,13 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
         selectedWellID = extras.getString("Selected ID");
 
         inspectionButton = findViewById(R.id.buttonDetailsStartInspection);
-        inspectionButton.setOnClickListener(this);
+        inspectionButton.setOnClickListener(this::onClick);
 
         displayWellDetails();
     }
 
     //Gives directions to each button to do if selected
-    @Override
+
     public void onClick(View view)
     {
         Intent i = new Intent(this, wellInspection.class);

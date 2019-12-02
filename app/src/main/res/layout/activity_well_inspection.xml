@@ -120,7 +120,7 @@
             <DatePicker
                 android:id="@+id/WellInspectionTodaysDate"
                 android:layout_width="match_parent"
-                android:layout_height="43dp"
+                android:layout_height="wrap_content"
                 android:background="@color/lightBackground"
                 android:calendarViewShown="false"
                 android:datePickerMode="spinner"
