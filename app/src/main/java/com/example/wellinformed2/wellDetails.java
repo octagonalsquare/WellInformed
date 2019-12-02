@@ -15,7 +15,6 @@ import android.widget.TextView;
 public class wellDetails extends AppCompatActivity implements View.OnClickListener
 {
 
-
     private Well selectedWell;
     private String selectedWellID;
 

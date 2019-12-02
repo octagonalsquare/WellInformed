@@ -8,13 +8,15 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.firebase.geofire.GeoFire;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -49,7 +51,6 @@ public class GoogleMapActivity extends FragmentActivity implements
     private Location userLocation;
     protected LocationManager locationManager;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    GeoFire geoFire = new GeoFire(FirebaseDatabase.getInstance().getReference().child("geoFire"));
 
     private static final int MY_LOCATION_REQUEST_CODE = 901;
 
@@ -84,7 +85,7 @@ public class GoogleMapActivity extends FragmentActivity implements
         enableMyLocation();
 
         addWellMarkers(mMap);
-        //updateUserLocation(mMap);
+        updateUserLocation(mMap);
 
     }
 
@@ -92,35 +93,21 @@ public class GoogleMapActivity extends FragmentActivity implements
     //and will display that change on the map to provide user location
     private void updateUserLocation(GoogleMap googleMap){
         IconGenerator customIcon = new IconGenerator(this);
+        Resources res = getResources();
+        Drawable drawable = res.getDrawable(R.drawable.worker_icon_24dp, getTheme());
 
         googleMap.setOnMarkerClickListener(this);
-        mUserRef = FirebaseDatabase.getInstance().getReference().child("User").child(mAuth.getUid());
-        mUserRef.child("latitude").setValue(userLocation.getLatitude());
-        mUserRef.child("longitude").setValue(userLocation.getLongitude());
+        mUserRef = FirebaseDatabase.getInstance().getReference().child("User");
+        mUserRef.child(mAuth.getUid()).child("latitude").setValue(userLocation.getLatitude());
+        mUserRef.child(mAuth.getUid()).child("longitude").setValue(userLocation.getLongitude());
 
-        mUserRef.addChildEventListener(new ChildEventListener() {
+        mUserRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                googleMap.clear();
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot userSnapshot:dataSnapshot.getChildren()){
-                    User user = dataSnapshot.getValue(User.class);
-                    mMap.addMarker(new MarkerOptions().position(new LatLng(user.getLatitude(),user.getLongitude())).title("Jesus Quintero")).setIcon(BitmapDescriptorFactory.fromBitmap(customIcon.makeIcon("Jesus Quintero Ortiz")));
+                    User user = userSnapshot.getValue(User.class);
+                    mMap.addMarker(new MarkerOptions().position(new LatLng(user.getLatitude(),user.getLongitude())).title(user.getName())).setIcon(BitmapDescriptorFactory.defaultMarker());
                 }
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
             }
 
             @Override
@@ -178,21 +165,8 @@ public class GoogleMapActivity extends FragmentActivity implements
             // Access to the location has been granted to the app.
             locationManager = (LocationManager)this.getSystemService(LOCATION_SERVICE);
             userLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-            userLocation.setElapsedRealtimeNanos(3000);
-            /*if(userLocation!=null){
-                geoFire.setLocation(mAuth.getUid(), new GeoLocation(userLocation.getLatitude(), userLocation.getLongitude()), new GeoFire.CompletionListener() {
-                    @Override
-                    public void onComplete(String key, DatabaseError error) {
-                        if(error!=null){
-                            System.err.println("There was an error saving the location to GeoFire: " + error);
-                        }
-                        else{
-                            System.out.println("Location saved on server successfully!");
-                        }
+            userLocation.setElapsedRealtimeNanos(1000);
 
-                    }
-                });
-            }*/
             mMap.setMyLocationEnabled(true);
         }
     }
@@ -257,4 +231,5 @@ public class GoogleMapActivity extends FragmentActivity implements
     public boolean onMarkerClick(Marker marker) {
         return false;
     }
+
 }
