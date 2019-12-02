@@ -132,11 +132,11 @@ public class GoogleMapActivity extends FragmentActivity implements
                     if(!well.Latitude.equals("")&&!well.Longitude.equals("")) {
                         if(well.Status.toUpperCase().equals("ACTIVE")) {
                             LatLng wellLocation = new LatLng(Double.parseDouble(well.Latitude), Double.parseDouble(well.Longitude));
-                            mMap.addMarker(new MarkerOptions().position(wellLocation).title("This is a well").snippet(well.Latitude + " " + well.Longitude)).setIcon(BitmapDescriptorFactory.fromBitmap(customIcon.makeIcon(well.Name)));
+                            mMap.addMarker(new MarkerOptions().position(wellLocation).title(well.Status).snippet(well.Latitude + " " + well.Longitude)).setIcon(BitmapDescriptorFactory.fromBitmap(customIcon.makeIcon(well.Name)));
                         }
                         else if(well.Status.toUpperCase().equals("PLUGGED")){
                             LatLng wellLocation = new LatLng(Double.parseDouble(well.Latitude), Double.parseDouble(well.Longitude));
-                            mMap.addMarker(new MarkerOptions().position(wellLocation).title("This is a well").snippet(well.Latitude + " " + well.Longitude)).setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+                            mMap.addMarker(new MarkerOptions().position(wellLocation).title(well.Status).snippet(well.Latitude + " " + well.Longitude)).setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
                         }
                     }
                 }
