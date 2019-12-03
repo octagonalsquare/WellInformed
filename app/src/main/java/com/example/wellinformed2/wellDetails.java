@@ -4,9 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.List;
+
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
 //well details activity that displays the details of a selected well
 public class wellDetails extends AppCompatActivity implements View.OnClickListener {
@@ -24,6 +30,7 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
     private TextView wellDateEnteredView;
     private TextView wellOwnerView;
     private Button inspectionButton;
+    private List<WellInspection> ReportList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +39,13 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
         Bundle extras = getIntent().getExtras();
         selectedWell = (Well)extras.get("Selected");
         selectedWellID = extras.getString("Selected ID");
+        ReportList = (List<WellInspection>)extras.get("Well Reports");
 
         inspectionButton = findViewById(R.id.buttonDetailsStartInspection);
         inspectionButton.setOnClickListener(this);
 
         displayWellDetails();
+        displayReportList();
     }
 
     //Gives directions to each button to do if selected
@@ -45,6 +54,14 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
     {
         Intent i = new Intent(this, WellInspectionActivity.class);
         i.putExtra("Selected Well", selectedWell);
+        startActivity(i);
+    }
+
+    public void onReportClick(View view)
+    {
+        WellInspection report = ReportList.get(view.getId());
+        Intent i = new Intent(this, ViewReport.class);
+        i.putExtra("Selected Report", report);
         startActivity(i);
     }
 
@@ -71,4 +88,33 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
         wellDateEnteredView.setText(selectedWell.Date);
         wellOwnerView.setText(selectedWell.Owner);
     }
+
+    public void displayReportList()
+    {
+        TableLayout table = findViewById(R.id.ReportListTable);
+        table.removeAllViews();
+        for (int i = 0; i < ReportList.size(); i++)
+        {
+            TableRow row = new TableRow(this);
+            TableRow.LayoutParams lp = new TableRow.LayoutParams(MATCH_PARENT, 30);
+            row.setLayoutParams(lp);
+
+            TextView report = new TextView(this);
+            report.setText(ReportList.get(i).Key);
+            report.setLayoutParams(lp);
+            report.setId(i);
+
+            report.setOnClickListener(this::onReportClick);
+
+            if(i%2==0)
+            {
+                row.setBackgroundColor(getResources().getColor(R.color.evenRowBackground));
+            }
+
+            row.addView(report);
+            table.addView(row);
+        }
+
+    }
+
 }

@@ -1,8 +1,5 @@
 package com.example.wellinformed2;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -15,12 +12,15 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.FirebaseError;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
@@ -39,6 +39,7 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
     FirebaseDatabase database;
     DatabaseReference myRef;
     List<Well> wellIndexList;
+    List<WellInspection> ReportList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -51,6 +52,7 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
 
         scrollView = findViewById(R.id.well_scroll_view);
         displayWellTable(myRef);
+        createReportList(myRef);
     }
 
     //When this activity starts this is initiated to create an options menu in the
@@ -97,6 +99,33 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
                 }
 
                 addWellToTable(wellIndexList);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+                System.out.println("The read failed: " + FirebaseError.ERROR_INTERNAL_ERROR);
+            }
+        });
+    }
+
+    public void createReportList(DatabaseReference reportRef)
+    {
+        reportRef = reportRef.child("Well-InspectionReports");
+        ReportList = new ArrayList<>();
+        ReportList.clear();
+
+        reportRef.addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                for(DataSnapshot postSnapshot:dataSnapshot.getChildren())
+                {
+                    WellInspection report = postSnapshot.getValue(WellInspection.class);
+                    report.Key = postSnapshot.getKey();
+                    ReportList.add(report);
+                }
             }
 
             @Override
@@ -166,6 +195,7 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
         Intent i = new Intent(this, wellDetails.class);
         i.putExtra("Selected", selectedWell);
         i.putExtra("Selected ID", selectedWell.ID);
+        i.putExtra("Well Reports", (Serializable) ReportList);
         startActivity(i);
     }
 }

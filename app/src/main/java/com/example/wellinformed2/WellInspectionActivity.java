@@ -1,8 +1,5 @@
 package com.example.wellinformed2;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -13,12 +10,16 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -327,8 +328,9 @@ public class WellInspectionActivity extends AppCompatActivity implements View.On
 
 }
 
-class WellInspection
+class WellInspection implements Serializable
 {
+    public  String Key;
     public  String WellName;
     public  String WellID;
     public  String WellAddress;
