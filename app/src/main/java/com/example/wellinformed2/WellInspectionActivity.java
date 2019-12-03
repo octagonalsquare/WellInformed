@@ -30,7 +30,7 @@ public class WellInspectionActivity extends AppCompatActivity implements View.On
     String wellID;
     String drillerName;
 
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    FirebaseDatabase database;
     DatabaseReference mDatabaseRef;
 
 
@@ -45,6 +45,9 @@ public class WellInspectionActivity extends AppCompatActivity implements View.On
         wellID = temp.ID;
         drillerName = temp.DrillerName;
         prepopulate();
+
+        database = FirebaseDatabase.getInstance();
+        mDatabaseRef = database.getReference();
 
         submitButton = findViewById(R.id.WellInspectionSubmit);
 
@@ -77,7 +80,6 @@ public class WellInspectionActivity extends AppCompatActivity implements View.On
 
 
         EditText edit = findViewById(R.id.WellInspectionWellName);
-        edit.setText(wellName);
         Editable editable = edit.getText();
         String WellName = editable.toString();
         if(TextUtils.isEmpty(WellName))
@@ -88,7 +90,6 @@ public class WellInspectionActivity extends AppCompatActivity implements View.On
         }
 
         edit =  findViewById(R.id.WellInspectionWellID);
-        edit.setText(wellID);
         editable = edit.getText();
         String WellID = editable.toString();
         if(TextUtils.isEmpty(WellID))
