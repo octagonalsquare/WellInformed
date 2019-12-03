@@ -301,21 +301,12 @@ public class WellInspectionActivity extends AppCompatActivity implements View.On
             mDatabaseRef.child("InspectionReports").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    Boolean found = false;
-                    for( DataSnapshot data : dataSnapshot.getChildren())
-                    {
-                        if (data.getKey().compareTo(key) == 0)
-                        {
-                            found = true;
-                        }
-                    }
+                    //Boolean found = false;
 
-                    if (!found)
-                    {
-                        childUpdates.put("/InspectionReports/" + key, report);
-                        childUpdates.put("/Well-InspectionReports/" + wellKey + "/" + key, report);
-                        mDatabaseRef.updateChildren(childUpdates);
-                    }
+                    childUpdates.put("/InspectionReports/" + key, report);
+                    childUpdates.put("/Well-InspectionReports/" + wellKey + "/" + key, report);
+                    mDatabaseRef.updateChildren(childUpdates);
+
                 }
 
                 @Override
