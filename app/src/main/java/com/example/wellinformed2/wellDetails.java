@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -30,6 +31,7 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
     private TextView wellDateEnteredView;
     private TextView wellOwnerView;
     private Button inspectionButton;
+    private ScrollView wellDetailsScrollView;
     private List<WellInspection> ReportList;
 
     @Override
@@ -42,6 +44,7 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
         ReportList = (List<WellInspection>)extras.get("Well Reports");
 
         inspectionButton = findViewById(R.id.buttonDetailsStartInspection);
+        wellDetailsScrollView = findViewById(R.id.well_details_scroll_view);
         inspectionButton.setOnClickListener(this);
 
         displayWellDetails();

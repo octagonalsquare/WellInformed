@@ -1,6 +1,8 @@
 package com.example.wellinformed2;
 
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
@@ -20,6 +22,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -100,8 +105,7 @@ public class WellInspectionActivity extends AppCompatActivity implements View.On
         }
 
         DatePicker today = findViewById(R.id.WellInspectionTodaysDate);
-        final String date = today.getDayOfMonth() + "/" + today.getMonth()
-                + "/" + today.getYear();
+        final String date = today.getMonth() + "/" + today.getDayOfMonth() + "/" + today.getYear();
 
         edit =  findViewById(R.id.WellInspectionWellAddress);
         editable = edit.getText();
@@ -306,8 +310,8 @@ public class WellInspectionActivity extends AppCompatActivity implements View.On
                     OtherContaminationSourcesDistance);
 
             Map<String, Object> childUpdates = new HashMap<>();
-            final String key = report.WellName + ":" + date;
-            final String wellKey = drillerName + ":" + wellName;
+            final String key = report.WellName + ":" + new SimpleDateFormat("MMM dd,yyyy HH:mm").format(System.currentTimeMillis());
+            final String wellKey = report.WellID;
 
             mDatabaseRef.child("InspectionReports").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -355,6 +359,10 @@ class WellInspection implements Serializable
     public  String AerobicSprayAreaDistance;
     public  String SepticLateralLinesDistance;
     public  String OtherContaminationSourcesDistance;
+
+    WellInspection(){
+
+    }
 
     WellInspection(String wellName,
                    String wellID,
