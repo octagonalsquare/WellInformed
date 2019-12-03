@@ -44,6 +44,7 @@ public class WellInspectionActivity extends AppCompatActivity implements View.On
         wellName = temp.Name;
         wellID = temp.ID;
         drillerName = temp.DrillerName;
+        prepopulate();
 
         submitButton = findViewById(R.id.WellInspectionSubmit);
 
@@ -59,6 +60,15 @@ public class WellInspectionActivity extends AppCompatActivity implements View.On
             createInspection();
         }
     }
+
+    public void prepopulate()
+    {
+        EditText edit = findViewById(R.id.WellInspectionWellName);
+        edit.setText(wellName);
+        edit =  findViewById(R.id.WellInspectionWellID);
+        edit.setText(wellID);
+    }
+
 
     //report is created by taking all the fields the user entered
     public void createInspection()
