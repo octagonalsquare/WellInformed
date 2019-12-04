@@ -3,11 +3,23 @@ package com.example.wellinformed2;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.FirebaseError;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ViewReport extends AppCompatActivity
 {
-    private WellInspection report;
+    public WellInspection report;
+    private String key;
+
+    FirebaseDatabase database;
+    DatabaseReference myRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,7 +27,12 @@ public class ViewReport extends AppCompatActivity
         setContentView(R.layout.activity_view_report);
 
         Bundle extras = getIntent().getExtras();
-        report = (WellInspection) extras.get("Selected Report");
+        key = (String) extras.get("Report Key");
+
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference();
+
+        getReport();
 
         displayReport();
     }
@@ -96,5 +113,33 @@ public class ViewReport extends AppCompatActivity
 
         TextView otherContSources = findViewById(R.id.ReportOtherContaminationSourcesDistance);
         otherContSources.setText(report.OtherContaminationSourcesDistance);
+    }
+
+    public void getReport()
+    {
+        myRef = myRef.child("InspectionReports/" + key);
+
+        myRef.addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                for(DataSnapshot postSnapshot:dataSnapshot.getChildren())
+                {
+                    if (postSnapshot.getKey() == key)
+                    {
+                        report = postSnapshot.getValue(WellInspection.class);
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+                System.out.println("The read failed: " + FirebaseError.ERROR_INTERNAL_ERROR);
+            }
+        });
+
     }
 }

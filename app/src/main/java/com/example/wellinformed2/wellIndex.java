@@ -39,7 +39,6 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
     FirebaseDatabase database;
     DatabaseReference myRef;
     List<Well> wellIndexList;
-    Map<String,WellInspection> ReportList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -108,52 +107,7 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
         });
     }
 
-    public void createReportList(DatabaseReference reportRef, int index)
-    {
-        DatabaseReference reportListRef = reportRef.child("InspectionReports");
-        reportRef = reportRef.child("Well-InspectionReports/" + wellIndexList.get(index).ID);
 
-        ReportList.clear();
-
-        reportRef.addValueEventListener(new ValueEventListener()
-        {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-                for(DataSnapshot postSnapshot:dataSnapshot.getChildren())
-                {
-                    String key = postSnapshot.getValue(String.class);
-                    ReportList.put(key, new WellInspection());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
-                System.out.println("The read failed: " + FirebaseError.ERROR_INTERNAL_ERROR);
-            }
-        });
-
-        reportListRef.addValueEventListener(new ValueEventListener()
-        {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-                for(DataSnapshot postSnapshot:dataSnapshot.getChildren())
-                {
-                    WellInspection report = postSnapshot.getValue(WellInspection.class);
-                    report.Key = postSnapshot.getKey();
-                    ReportList.replace(report.Key, report);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
-                System.out.println("The read failed: " + FirebaseError.ERROR_INTERNAL_ERROR);
-            }
-        });
-    }
 
     //takes well array list and adds a TextView with a detail about the well and adds it to the table
     private void addWellToTable(List<Well> wellIndexList)
@@ -210,12 +164,10 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onClick(View view)
     {
-        createReportList(myRef, view.getId());
         Well selectedWell = wellIndexList.get(view.getId());
         Intent i = new Intent(this, wellDetails.class);
         i.putExtra("Selected", selectedWell);
         i.putExtra("Selected ID", selectedWell.ID);
-        i.putExtra("Well Reports", (Serializable) ReportList);
         startActivity(i);
     }
 }

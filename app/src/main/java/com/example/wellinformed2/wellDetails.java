@@ -11,9 +11,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.List;
-import java.util.Map;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
@@ -22,7 +23,6 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
 
     private Well selectedWell;
     private String selectedWellID;
-    private List<String> keys = new ArrayList<>();
     private TextView wellIDView;
     private TextView wellNameView;
     private TextView wellLatitudeView;
@@ -34,7 +34,11 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
     private TextView wellOwnerView;
     private Button inspectionButton;
     private ScrollView wellDetailsScrollView;
-    private Map<String, WellInspection> ReportList;
+    private List<String> ReportKeys;
+    private List<WellInspection> Reports;
+
+    FirebaseDatabase database;
+    DatabaseReference myRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +47,9 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
         Bundle extras = getIntent().getExtras();
         selectedWell = (Well)extras.get("Selected");
         selectedWellID = extras.getString("Selected ID");
-        ReportList = (Map<String, WellInspection>)extras.get("Well Reports");
+
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference();
 
         inspectionButton = findViewById(R.id.buttonDetailsStartInspection);
         wellDetailsScrollView = findViewById(R.id.well_details_scroll_view);
@@ -64,9 +70,8 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
 
     public void onReportClick(View view)
     {
-        WellInspection report = ReportList.get(keys.get(view.getId()));
         Intent i = new Intent(this, ViewReport.class);
-        i.putExtra("Selected Report", report);
+        i.putExtra("Report Key", ReportKeys.get(view.getId()));
         startActivity(i);
     }
 
@@ -99,29 +104,26 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
         TableLayout table = findViewById(R.id.ReportListTable);
         table.removeAllViews();
 
-        keys.addAll(ReportList.keySet());
-        for (int i = 0; i < ReportList.size(); i++)
+        for (String r : ReportKeys)
         {
             TableRow row = new TableRow(this);
             TableRow.LayoutParams lp = new TableRow.LayoutParams(MATCH_PARENT, 30);
             row.setLayoutParams(lp);
 
             TextView report = new TextView(this);
-            report.setText(keys.get(i));
+            report.setText(r);
             report.setLayoutParams(lp);
-            report.setId(i);
+            report.setId(ReportKeys.indexOf(r));
 
             report.setOnClickListener(this::onReportClick);
 
-            if(i%2==0)
+            if(ReportKeys.indexOf(r)%2==0)
             {
                 row.setBackgroundColor(getResources().getColor(R.color.evenRowBackground));
             }
 
             row.addView(report);
-            table.addView(row, i);
+            table.addView(row, ReportKeys.indexOf(r));
         }
-
     }
-
 }
