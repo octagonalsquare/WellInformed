@@ -1,8 +1,5 @@
 package com.example.wellinformed2;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +10,9 @@ import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
@@ -132,15 +132,15 @@ public class drillerIndex extends AppCompatActivity
             companyName.setTextSize(20);
 
 
-            TextView more = new TextView(this);
-            more.setText("...");
-            more.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            more.setTextSize(20);
+            TextView licNum = new TextView(this);
+            licNum.setText(drillerIndexList.get(i).LicenseNumber);
+            licNum.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            licNum.setTextSize(20);
 
 
             row.addView(name);
             row.addView(companyName);
-            row.addView(more);
+            row.addView(licNum);
             if(i%2 ==0)
             {
                 row.setBackgroundColor(getResources().getColor(R.color.evenRowBackground));

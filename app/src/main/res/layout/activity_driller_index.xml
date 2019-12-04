@@ -56,7 +56,7 @@
                 android:background="#2196F3"
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="center_vertical"
-                android:text="More"
+                android:text="License #"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="#FBFBFF"
