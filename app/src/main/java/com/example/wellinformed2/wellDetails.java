@@ -9,11 +9,17 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.FirebaseError;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
@@ -34,8 +40,8 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
     private TextView wellOwnerView;
     private Button inspectionButton;
     private ScrollView wellDetailsScrollView;
-    private List<String> ReportKeys;
-    private List<WellInspection> Reports;
+    public List<String> ReportKeys;
+    public List<WellInspection> Reports;
 
     FirebaseDatabase database;
     DatabaseReference myRef;
@@ -54,6 +60,9 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
         inspectionButton = findViewById(R.id.buttonDetailsStartInspection);
         wellDetailsScrollView = findViewById(R.id.well_details_scroll_view);
         inspectionButton.setOnClickListener(this);
+        ReportKeys = new ArrayList<>();
+        Reports = new ArrayList<>();
+        getReportKeys();
 
         displayWellDetails();
         displayReportList();
@@ -101,6 +110,28 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
 
     public void displayReportList()
     {
+        myRef = myRef.child("Well-InspectionReports/" + selectedWellID);
+
+        myRef.addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                for(DataSnapshot postSnapshot:dataSnapshot.getChildren())
+                {
+                    WellInspection report = postSnapshot.getValue(WellInspection.class);
+                    String key = postSnapshot.getKey();
+                    Reports.add(report);
+                    ReportKeys.add(key);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+                System.out.println("The read failed: " + FirebaseError.ERROR_INTERNAL_ERROR);
+            }
+        });
         TableLayout table = findViewById(R.id.ReportListTable);
         table.removeAllViews();
 
@@ -125,5 +156,10 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
             row.addView(report);
             table.addView(row, ReportKeys.indexOf(r));
         }
+    }
+
+    public void getReportKeys()
+    {
+
     }
 }
