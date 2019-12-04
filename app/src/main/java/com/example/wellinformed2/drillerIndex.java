@@ -122,19 +122,16 @@ public class drillerIndex extends AppCompatActivity
 
             TextView name = new TextView(this);
             name.setText(drillerIndexList.get(i).Name);
-            name.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             name.setTextSize(20);
 
 
             TextView companyName = new TextView(this);
-            companyName.setText(drillerIndexList.get(i).CompanyName);
-            companyName.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            companyName.setText(drillerIndexList.get(i).CompanyName.substring(0, Math.min(drillerIndexList.get(i).CompanyName.length(), 7))+"...");
             companyName.setTextSize(20);
 
 
             TextView licNum = new TextView(this);
-            licNum.setText(drillerIndexList.get(i).LicenseNumber);
-            licNum.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            licNum.setText(String.valueOf(drillerIndexList.get(i).LicenseNumber));
             licNum.setTextSize(20);
 
 
