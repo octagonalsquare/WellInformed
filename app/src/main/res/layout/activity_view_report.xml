@@ -631,7 +631,22 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
                 android:textSize="20sp" />
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Septic System Distance"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
             <TextView
                 android:id="@+id/ReportSepticDistance"
                 android:layout_width="match_parent"
@@ -649,6 +664,23 @@
                 android:paddingTop="5dp"
                 android:paddingRight="5dp"
                 android:paddingBottom="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Property line distance"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/ReportPropertyLineDistance"
@@ -669,6 +701,23 @@
                 android:paddingBottom="5dp" />
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Nearest Well"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
                 android:id="@+id/ReportNearestWellDistance"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
@@ -685,6 +734,23 @@
                 android:paddingTop="5dp"
                 android:paddingRight="5dp"
                 android:paddingBottom="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Septic Spray Distance"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/ReportAerobicSprayAreaDistance"
@@ -705,6 +771,23 @@
                 android:paddingBottom="5dp" />
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Septic Lateral lines"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
+
+            <TextView
                 android:id="@+id/ReportSepticLateralLinesDistance"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
@@ -721,6 +804,23 @@
                 android:paddingTop="5dp"
                 android:paddingRight="5dp"
                 android:paddingBottom="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_column="1"
+                android:alpha="1"
+                android:background="@color/lightBackground"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Other Contamination Source"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/darkBackground"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/ReportOtherContaminationSourcesDistance"
