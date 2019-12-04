@@ -11,7 +11,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
@@ -20,7 +22,7 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
 
     private Well selectedWell;
     private String selectedWellID;
-
+    private List<String> keys = new ArrayList<>();
     private TextView wellIDView;
     private TextView wellNameView;
     private TextView wellLatitudeView;
@@ -32,7 +34,7 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
     private TextView wellOwnerView;
     private Button inspectionButton;
     private ScrollView wellDetailsScrollView;
-    private List<WellInspection> ReportList;
+    private Map<String, WellInspection> ReportList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,7 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
         Bundle extras = getIntent().getExtras();
         selectedWell = (Well)extras.get("Selected");
         selectedWellID = extras.getString("Selected ID");
-        ReportList = (List<WellInspection>)extras.get("Well Reports");
+        ReportList = (Map<String, WellInspection>)extras.get("Well Reports");
 
         inspectionButton = findViewById(R.id.buttonDetailsStartInspection);
         wellDetailsScrollView = findViewById(R.id.well_details_scroll_view);
@@ -62,7 +64,7 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
 
     public void onReportClick(View view)
     {
-        WellInspection report = ReportList.get(view.getId());
+        WellInspection report = ReportList.get(keys.get(view.getId()));
         Intent i = new Intent(this, ViewReport.class);
         i.putExtra("Selected Report", report);
         startActivity(i);
@@ -96,6 +98,8 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
     {
         TableLayout table = findViewById(R.id.ReportListTable);
         table.removeAllViews();
+
+        keys.addAll(ReportList.keySet());
         for (int i = 0; i < ReportList.size(); i++)
         {
             TableRow row = new TableRow(this);
@@ -103,7 +107,7 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
             row.setLayoutParams(lp);
 
             TextView report = new TextView(this);
-            report.setText(ReportList.get(i).Key);
+            report.setText(keys.get(i));
             report.setLayoutParams(lp);
             report.setId(i);
 
@@ -115,7 +119,7 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
             }
 
             row.addView(report);
-            table.addView(row);
+            table.addView(row, i);
         }
 
     }
