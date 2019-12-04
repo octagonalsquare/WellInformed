@@ -173,7 +173,7 @@
                 android:paddingTop="5dp"
                 android:paddingRight="5dp"
                 android:paddingBottom="5dp"
-                android:text="Total Depth"
+                android:text="Total Depth (ft)"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
                 android:textSize="20sp" />
@@ -208,7 +208,7 @@
                 android:paddingTop="5dp"
                 android:paddingRight="5dp"
                 android:paddingBottom="5dp"
-                android:text="Water Level"
+                android:text="Water Level (ft)"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
                 android:textSize="20sp" />
@@ -278,7 +278,7 @@
                 android:paddingTop="5dp"
                 android:paddingRight="5dp"
                 android:paddingBottom="5dp"
-                android:text="Casing Height"
+                android:text="Casing Height (in)"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
                 android:textSize="20sp" />
@@ -348,7 +348,7 @@
                 android:paddingTop="5dp"
                 android:paddingRight="5dp"
                 android:paddingBottom="5dp"
-                android:text="Sleeve Height"
+                android:text="Sleeve Height (in)"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
                 android:textSize="20sp" />
@@ -383,7 +383,7 @@
                 android:paddingTop="5dp"
                 android:paddingRight="5dp"
                 android:paddingBottom="5dp"
-                android:text="Screen Depth"
+                android:text="Screen Depth (ft)"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
                 android:textSize="20sp" />
@@ -418,7 +418,7 @@
                 android:paddingTop="5dp"
                 android:paddingRight="5dp"
                 android:paddingBottom="5dp"
-                android:text="Annular Cement Depth"
+                android:text="Annular Cement Depth (ft)"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
                 android:textSize="20sp" />
@@ -453,7 +453,7 @@
                 android:paddingTop="5dp"
                 android:paddingRight="5dp"
                 android:paddingBottom="5dp"
-                android:text="Annular Cement Verified"
+                android:text="Annular Cement Verified (ft)"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
                 android:textSize="20sp" />
@@ -488,7 +488,7 @@
                 android:paddingTop="5dp"
                 android:paddingRight="5dp"
                 android:paddingBottom="5dp"
-                android:text="Pad Dimensions"
+                android:text="Pad Dimensions (ft)"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
                 android:textSize="20sp" />
@@ -627,7 +627,7 @@
                 android:paddingTop="5dp"
                 android:paddingRight="5dp"
                 android:paddingBottom="5dp"
-                android:text="Various Distances"
+                android:text="Various Distances (ft)"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/darkBackground"
                 android:textSize="20sp" />
@@ -731,29 +731,6 @@
                 android:paddingTop="5dp"
                 android:paddingRight="5dp"
                 android:paddingBottom="5dp"></TextView>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:paddingLeft="5dp"
-                android:paddingTop="5dp"
-                android:paddingRight="5dp"
-                android:paddingBottom="5dp" />
-
-            <TextView
-                android:id="@+id/ReportSubmit"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/rounded_corner"
-                android:gravity="center_vertical"
-                android:paddingLeft="5dp"
-                android:paddingTop="5dp"
-                android:paddingRight="5dp"
-                android:paddingBottom="5dp"
-                android:text="SUBMIT"
-                android:textAlignment="center"
-                android:textColor="#F9F9F9"
-                android:textSize="25sp" />
 
             <View
                 android:layout_width="match_parent"

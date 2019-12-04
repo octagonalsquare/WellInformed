@@ -29,6 +29,7 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
 
     private Well selectedWell;
     private String selectedWellID;
+
     private TextView wellIDView;
     private TextView wellNameView;
     private TextView wellLatitudeView;
@@ -39,12 +40,10 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
     private TextView wellDateEnteredView;
     private TextView wellOwnerView;
     private Button inspectionButton;
-    private ScrollView wellDetailsScrollView;
-    public List<String> ReportKeys;
-    public List<WellInspection> Reports;
+    private List<String> reportKeys;
 
+    DatabaseReference mReportRef;
     FirebaseDatabase database;
-    DatabaseReference myRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,17 +54,13 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
         selectedWellID = extras.getString("Selected ID");
 
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference();
+        mReportRef = database.getReference().child("Well-InspectionReports").child(selectedWell.ID);
 
         inspectionButton = findViewById(R.id.buttonDetailsStartInspection);
-        wellDetailsScrollView = findViewById(R.id.well_details_scroll_view);
         inspectionButton.setOnClickListener(this);
-        ReportKeys = new ArrayList<>();
-        Reports = new ArrayList<>();
-        getReportKeys();
 
         displayWellDetails();
-        displayReportList();
+        getReportKeys();
     }
 
     //Gives directions to each button to do if selected
@@ -77,12 +72,6 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
         startActivity(i);
     }
 
-    public void onReportClick(View view)
-    {
-        Intent i = new Intent(this, ViewReport.class);
-        i.putExtra("Report Key", ReportKeys.get(view.getId()));
-        startActivity(i);
-    }
 
     //displays well details by setting the text of the appropriate text view
     public void displayWellDetails()
@@ -110,56 +99,59 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
 
     public void displayReportList()
     {
-        myRef = myRef.child("Well-InspectionReports/" + selectedWellID);
-
-        myRef.addValueEventListener(new ValueEventListener()
-        {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-                for(DataSnapshot postSnapshot:dataSnapshot.getChildren())
-                {
-                    WellInspection report = postSnapshot.getValue(WellInspection.class);
-                    String key = postSnapshot.getKey();
-                    Reports.add(report);
-                    ReportKeys.add(key);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
-                System.out.println("The read failed: " + FirebaseError.ERROR_INTERNAL_ERROR);
-            }
-        });
         TableLayout table = findViewById(R.id.ReportListTable);
         table.removeAllViews();
-
-        for (String r : ReportKeys)
+        for (int i = 0; i < reportKeys.size(); i++)
         {
             TableRow row = new TableRow(this);
-            TableRow.LayoutParams lp = new TableRow.LayoutParams(MATCH_PARENT, 30);
+            TableRow.LayoutParams lp = new TableRow.LayoutParams(MATCH_PARENT, 100);
             row.setLayoutParams(lp);
 
             TextView report = new TextView(this);
-            report.setText(r);
+            report.setText(reportKeys.get(i));
+            report.setTextSize(20);
             report.setLayoutParams(lp);
-            report.setId(ReportKeys.indexOf(r));
+            report.setId(i);
 
             report.setOnClickListener(this::onReportClick);
 
-            if(ReportKeys.indexOf(r)%2==0)
+            if(i%2==0)
             {
                 row.setBackgroundColor(getResources().getColor(R.color.evenRowBackground));
             }
 
             row.addView(report);
-            table.addView(row, ReportKeys.indexOf(r));
+            table.addView(row);
         }
-    }
-
-    public void getReportKeys()
-    {
 
     }
+
+    public void getReportKeys(){
+        reportKeys = new ArrayList<>();
+
+        mReportRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot postSnapShot:dataSnapshot.getChildren()){
+                    String reportKeyTemp = String.valueOf(postSnapShot.getKey());
+                    reportKeys.add(reportKeyTemp);
+                }
+                displayReportList();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void onReportClick(View view) {
+        String selectedReport = reportKeys.get(view.getId());
+        Intent i = new Intent(this, ViewReport.class);
+        i.putExtra("Selected Report", selectedReport);
+        startActivity(i);
+    }
+
+
 }

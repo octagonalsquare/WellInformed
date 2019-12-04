@@ -107,8 +107,6 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
         });
     }
 
-
-
     //takes well array list and adds a TextView with a detail about the well and adds it to the table
     private void addWellToTable(List<Well> wellIndexList)
     {
@@ -167,7 +165,7 @@ public class wellIndex extends AppCompatActivity implements View.OnClickListener
         Well selectedWell = wellIndexList.get(view.getId());
         Intent i = new Intent(this, wellDetails.class);
         i.putExtra("Selected", selectedWell);
-        i.putExtra("Selected ID", selectedWell.ID);
+        i.putExtra("Selected ID", "ID: " + selectedWell.ID);
         startActivity(i);
     }
 }
