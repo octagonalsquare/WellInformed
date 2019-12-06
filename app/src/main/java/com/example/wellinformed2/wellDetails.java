@@ -97,6 +97,7 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
         wellOwnerView.setText(selectedWell.Owner);
     }
 
+    //This add the report title to the well details page.
     public void displayReportList()
     {
         TableLayout table = findViewById(R.id.ReportListTable);
@@ -126,6 +127,7 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
 
     }
 
+    //This grabs the well report keys from the database so that the data can be fetched
     public void getReportKeys(){
         reportKeys = new ArrayList<>();
 
@@ -146,6 +148,7 @@ public class wellDetails extends AppCompatActivity implements View.OnClickListen
         });
     }
 
+    //This lets the app know which inspection report you want to open and view
     private void onReportClick(View view) {
         String selectedReport = reportKeys.get(view.getId());
         Intent i = new Intent(this, ViewReport.class);

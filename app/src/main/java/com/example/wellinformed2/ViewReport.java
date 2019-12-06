@@ -13,6 +13,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+//This activity allow the user to view the selected report
 public class ViewReport extends AppCompatActivity
 {
     public WellInspection report;
@@ -35,7 +36,7 @@ public class ViewReport extends AppCompatActivity
         getReport();
 
     }
-
+    //This function gets the TextView and sets the text with the corresponding title
     private void displayReport()
     {
         TextView name = findViewById(R.id.ReportWellName);
@@ -138,6 +139,7 @@ public class ViewReport extends AppCompatActivity
         otherContSources.setText(report.OtherContaminationSourcesDistance);
     }
 
+    //This function gets the report from the database and saves is in a well inspection object
     public void getReport()
     {
         myRef = myRef.child("InspectionReports/" + key);
